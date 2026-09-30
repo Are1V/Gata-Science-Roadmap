@@ -14,6 +14,8 @@
   --accent: #2457a6;
   --accent-dark: #174688;
   --button-bg: #174688;
+  --map-card-bg: #ddf5ef;
+  --map-card-border: #177367;
   --tint: #eaf1fc;
   --green: #4e7761;
   --green-tint: #edf3ed;
@@ -35,6 +37,8 @@
   --accent: #9ac1ff;
   --accent-dark: #aad0ff;
   --button-bg: #2457a6;
+  --map-card-bg: #183e3d;
+  --map-card-border: #77cfc1;
   --tint: #243d60;
   --green: #a0c5aa;
   --green-tint: #29392d;
@@ -2925,4 +2929,321 @@ main {
 }
 .react-flow__attribution a {
   color: var(--muted);
+}
+/* Compact, diagram-first roadmap */
+.roadmap-page-heading {
+  margin-bottom: 15px;
+}
+.roadmap-page-heading h1 {
+  margin: 0 0 5px;
+  font-size: clamp(34px, 3.5vw, 48px);
+}
+.roadmap-page-heading p {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.roadmap-start {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-block: 1px solid var(--line);
+  padding: 10px 0;
+  margin-bottom: 12px;
+}
+.roadmap-start a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-dark);
+  font-size: 12px;
+  font-weight: 700;
+}
+.roadmap-start span {
+  color: var(--muted);
+  font-size: 11px;
+}
+.stage-nav {
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 12px;
+  padding-bottom: 0;
+  gap: 0;
+}
+.stage-nav button {
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  background: none;
+  padding: 10px 14px;
+  font-size: 12px;
+}
+.stage-nav button.selected {
+  border: 0;
+  border-bottom: 3px solid var(--accent);
+  background: none;
+  color: var(--ink);
+}
+.stage-intro {
+  margin-bottom: 10px;
+}
+.stage-intro strong {
+  font-size: 16px;
+}
+.roadmap-toolbar {
+  margin-bottom: 12px;
+}
+.roadmap-canvas {
+  border-radius: 4px;
+  background: var(--surface);
+}
+.flow-phase {
+  width: 255px;
+  min-height: 132px;
+  padding: 13px 16px;
+  border: 2px solid var(--map-card-border);
+  border-radius: 4px;
+  background: var(--map-card-bg);
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--map-card-border) 20%, transparent);
+}
+.flow-phase-top > span:first-child,
+.flow-phase-footer button {
+  color: var(--map-card-border);
+}
+.flow-phase.done {
+  border-color: var(--green);
+}
+.flow-phase-top {
+  margin-bottom: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.flow-phase strong {
+  font-size: 15px;
+  line-height: 1.25;
+}
+.flow-phase-progress {
+  height: 4px;
+  margin-top: 11px;
+  background: color-mix(in srgb, var(--accent) 18%, var(--surface));
+}
+.flow-phase-progress i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+.flow-phase-footer {
+  margin-top: 10px;
+  padding-top: 0;
+  border: 0;
+  font-size: 10px;
+}
+.flow-phase-footer button {
+  font-size: 11px;
+  font-weight: 700;
+}
+.flow-topic {
+  width: 230px;
+  min-height: 34px;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 3px;
+  background: var(--surface);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  box-shadow: 1px 2px 0 color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.flow-topic:hover {
+  border-color: var(--accent);
+}
+.flow-topic.done {
+  border-color: var(--green);
+  border-left-color: var(--green);
+}
+.flow-topic > svg {
+  margin-left: auto;
+  color: var(--green);
+}
+.react-flow__node {
+  cursor: pointer;
+}
+.stage-topics {
+  margin: 0 0 14px;
+  border-radius: 4px;
+}
+.stage-topics > p {
+  display: none;
+}
+.stage-topics-heading {
+  margin-bottom: 14px;
+}
+.stage-topics-heading h3 {
+  font-size: 18px;
+}
+.roadmap-list {
+  border-radius: 4px;
+}
+.phase-list-heading {
+  border-left: 4px solid transparent;
+}
+.phase-list-heading:hover {
+  border-left-color: var(--accent);
+  background: var(--tint);
+}
+/* Shorter landing page with the map as its focal point */
+.home-hero {
+  min-height: 420px;
+  gap: 36px;
+  padding: 10px 0 28px;
+}
+.hero-copy h1 {
+  font-size: clamp(48px, 5.5vw, 78px);
+  line-height: 1.02;
+  letter-spacing: -0.06em;
+  margin: 19px 0 22px;
+}
+.hero-copy > p {
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 440px;
+}
+.hero-actions {
+  margin-top: 25px;
+}
+.hero-actions .button {
+  font-size: 13px;
+  font-weight: 650;
+  padding: 13px 18px;
+}
+.hero-facts {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 27px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.hero-facts span:not(:last-child)::after {
+  content: '·';
+  padding-left: 10px;
+}
+.hero-map {
+  height: 352px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background-color: var(--surface);
+  background-image: radial-gradient(var(--line) 1px, transparent 1px);
+  mask-image: none;
+}
+.mini-path path {
+  stroke-width: 2.3;
+  stroke-dasharray: none;
+}
+.mini-node {
+  border: 1.5px solid var(--accent);
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 650;
+  box-shadow: 2px 2px 0 color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.mini-node.start {
+  background: var(--green-tint);
+  border-color: var(--green);
+}
+.mini-node.ml {
+  background: var(--tint);
+  border-color: var(--accent);
+}
+.home-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 5px 0 34px;
+}
+.home-shortcuts > a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--surface);
+  padding: 20px;
+}
+.home-shortcuts > a:hover {
+  border-color: var(--accent);
+  background: var(--tint);
+}
+.home-shortcuts > a > svg:first-child {
+  color: var(--accent);
+}
+.home-shortcuts > a > svg:last-child {
+  margin-left: auto;
+  color: var(--accent);
+}
+.home-shortcuts strong,
+.home-shortcuts small {
+  display: block;
+}
+.home-shortcuts strong {
+  font-size: 14px;
+}
+.home-shortcuts small {
+  font-size: 11px;
+  color: var(--muted);
+}
+.home-paths .section-heading {
+  margin: 0 0 17px;
+}
+.home-paths .path-card {
+  border-radius: 4px;
+}
+.home-paths .path-card strong {
+  font-size: 13px;
+}
+@media (max-width: 900px) {
+  .home-hero {
+    gap: 8px;
+  }
+  .hero-copy h1 {
+    font-size: 51px;
+  }
+  .home-shortcuts > a {
+    padding: 15px;
+    gap: 8px;
+  }
+}
+@media (max-width: 760px) {
+  .roadmap-start span {
+    display: none;
+  }
+  .home-shortcuts {
+    grid-template-columns: 1fr;
+  }
+  .home-hero {
+    gap: 12px;
+  }
+}
+@media (max-width: 540px) {
+  .hero-copy h1 {
+    font-size: 54px;
+  }
+  .hero-copy > p {
+    font-size: 14px;
+  }
+  .hero-map {
+    margin: 25px 0 0;
+    transform: none;
+    width: 100%;
+  }
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+  .home-shortcuts {
+    margin-top: 18px;
+  }
+  .roadmap-page-heading h1 {
+    font-size: 34px;
+  }
 }

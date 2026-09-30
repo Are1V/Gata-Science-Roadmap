@@ -31,7 +31,7 @@ export function ProgressMini() {
   return (
     <a href={url('progress/')} className="progress-mini">
       <div>
-        <span>Your learning journey</span>
+        <span>Your progress</span>
         <ArrowUpRight size={15} />
       </div>
       <strong>

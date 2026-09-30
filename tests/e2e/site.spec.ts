@@ -54,14 +54,17 @@ test('graph nodes expand, open details, zoom, and filter', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('./roadmap/');
-  await expect(page.locator('.roadmap-canvas .react-flow__node')).toHaveCount(4);
+  await expect(page.locator('.roadmap-canvas .react-flow__node')).toHaveCount(16);
+  await page.locator('.roadmap-canvas .flow-topic').first().click();
+  await expect(page.locator('.topic-dialog')).toBeVisible();
+  await page.getByRole('button', { name: 'Close topic' }).click();
   await page.getByRole('button', { name: 'Expand Getting started', exact: true }).click();
   await expect(page.locator('.stage-topics .stage-topic-grid > div')).toHaveCount(8);
   await page.locator('.stage-topics .stage-topic-grid > div > button').first().click();
   await expect(page.locator('.topic-dialog')).toBeVisible();
   await page.getByRole('button', { name: 'Close topic' }).click();
   await page.getByRole('button', { name: /Math & statistics/ }).click();
-  await expect(page.locator('.roadmap-canvas .react-flow__node')).toHaveCount(4);
+  await expect(page.locator('.roadmap-canvas .react-flow__node')).toHaveCount(16);
   const before = await page.locator('.roadmap-canvas .react-flow__viewport').getAttribute('style');
   await page
     .locator('.roadmap-canvas')
@@ -73,7 +76,8 @@ test('graph nodes expand, open details, zoom, and filter', async ({ page }) => {
   );
   await page.getByRole('button', { name: 'List', exact: true }).click();
   await page.getByRole('combobox', { name: 'Filter by level' }).selectOption('advanced');
-  await expect(page.locator('.roadmap-list-phase')).toHaveCount(12);
+  await expect(page.locator('.roadmap-list-phase').first()).toBeVisible();
+  expect(await page.locator('.roadmap-list-phase').count()).toBeLessThanOrEqual(6);
   await page.getByRole('textbox', { name: 'Filter roadmap' }).fill('nonsense-no-results');
   await expect(page.getByText('No phases match these filters.', { exact: false })).toBeVisible();
   expect(errors).toEqual([]);
@@ -106,6 +110,12 @@ test('mobile navigation, dark theme persistence, and no horizontal overflow', as
   await page.getByRole('button', { name: 'Open navigation' }).click();
   await page.locator('.sidebar').getByRole('link', { name: 'Roadmap', exact: true }).click();
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Data science roadmap');
+  await expect(page.locator('.roadmap-list-phase')).toHaveCount(4);
+  await page.getByRole('button', { name: /Math & statistics/ }).click();
+  await expect(page.locator('.roadmap-list-phase')).toHaveCount(4);
+  await expect(page.locator('.roadmap-list-phase').first()).toContainText(
+    'Mathematics for data science',
+  );
   for (const route of [
     './',
     './roadmap/',

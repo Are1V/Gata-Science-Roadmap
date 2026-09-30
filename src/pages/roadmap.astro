@@ -14,16 +14,9 @@ import { url } from '../utils/urls';
 ---
 
 <Layout title="Roadmap" active="Roadmap">
-  <div class="page-heading">
-    <span class="eyebrow">
-      <GitBranch size={13} />
-      DATA SCIENCE CURRICULUM
-    </span>
+  <div class="page-heading roadmap-page-heading">
     <h1>Data science roadmap</h1>
-    <p>
-      Work through seven short sections from programming to production. Select a chapter to see what
-      you need first, then open its topic checklist.
-    </p>
+    <p>Pick a box. Follow the connections.</p>
   </div>
   <Roadmap client:load />
   <ConnectionMap guides={connections} client:visible />
@@ -31,10 +24,6 @@ import { url } from '../utils/urls';
     <div class="section-heading">
       <div>
         <h2>Choose a specialization</h2>
-        <p>
-          Every path builds on a shared foundation. Start with phases 0–3, then follow the chapters
-          below.
-        </p>
       </div>
     </div>
     <div class="specialization-grid">

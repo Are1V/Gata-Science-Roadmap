@@ -77,7 +77,7 @@ const practice = [
           gata<span class="brand-sub">THE DATA SCIENCE ROADMAP</span>
         </span>
       </a>
-      <div class="nav-label">YOUR LEARNING SPACE</div>
+      <div class="nav-label">LEARN</div>
       <nav>
         {navigation.map(({ title, href, icon: Icon }) => (
           <a
@@ -90,7 +90,7 @@ const practice = [
             {title === 'Roadmap' && <span class="nav-dot" />}
           </a>
         ))}
-        <div class="nav-label second">LEARN BY DOING</div>
+        <div class="nav-label second">PRACTICE</div>
         {practice.map(({ title, href, icon: Icon }) => (
           <a
             href={url(href)}
@@ -115,7 +115,7 @@ const practice = [
         <ProgressMini client:load />
         <a class="sidebar-github" href={githubUrl()}>
           <Github size={17} />
-          Built in the open
+          GitHub repository
           <ArrowUpRight size={14} />
         </a>
       </div>
@@ -124,7 +124,7 @@ const practice = [
       <header class="topbar">
         <div class="breadcrumb">
           <MobileMenu client:load />
-          <span class="breadcrumb-root">Learning workspace</span>
+          <span class="breadcrumb-root">Gata Science</span>
           <span class="slash">/</span>
           <span>{active}</span>
         </div>
@@ -144,11 +144,11 @@ const practice = [
       </main>
       <footer class="footer">
         <a class="footer-brand" href={url()}>
-          <Sprout size={17} /> A little curiosity goes a long way.
+          <Sprout size={17} /> Gata Science Roadmap
         </a>
-        <span>Open source. Free to learn. Yours to explore.</span>
+        <span>Free and open source · MIT License</span>
         <a href={url('about/')}>
-          Made for the journey <ArrowUpRight size={13} />
+          About <ArrowUpRight size={13} />
         </a>
       </footer>
     </div>
