@@ -17,12 +17,12 @@ import { url } from '../utils/urls';
   <div class="page-heading">
     <span class="eyebrow">
       <GitBranch size={13} />
-      THE BIG PICTURE
+      DATA SCIENCE CURRICULUM
     </span>
-    <h1>Every concept has a connection.</h1>
+    <h1>Data science roadmap</h1>
     <p>
-      A complete map from first principles to production. Explore a phase, follow its prerequisites,
-      and make a little progress at your own pace.
+      Work through seven short sections from programming to production. Select a chapter to see what
+      you need first, then open its topic checklist.
     </p>
   </div>
   <Roadmap client:load />
@@ -30,7 +30,7 @@ import { url } from '../utils/urls';
   <section id="paths">
     <div class="section-heading">
       <div>
-        <h2>Choose a direction.</h2>
+        <h2>Choose a specialization</h2>
         <p>
           Every path builds on a shared foundation. Start with phases 0–3, then follow the chapters
           below.
@@ -47,7 +47,7 @@ import { url } from '../utils/urls';
           <h3>{s.title}</h3>
           <p>{s.description}</p>
           <details>
-            <summary>View core prerequisites</summary>
+            <summary>View recommended chapters</summary>
             <div class="dependency-links">
               {s.phases.map((n) => (
                 <a href={url(`learn/${phases[n].id}/`)}>{phases[n].title}</a>

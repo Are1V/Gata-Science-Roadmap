@@ -11,7 +11,7 @@ export const searchIndex = [
     type: 'Topic',
     detail: `Phase ${String(t.phase).padStart(2, '0')} · ${t.level}`,
     href: deepGuides[t.id]
-      ? url(`topics/${deepGuides[t.id]}/`)
+      ? url(`topics/${deepGuides[t.id]}/?concept=${t.id}`)
       : url(`learn/${t.phaseId}/#${t.id}`),
   })),
   ...projects.map((p) => ({

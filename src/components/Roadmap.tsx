@@ -3,17 +3,14 @@ import {
   ReactFlow,
   Background,
   Controls,
-  MiniMap,
   Handle,
   Position,
-  type NodeProps,
   type Node,
   type Edge,
 } from '@xyflow/react';
 import {
   ArrowRight,
   ArrowUpRight,
-  Check,
   ChevronDown,
   LayoutList,
   Network,
@@ -21,13 +18,29 @@ import {
   X,
   BookOpen,
   GitBranch,
-  Circle,
 } from 'lucide-react';
-import { phases, topics, specializations, deepGuides, type Phase } from '../data/roadmap';
+import { phases, specializations, deepGuides, type Phase } from '../data/roadmap';
 import { useProgress } from '../hooks/useProgress';
 import { CompleteButton } from './Progress';
 import { url } from '../utils/urls';
 type PhaseData = { phase: Phase; completed: number; expand: () => void; expanded: boolean };
+const stages = [
+  { name: 'Start here', range: [0, 3], description: 'Learn how to code and work on a project.' },
+  { name: 'Math & statistics', range: [4, 7], description: 'Build the math behind data science.' },
+  { name: 'Work with data', range: [8, 11], description: 'Load, query, clean, and explore data.' },
+  {
+    name: 'Machine learning',
+    range: [12, 17],
+    description: 'Train models and check whether they work.',
+  },
+  { name: 'Go deeper', range: [18, 23], description: 'Improve models and explore new methods.' },
+  {
+    name: 'Applied fields',
+    range: [24, 29],
+    description: 'Apply models to text, images, products, and experiments.',
+  },
+  { name: 'Ship responsibly', range: [30, 34], description: 'Put data science into practice.' },
+] as const;
 function PhaseNode({ data }: { data: PhaseData }) {
   return (
     <div className={`flow-phase ${data.completed === data.phase.topics.length ? 'done' : ''}`}>
@@ -59,28 +72,17 @@ function PhaseNode({ data }: { data: PhaseData }) {
     </div>
   );
 }
-function TopicNode({ data }: NodeProps) {
-  return (
-    <div className={`flow-topic ${data.done ? 'done' : ''}`}>
-      <Handle type="target" position={Position.Top} />
-      {data.done ? <Check size={13} /> : <Circle size={10} />}
-      <span>{String(data.title)}</span>
-      <span className={`kind-dot ${String(data.kind)}`} aria-label={String(data.kind)} />
-      <Handle type="source" position={Position.Bottom} />
-    </div>
-  );
-}
-const nodeTypes = { phase: PhaseNode, topic: TopicNode };
+const nodeTypes = { phase: PhaseNode };
 export default function Roadmap() {
   const { completed } = useProgress();
   const [level, setLevel] = useState('all'),
     [path, setPath] = useState('all'),
     [query, setQuery] = useState(''),
     [view, setView] = useState('map'),
+    [stage, setStage] = useState(0),
     [expanded, setExpanded] = useState<number[]>([]),
     [selected, setSelected] = useState<{ phase: Phase; topicId?: string } | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
-  const canvas = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const p = new URLSearchParams(location.search).get('path');
     if (p && specializations.some((s) => s.id === p)) setPath(p);
@@ -100,20 +102,26 @@ export default function Roadmap() {
           .toLowerCase()
           .includes(query.toLowerCase())),
   );
-  const toggle = (number: number) =>
-    setExpanded((old) =>
-      old.includes(number) ? old.filter((n) => n !== number) : [...old, number],
+  const stagePhases = filtered.filter(
+    (p) => p.number >= stages[stage].range[0] && p.number <= stages[stage].range[1],
+  );
+  useEffect(() => {
+    if (!filtered.length || stagePhases.length) return;
+    const first = stages.findIndex((s) =>
+      filtered.some((p) => p.number >= s.range[0] && p.number <= s.range[1]),
     );
+    if (first >= 0) setStage(first);
+  }, [level, path, query]);
+  const toggle = (number: number) => setExpanded((old) => (old.includes(number) ? [] : [number]));
   const { nodes, edges } = useMemo(() => {
     const nodes: Node[] = [];
     const edges: Edge[] = [];
-    let y = 35;
-    filtered.forEach((p) => {
+    stagePhases.forEach((p, i) => {
       const isExpanded = expanded.includes(p.number);
       nodes.push({
         id: p.id,
         type: 'phase',
-        position: { x: 255, y },
+        position: { x: 35 + (i % 2) * 330, y: 35 + Math.floor(i / 2) * 180 },
         data: {
           phase: p,
           completed: p.topics.filter((t) => completed.includes(t.id)).length,
@@ -123,7 +131,7 @@ export default function Roadmap() {
       });
       p.prerequisites.forEach((n) => {
         const pre = phases[n];
-        if (filtered.some((f) => f.number === n))
+        if (stagePhases.some((f) => f.number === n))
           edges.push({
             id: `${pre.id}-${p.id}`,
             source: pre.id,
@@ -135,29 +143,9 @@ export default function Roadmap() {
             labelBgStyle: { fill: 'var(--bg)' },
           });
       });
-      y += 190;
-      if (isExpanded) {
-        p.topics.forEach((t, i) => {
-          nodes.push({
-            id: t.id,
-            type: 'topic',
-            position: { x: 25 + (i % 3) * 250, y: y + Math.floor(i / 3) * 67 },
-            data: { title: t.title, done: completed.includes(t.id), kind: t.kind },
-          });
-          edges.push({
-            id: `${p.id}-${t.id}`,
-            source: p.id,
-            target: t.id,
-            type: 'smoothstep',
-            style: { stroke: 'var(--line)' },
-            hidden: i > 2,
-          });
-        });
-        y += Math.ceil(p.topics.length / 3) * 67 + 65;
-      }
     });
     return { nodes, edges };
-  }, [filtered.map((p) => p.id).join(','), expanded.join(','), completed.join(',')]);
+  }, [stagePhases.map((p) => p.id).join(','), expanded.join(','), completed.join(',')]);
   const nextPhase =
     filtered.find(
       (p) =>
@@ -171,7 +159,7 @@ export default function Roadmap() {
     <>
       <div className="roadmap-next">
         <div>
-          <span className="eyebrow">YOUR NEXT SMALL STEP</span>
+          <span className="eyebrow">NEXT TOPIC</span>
           {nextPhase && nextTopic ? (
             <a href={url(`learn/${nextPhase.id}/#${nextTopic.id}`)}>
               {nextTopic.title}
@@ -184,6 +172,26 @@ export default function Roadmap() {
         <a className="text-link" href="#connections">
           See the math connections <GitBranch size={14} />
         </a>
+      </div>
+      <nav className="stage-nav" aria-label="Roadmap sections">
+        {stages.map((s, i) => (
+          <button
+            key={s.name}
+            className={stage === i ? 'selected' : ''}
+            aria-current={stage === i ? 'step' : undefined}
+            onClick={() => setStage(i)}
+          >
+            <span>{String(i + 1).padStart(2, '0')}</span>
+            {s.name}
+          </button>
+        ))}
+      </nav>
+      <div className="stage-intro">
+        <div>
+          <strong>{stages[stage].name}</strong>
+          <p>{stages[stage].description}</p>
+        </div>
+        <span>{stagePhases.length} chapters in this section</span>
       </div>
       <div className="roadmap-toolbar">
         <div className="filter-input">
@@ -255,9 +263,41 @@ export default function Roadmap() {
           <i className="kind-dot advanced" />
           Advanced
         </span>
-        <span className="legend-note">{filtered.length} phases · Click a node to explore</span>
+        <span className="legend-note">
+          {view === 'map' ? `${stagePhases.length} shown in this section · ` : ''}
+          {filtered.length} matching chapters
+        </span>
       </div>
-      {filtered.length === 0 ? (
+      {view === 'map' &&
+        stagePhases
+          .filter((p) => expanded.includes(p.number))
+          .map((p) => (
+            <section className="stage-topics" key={p.id}>
+              <div className="stage-topics-heading">
+                <div>
+                  <span>CHAPTER {String(p.number).padStart(2, '0')}</span>
+                  <h3>{p.title}: topics</h3>
+                </div>
+                <a className="text-link" href={url(`learn/${p.id}/`)}>
+                  Read chapter <ArrowRight size={14} />
+                </a>
+              </div>
+              <p>{p.description}</p>
+              <div className="stage-topic-grid">
+                {p.topics.map((t) => (
+                  <div key={t.id}>
+                    <button onClick={() => setSelected({ phase: p, topicId: t.id })}>
+                      <span className={`kind-dot ${t.kind}`} />
+                      {t.title}
+                      {deepGuides[t.id] && <BookOpen size={13} />}
+                    </button>
+                    <CompleteButton id={t.id} />
+                  </div>
+                ))}
+              </div>
+            </section>
+          ))}
+      {(view === 'map' ? stagePhases : filtered).length === 0 ? (
         <div className="empty-state">
           No phases match these filters. Try another concept or learning path.
           <br />
@@ -273,25 +313,14 @@ export default function Roadmap() {
           </button>
         </div>
       ) : view === 'map' ? (
-        <div
-          ref={canvas}
-          className="roadmap-canvas"
-          role="region"
-          aria-label="Interactive data science roadmap"
-        >
+        <div className="roadmap-canvas" role="region" aria-label="Interactive data science roadmap">
           <ReactFlow
-            key={`${level}-${path}-${query}`}
+            key={`${stage}-${level}-${path}-${query}`}
             nodes={nodes}
             edges={edges}
             nodeTypes={nodeTypes}
-            defaultViewport={{ x: 10, y: 10, zoom: 0.82 }}
-            onInit={(instance) =>
-              instance.setViewport({
-                x: (canvas.current?.clientWidth || 750) / 2 - 385 * 0.82,
-                y: 45,
-                zoom: 0.82,
-              })
-            }
+            fitView
+            fitViewOptions={{ padding: 0.16, minZoom: 0.6, maxZoom: 1 }}
             minZoom={0.08}
             maxZoom={1.8}
             nodesDraggable={false}
@@ -299,16 +328,11 @@ export default function Roadmap() {
             onNodeClick={(_e, node) => {
               const p = phases.find((p) => p.id === node.id);
               if (p) setSelected({ phase: p });
-              else {
-                const t = topics.find((t) => t.id === node.id);
-                if (t) setSelected({ phase: phases[t.phase], topicId: t.id });
-              }
             }}
           >
             <Background color="var(--line)" gap={20} />
             <Controls showInteractive={false} />
-            <MiniMap nodeColor="var(--accent)" maskColor="transparent" pannable zoomable />
-            <div className="canvas-caption">A map, not a race. Follow your curiosity.</div>
+            <div className="canvas-caption">Select a chapter for details or expand its topics.</div>
           </ReactFlow>
         </div>
       ) : (
@@ -362,8 +386,8 @@ export default function Roadmap() {
         </div>
       )}
       <p className="map-help">
-        Pan to explore. Use + / − to zoom, or switch to the list for a keyboard-friendly view.
-        Progress stays in your browser.
+        Select a section above, explore a chapter, or switch to the full list. Progress stays in
+        your browser.
       </p>
       <dialog
         aria-label="Topic details"
@@ -415,7 +439,7 @@ export default function Roadmap() {
             <p>{selected.phase.exercise}</p>
             <div className="inline-actions">
               {guide ? (
-                <a className="button" href={url(`topics/${guide}/`)}>
+                <a className="button" href={url(`topics/${guide}/?concept=${selectedTopic!.id}`)}>
                   Read the detailed guide <ArrowRight size={14} />
                 </a>
               ) : (

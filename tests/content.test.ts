@@ -18,6 +18,12 @@ describe('The learning graph is coherent', () => {
         expect(n).toBeLessThan(p.number);
       }
   });
+  it('keeps applied specialties independent of unrelated specialties', () => {
+    expect(phases[25].prerequisites).not.toContain(24); // Vision does not require NLP.
+    expect(phases[26].prerequisites).not.toContain(25); // Recommenders do not require vision.
+    expect(phases[28].prerequisites).not.toContain(27); // A/B tests do not require XAI.
+    expect(phases[30].prerequisites).not.toContain(29); // Data engineering does not require causal inference.
+  });
   it('has valid resource, project, and specialization references', () => {
     for (const p of phases)
       for (const id of p.resourceIds) expect(resources.some((r) => r.id === id)).toBe(true);

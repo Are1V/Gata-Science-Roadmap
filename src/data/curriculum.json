@@ -345,7 +345,7 @@
     "exercise": "Create a repository, make a feature branch, add a tested data-loading function, and review your own diff before merging.",
     "resourceIds": ["git"],
     "level": "beginner",
-    "prerequisites": [2],
+    "prerequisites": [1],
     "topics": [
       {
         "id": "3-git",
@@ -425,7 +425,7 @@
     "exercise": "Use a 3 by 2 feature matrix to calculate predictions, compare cosine and Euclidean distance, and reconstruct a matrix from its SVD.",
     "resourceIds": ["linear-algebra", "numpy"],
     "level": "beginner",
-    "prerequisites": [1],
+    "prerequisites": [0],
     "topics": [
       {
         "id": "4-arithmetic",
@@ -1330,7 +1330,7 @@
     "exercise": "Find each customer\u2019s second order, monthly revenue growth with LAG, and the three highest-revenue products per category using a CTE.",
     "resourceIds": ["sql"],
     "level": "beginner",
-    "prerequisites": [1],
+    "prerequisites": [0],
     "topics": [
       {
         "id": "9-select",
@@ -1455,7 +1455,7 @@
     "exercise": "Audit a dataset, log each cleaning decision, compare complete-case and imputed analyses, and quantify which groups lose records.",
     "resourceIds": ["pandas"],
     "level": "beginner",
-    "prerequisites": [9],
+    "prerequisites": [8, 9],
     "topics": [
       {
         "id": "10-missing-values",
@@ -1540,7 +1540,7 @@
     "exercise": "Create an EDA report with five question-led plots, a missingness table, segment comparisons, and three explicitly labeled hypotheses.",
     "resourceIds": ["matplotlib"],
     "level": "beginner",
-    "prerequisites": [10],
+    "prerequisites": [7, 8, 10],
     "topics": [
       {
         "id": "11-univariate-analysis",
@@ -1885,7 +1885,7 @@
     "exercise": "Compare logistic regression, KNN, and an SVM with scaling inside cross-validation. Explain a threshold using false-positive and false-negative costs.",
     "resourceIds": ["sklearn"],
     "level": "intermediate",
-    "prerequisites": [4, 5, 6, 12],
+    "prerequisites": [4, 6, 12],
     "topics": [
       {
         "id": "14-odds",
@@ -2035,7 +2035,7 @@
     "exercise": "Train a tree, a random forest, and a gradient-boosted ensemble. Compare validation curves, fit time, and performance across important subgroups.",
     "resourceIds": ["sklearn-ensemble"],
     "level": "intermediate",
-    "prerequisites": [14],
+    "prerequisites": [7, 12],
     "topics": [
       {
         "id": "15-decision-trees",
@@ -2125,7 +2125,7 @@
     "exercise": "Compute precision, recall, F1, PR-AUC, and calibration for an imbalanced classifier. Choose a threshold under a fixed alert budget.",
     "resourceIds": ["sklearn-metrics"],
     "level": "intermediate",
-    "prerequisites": [15],
+    "prerequisites": [12, 13, 14, 15],
     "topics": [
       {
         "id": "16-confusion-matrix",
@@ -2225,7 +2225,7 @@
     "exercise": "Evaluate the same model with random, grouped, and temporal splits. Explain which estimate matches the intended use and why the others are optimistic.",
     "resourceIds": ["sklearn-validation"],
     "level": "intermediate",
-    "prerequisites": [16],
+    "prerequisites": [12, 16],
     "topics": [
       {
         "id": "17-holdout-validation",
@@ -2280,7 +2280,7 @@
     "exercise": "Build a preprocessing pipeline for numeric, categorical, and timestamp fields. Add one justified interaction and test its contribution.",
     "resourceIds": ["sklearn-preprocessing"],
     "level": "intermediate",
-    "prerequisites": [17],
+    "prerequisites": [8, 10, 12],
     "topics": [
       {
         "id": "18-numerical-features",
@@ -2430,7 +2430,7 @@
     "exercise": "Run equal-budget grid and random searches, then an Optuna study. Save every trial and compare score against compute time.",
     "resourceIds": ["optuna"],
     "level": "intermediate",
-    "prerequisites": [19],
+    "prerequisites": [17, 19],
     "topics": [
       {
         "id": "20-grid-search",
@@ -2555,7 +2555,7 @@
     "exercise": "Forecast weekly demand with seasonal naive, exponential smoothing, and lag-feature regression. Report error by horizon and backtest period.",
     "resourceIds": ["forecasting"],
     "level": "intermediate",
-    "prerequisites": [21],
+    "prerequisites": [7, 8, 17],
     "topics": [
       {
         "id": "22-time-series-structure",
@@ -2825,7 +2825,7 @@
     "exercise": "Build a TF-IDF sentiment baseline, compare it with pretrained embeddings, and inspect errors by negation, language, and document length.",
     "resourceIds": ["huggingface"],
     "level": "advanced",
-    "prerequisites": [23],
+    "prerequisites": [1, 8, 14, 23],
     "topics": [
       {
         "id": "24-text-preprocessing",
@@ -2915,7 +2915,7 @@
     "exercise": "Fine-tune a pretrained image classifier, split by source entity, and compare performance under changes in lighting and image quality.",
     "resourceIds": ["pytorch-vision"],
     "level": "advanced",
-    "prerequisites": [24],
+    "prerequisites": [8, 23],
     "topics": [
       {
         "id": "25-images-as-tensors",
@@ -2975,7 +2975,7 @@
     "exercise": "Build a popularity baseline and a matrix-factorization recommender. Compare Recall@K and coverage with a temporal holdout.",
     "resourceIds": ["recsys"],
     "level": "advanced",
-    "prerequisites": [25],
+    "prerequisites": [4, 9, 12, 21],
     "topics": [
       {
         "id": "26-content-based-filtering",
@@ -3025,7 +3025,7 @@
     "exercise": "Compare permutation importance, ICE, and SHAP on one model. Show a case where correlated features make rankings unstable.",
     "resourceIds": ["shap"],
     "level": "advanced",
-    "prerequisites": [26],
+    "prerequisites": [13, 14, 15, 16],
     "topics": [
       {
         "id": "27-feature-importance",
@@ -3070,7 +3070,7 @@
     "exercise": "Design a checkout experiment. Estimate sample size, specify exclusions before launch, and report an effect with a confidence interval.",
     "resourceIds": ["statistics"],
     "level": "advanced",
-    "prerequisites": [27],
+    "prerequisites": [6, 7, 16, 17],
     "topics": [
       {
         "id": "28-experiment-design",
@@ -3195,7 +3195,7 @@
     "exercise": "Create an incremental ingestion pipeline with a watermark, deduplication, validation, and a documented backfill procedure.",
     "resourceIds": ["spark"],
     "level": "advanced",
-    "prerequisites": [29],
+    "prerequisites": [9, 10],
     "topics": [
       {
         "id": "30-databases",
@@ -3270,7 +3270,7 @@
     "exercise": "Package a trained pipeline behind a validated FastAPI endpoint. Add a Dockerfile, health check, latency measurement, and rollback instructions.",
     "resourceIds": ["fastapi"],
     "level": "advanced",
-    "prerequisites": [30],
+    "prerequisites": [3, 17, 30],
     "topics": [
       {
         "id": "31-reproducible-projects",
@@ -3345,7 +3345,7 @@
     "exercise": "Track experiments, register a model, simulate a shifted dataset, and write a monitoring runbook with alert thresholds and an owner.",
     "resourceIds": ["mlflow"],
     "level": "advanced",
-    "prerequisites": [31],
+    "prerequisites": [3, 17, 31],
     "topics": [
       {
         "id": "32-experiment-tracking",
@@ -3425,7 +3425,7 @@
     "exercise": "Write a model card with intended use, excluded uses, data provenance, subgroup metrics, privacy controls, and a route to contest decisions.",
     "resourceIds": ["model-cards"],
     "level": "advanced",
-    "prerequisites": [32],
+    "prerequisites": [7, 17, 31],
     "topics": [
       {
         "id": "33-bias",

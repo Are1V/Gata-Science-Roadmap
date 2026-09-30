@@ -1,7 +1,7 @@
 import { Check, ArrowUpRight, RotateCcw, Download } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useProgress } from '../hooks/useProgress';
-import { phases, topicCount } from '../data/roadmap';
+import { phases, topicCount, deepGuides } from '../data/roadmap';
 import { url } from '../utils/urls';
 export function CompleteButton({ id, label = 'Mark complete' }: { id: string; label?: string }) {
   const { completed, toggle } = useProgress();
@@ -16,6 +16,14 @@ export function CompleteButton({ id, label = 'Mark complete' }: { id: string; la
       {done ? 'Completed' : label}
     </button>
   );
+}
+export function GuideCompleteButton({ guideId, topicId }: { guideId: string; topicId: string }) {
+  const [activeId, setActiveId] = useState(topicId);
+  useEffect(() => {
+    const requested = new URLSearchParams(location.search).get('concept');
+    if (requested && deepGuides[requested] === guideId) setActiveId(requested);
+  }, [guideId]);
+  return <CompleteButton id={activeId} />;
 }
 export function ProgressMini() {
   const { topicTotal } = useProgress();

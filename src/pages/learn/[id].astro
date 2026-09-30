@@ -96,7 +96,7 @@ const guides = [
           <h2>Go deeper with a field guide</h2>
           <div class="guide-links">
             {guides.map(([id, t]) => (
-              <a href={url(`topics/${id}/`)}>
+              <a href={url(`topics/${id}/?concept=${t.id}`)}>
                 <BookOpen size={17} />
                 <div>
                   <strong>{t.title}</strong>
@@ -121,7 +121,11 @@ const guides = [
           {phase.topics.map((t) => (
             <div id={t.id}>
               <a
-                href={deepGuides[t.id] ? url(`topics/${deepGuides[t.id]}/`) : '#chapter-resources'}
+                href={
+                  deepGuides[t.id]
+                    ? url(`topics/${deepGuides[t.id]}/?concept=${t.id}`)
+                    : '#chapter-resources'
+                }
               >
                 <span class:list={['kind-dot', t.kind]} />
                 {t.title}

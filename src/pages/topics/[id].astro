@@ -3,7 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { phases, resources } from '../../data/roadmap';
 import projects from '../../content/projects/projects.json';
-import { CompleteButton } from '../../components/Progress';
+import { GuideCompleteButton } from '../../components/Progress';
 import LearningLab from '../../components/LearningLab';
 import { ArrowLeft, ArrowUpRight, Clock, BookOpen, GitBranch } from 'lucide-react';
 import { url } from '../../utils/urls';
@@ -50,7 +50,7 @@ const project = projects.find((p) => p.id === guide.data.project)!;
             About {guide.data.estimatedHours} hours with exercises
           </span>
           <span class="tag">{phase.level}</span>
-          <CompleteButton client:load id={guide.data.topicId} />
+          <GuideCompleteButton client:load guideId={guide.id} topicId={guide.data.topicId} />
         </div>
       </div>
       <section class="prerequisite-box">
@@ -103,7 +103,7 @@ const project = projects.find((p) => p.id === guide.data.project)!;
       </section>
       <div class="lesson-end">
         <p>Ready to take the next step?</p>
-        <CompleteButton client:load id={guide.data.topicId} />
+        <GuideCompleteButton client:load guideId={guide.id} topicId={guide.data.topicId} />
       </div>
     </article>
     <aside class="lesson-toc">

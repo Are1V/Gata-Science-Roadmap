@@ -5,15 +5,16 @@
   --font-sans: 'Inter', 'Segoe UI', sans-serif;
 }
 :root {
-  --bg: #f9faf7;
+  --bg: #f7f9fc;
   --surface: #fff;
-  --sidebar: #f5f6f2;
-  --ink: #262c2a;
-  --muted: #606a62;
-  --line: #e5e8e0;
-  --accent: #7461bc;
-  --accent-dark: #6550ab;
-  --tint: #eeeaf8;
+  --sidebar: #fff;
+  --ink: #17233a;
+  --muted: #526176;
+  --line: #dce3ed;
+  --accent: #2457a6;
+  --accent-dark: #174688;
+  --button-bg: #174688;
+  --tint: #eaf1fc;
   --green: #4e7761;
   --green-tint: #edf3ed;
   --cream: #f4f1e8;
@@ -25,15 +26,16 @@
   font-synthesis: none;
 }
 :root[data-theme='dark'] {
-  --bg: #191c1b;
-  --surface: #222725;
-  --sidebar: #1d211f;
-  --ink: #eef0e9;
-  --muted: #a5aea7;
-  --line: #353d37;
-  --accent: #b4a0f0;
-  --accent-dark: #c5b3fb;
-  --tint: #343044;
+  --bg: #111827;
+  --surface: #1c2738;
+  --sidebar: #172132;
+  --ink: #f1f5fb;
+  --muted: #bbc8d9;
+  --line: #36445b;
+  --accent: #9ac1ff;
+  --accent-dark: #aad0ff;
+  --button-bg: #2457a6;
+  --tint: #243d60;
   --green: #a0c5aa;
   --green-tint: #29392d;
   --cream: #343329;
@@ -401,8 +403,8 @@ main {
   align-items: center;
   justify-content: center;
   gap: 9px;
-  border: 1px solid var(--accent-dark);
-  background: var(--accent-dark);
+  border: 1px solid var(--button-bg);
+  background: var(--button-bg);
   color: #fff;
   padding: 11px 17px;
   border-radius: 6px;
@@ -457,7 +459,7 @@ main {
   overflow: visible;
 }
 .mini-path path {
-  stroke: #bfb2dc;
+  stroke: var(--accent);
   stroke-width: 1.6;
   fill: none;
 }
@@ -1542,14 +1544,14 @@ main {
   transform: rotate(45deg);
 }
 .roadmap-canvas {
-  height: 720px;
+  height: 600px;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: var(--bg);
   overflow: hidden;
 }
 .flow-phase {
-  width: 260px;
+  width: 270px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -1579,6 +1581,108 @@ main {
   font-size: 15px;
   line-height: 1.4;
   font-weight: 600;
+}
+.stage-nav {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 0 0 10px;
+  margin-bottom: 16px;
+  scrollbar-width: thin;
+}
+.stage-nav button {
+  flex: 0 0 auto;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+.stage-nav button span {
+  color: var(--accent);
+  margin-right: 8px;
+}
+.stage-nav button.selected {
+  border-color: var(--accent);
+  background: var(--tint);
+  color: var(--ink);
+}
+.stage-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.stage-intro strong {
+  font-size: 18px;
+}
+.stage-intro p,
+.stage-intro > span {
+  color: var(--muted);
+  font-size: 11px;
+}
+.stage-topics {
+  margin-top: 16px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+}
+.stage-topics-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+.stage-topics-heading span {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+}
+.stage-topics > p {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 8px 0 16px;
+}
+.stage-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+.stage-topic-grid > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  min-width: 0;
+  padding: 5px 8px;
+}
+.stage-topic-grid > div > button:first-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  text-align: left;
+  font-size: 11px;
+}
+.stage-topic-grid > div > button:first-child svg {
+  color: var(--accent);
+}
+.stage-topic-grid .complete-button {
+  flex-shrink: 0;
+}
+@media (max-width: 760px) {
+  .stage-intro > span {
+    display: none;
+  }
+  .stage-topic-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .flow-phase small {
   display: block;
@@ -2810,7 +2914,7 @@ main {
   background-color: var(--shiki-dark-bg) !important;
 }
 :root[data-theme='dark'] .button:not(.secondary):not(.danger) {
-  color: #201b2c;
+  color: #fff;
 }
 :root:not([data-theme='dark']) .prose pre {
   background: var(--surface) !important;

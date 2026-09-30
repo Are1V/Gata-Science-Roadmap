@@ -4,7 +4,7 @@ test('home, global search, and keyboard dismissal', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('./');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('A clear path through');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Data science,');
   await page.getByRole('button', { name: 'Search anything' }).click();
   await page
     .getByRole('textbox', { name: 'Search topics, projects, and resources' })
@@ -37,16 +37,31 @@ test('topic progress persists and can be reset deliberately', async ({ page }) =
   await page.getByRole('button', { name: 'Yes, reset progress' }).click();
   await expect(page.locator('.metric').nth(1)).toContainText('0');
 });
+test('a detailed guide completes the concept used to open it', async ({ page }) => {
+  await page.goto('./learn/mathematics-for-data-science/');
+  await page.locator('[id="4-dot-product"] > a').click();
+  await expect(page).toHaveURL(/topics\/vectors\/\?concept=4-dot-product/);
+  await page.locator('.lesson-meta').getByRole('button', { name: 'Mark complete' }).click();
+  await page.goto('./learn/mathematics-for-data-science/');
+  await expect(
+    page.locator('[id="4-dot-product"]').getByRole('button', { name: 'Completed' }),
+  ).toBeVisible();
+  await expect(
+    page.locator('[id="4-vectors"]').getByRole('button', { name: 'Mark complete' }),
+  ).toBeVisible();
+});
 test('graph nodes expand, open details, zoom, and filter', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('./roadmap/');
-  await expect(page.locator('.roadmap-canvas .react-flow__node')).toHaveCount(35);
+  await expect(page.locator('.roadmap-canvas .react-flow__node')).toHaveCount(4);
   await page.getByRole('button', { name: 'Expand Getting started', exact: true }).click();
-  await expect(page.locator('.flow-topic')).toHaveCount(8);
-  await page.locator('.flow-topic').first().click();
+  await expect(page.locator('.stage-topics .stage-topic-grid > div')).toHaveCount(8);
+  await page.locator('.stage-topics .stage-topic-grid > div > button').first().click();
   await expect(page.locator('.topic-dialog')).toBeVisible();
   await page.getByRole('button', { name: 'Close topic' }).click();
+  await page.getByRole('button', { name: /Math & statistics/ }).click();
+  await expect(page.locator('.roadmap-canvas .react-flow__node')).toHaveCount(4);
   const before = await page.locator('.roadmap-canvas .react-flow__viewport').getAttribute('style');
   await page
     .locator('.roadmap-canvas')
@@ -90,7 +105,7 @@ test('mobile navigation, dark theme persistence, and no horizontal overflow', as
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await page.getByRole('button', { name: 'Open navigation' }).click();
   await page.locator('.sidebar').getByRole('link', { name: 'Roadmap', exact: true }).click();
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Every concept');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Data science roadmap');
   for (const route of [
     './',
     './roadmap/',
