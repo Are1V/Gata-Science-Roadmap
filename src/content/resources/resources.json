@@ -1,0 +1,233 @@
+[
+  {
+    "id": "python",
+    "title": "The Python Tutorial",
+    "provider": "Python Software Foundation",
+    "url": "https://docs.python.org/3/tutorial/",
+    "type": "Documentation"
+  },
+  {
+    "id": "cs50",
+    "title": "CS50: Introduction to Computer Science",
+    "provider": "Harvard University",
+    "url": "https://cs50.harvard.edu/x/",
+    "type": "Course"
+  },
+  {
+    "id": "git",
+    "title": "Pro Git",
+    "provider": "Git community",
+    "url": "https://git-scm.com/book/en/v2",
+    "type": "Book"
+  },
+  {
+    "id": "linear-algebra",
+    "title": "Linear Algebra",
+    "provider": "MIT OpenCourseWare",
+    "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+    "type": "Course"
+  },
+  {
+    "id": "calculus",
+    "title": "Single Variable Calculus",
+    "provider": "MIT OpenCourseWare",
+    "url": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/",
+    "type": "Course"
+  },
+  {
+    "id": "probability",
+    "title": "Introduction to Probability",
+    "provider": "Harvard University",
+    "url": "https://projects.iq.harvard.edu/stat110/home",
+    "type": "Course"
+  },
+  {
+    "id": "statistics",
+    "title": "OpenIntro Statistics",
+    "provider": "OpenIntro",
+    "url": "https://www.openintro.org/book/os/",
+    "type": "Book"
+  },
+  {
+    "id": "numpy",
+    "title": "NumPy: the absolute basics",
+    "provider": "NumPy",
+    "url": "https://numpy.org/doc/stable/user/absolute_beginners.html",
+    "type": "Documentation"
+  },
+  {
+    "id": "pandas",
+    "title": "Pandas getting started",
+    "provider": "Pandas",
+    "url": "https://pandas.pydata.org/docs/getting_started/index.html",
+    "type": "Documentation"
+  },
+  {
+    "id": "sql",
+    "title": "SQL tutorial",
+    "provider": "PostgreSQL",
+    "url": "https://www.postgresql.org/docs/current/tutorial-sql.html",
+    "type": "Documentation"
+  },
+  {
+    "id": "matplotlib",
+    "title": "Matplotlib tutorials",
+    "provider": "Matplotlib",
+    "url": "https://matplotlib.org/stable/tutorials/index.html",
+    "type": "Documentation"
+  },
+  {
+    "id": "plotly",
+    "title": "Plotly Python fundamentals",
+    "provider": "Plotly",
+    "url": "https://plotly.com/python/",
+    "type": "Documentation"
+  },
+  {
+    "id": "sklearn",
+    "title": "Machine learning user guide",
+    "provider": "scikit-learn",
+    "url": "https://scikit-learn.org/stable/user_guide.html",
+    "type": "Documentation"
+  },
+  {
+    "id": "sklearn-linear",
+    "title": "Linear models",
+    "provider": "scikit-learn",
+    "url": "https://scikit-learn.org/stable/modules/linear_model.html",
+    "type": "Documentation"
+  },
+  {
+    "id": "sklearn-ensemble",
+    "title": "Ensemble methods",
+    "provider": "scikit-learn",
+    "url": "https://scikit-learn.org/stable/modules/ensemble.html",
+    "type": "Documentation"
+  },
+  {
+    "id": "sklearn-metrics",
+    "title": "Model evaluation",
+    "provider": "scikit-learn",
+    "url": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+    "type": "Documentation"
+  },
+  {
+    "id": "sklearn-validation",
+    "title": "Cross-validation",
+    "provider": "scikit-learn",
+    "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+    "type": "Documentation"
+  },
+  {
+    "id": "sklearn-preprocessing",
+    "title": "Preprocessing data",
+    "provider": "scikit-learn",
+    "url": "https://scikit-learn.org/stable/modules/preprocessing.html",
+    "type": "Documentation"
+  },
+  {
+    "id": "sklearn-selection",
+    "title": "Feature selection",
+    "provider": "scikit-learn",
+    "url": "https://scikit-learn.org/stable/modules/feature_selection.html",
+    "type": "Documentation"
+  },
+  {
+    "id": "sklearn-decomposition",
+    "title": "Matrix decomposition",
+    "provider": "scikit-learn",
+    "url": "https://scikit-learn.org/stable/modules/decomposition.html",
+    "type": "Documentation"
+  },
+  {
+    "id": "optuna",
+    "title": "Optuna tutorials",
+    "provider": "Optuna",
+    "url": "https://optuna.readthedocs.io/en/stable/tutorial/index.html",
+    "type": "Documentation"
+  },
+  {
+    "id": "forecasting",
+    "title": "Forecasting: Principles and Practice",
+    "provider": "Hyndman & Athanasopoulos",
+    "url": "https://otexts.com/fpp3/",
+    "type": "Book"
+  },
+  {
+    "id": "pytorch",
+    "title": "Learn the basics",
+    "provider": "PyTorch",
+    "url": "https://pytorch.org/tutorials/beginner/basics/intro.html",
+    "type": "Course"
+  },
+  {
+    "id": "huggingface",
+    "title": "The Hugging Face course",
+    "provider": "Hugging Face",
+    "url": "https://huggingface.co/learn/llm-course/chapter1/1",
+    "type": "Course"
+  },
+  {
+    "id": "pytorch-vision",
+    "title": "Transfer learning tutorial",
+    "provider": "PyTorch",
+    "url": "https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html",
+    "type": "Documentation"
+  },
+  {
+    "id": "recsys",
+    "title": "Recommendation systems",
+    "provider": "Google",
+    "url": "https://developers.google.com/machine-learning/recommendation",
+    "type": "Course"
+  },
+  {
+    "id": "shap",
+    "title": "SHAP documentation",
+    "provider": "SHAP",
+    "url": "https://shap.readthedocs.io/en/latest/",
+    "type": "Documentation"
+  },
+  {
+    "id": "causal",
+    "title": "Causal Inference: What If",
+    "provider": "Hern\u00e1n & Robins",
+    "url": "https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/",
+    "type": "Book"
+  },
+  {
+    "id": "spark",
+    "title": "Spark programming guide",
+    "provider": "Apache Spark",
+    "url": "https://spark.apache.org/docs/latest/rdd-programming-guide.html",
+    "type": "Documentation"
+  },
+  {
+    "id": "fastapi",
+    "title": "FastAPI tutorial",
+    "provider": "FastAPI",
+    "url": "https://fastapi.tiangolo.com/tutorial/",
+    "type": "Documentation"
+  },
+  {
+    "id": "mlflow",
+    "title": "MLflow documentation",
+    "provider": "MLflow",
+    "url": "https://mlflow.org/docs/latest/",
+    "type": "Documentation"
+  },
+  {
+    "id": "model-cards",
+    "title": "Model Cards for Model Reporting",
+    "provider": "Google Research",
+    "url": "https://research.google/pubs/model-cards-for-model-reporting/",
+    "type": "Paper"
+  },
+  {
+    "id": "d2l",
+    "title": "Dive into Deep Learning",
+    "provider": "D2L authors",
+    "url": "https://d2l.ai/",
+    "type": "Book"
+  }
+]

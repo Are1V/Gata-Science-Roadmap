@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SubjectPage from '../components/SubjectPage.astro';
+---
+
+<Layout title="Statistics" active="Statistics">
+  <div class="page-heading">
+    <span class="eyebrow">EVIDENCE, WITH CONTEXT</span>
+    <h1>Better questions. Honest uncertainty.</h1>
+    <p>
+      Learn what your sample can tell you, what it cannot, and how to design a better experiment.
+      Connect probability to inference, experimentation, and causal reasoning.
+    </p>
+  </div>
+  <SubjectPage
+    phaseNumbers={[6, 7, 28, 29]}
+    sequences={[
+      {
+        title: 'From probability to evidence',
+        ids: ['bayes-theorem', 'statistical-inference', 'ab-testing'],
+      },
+      {
+        title: 'Measure performance honestly',
+        ids: ['statistical-inference', 'model-evaluation', 'validation'],
+      },
+    ]}
+  />
+</Layout>

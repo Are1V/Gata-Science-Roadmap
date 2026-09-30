@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SubjectPage from '../components/SubjectPage.astro';
+---
+
+<Layout title="Machine Learning" active="Machine Learning">
+  <div class="page-heading">
+    <span class="eyebrow">UNDERSTAND WHAT THE MODEL LEARNS</span>
+    <h1>Beyond fit and predict.</h1>
+    <p>
+      Understand the objectives, assumptions, and mathematics behind the algorithms. Start with a
+      baseline, validate it honestly, and know why your next model helps.
+    </p>
+  </div>
+  <SubjectPage
+    phaseNumbers={[12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]}
+    sequences={[
+      {
+        title: 'The path to logistic regression',
+        ids: ['bayes-theorem', 'logarithms', 'logistic-regression', 'model-evaluation'],
+      },
+      {
+        title: 'The geometry behind PCA',
+        ids: ['vectors', 'matrices', 'statistical-inference', 'pca'],
+      },
+      {
+        title: 'The path to neural networks',
+        ids: ['matrices', 'derivatives', 'gradient-descent', 'neural-networks'],
+      },
+    ]}
+  />
+</Layout>

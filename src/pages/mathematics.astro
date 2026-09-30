@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SubjectPage from '../components/SubjectPage.astro';
+---
+
+<Layout title="Mathematics" active="Mathematics">
+  <div class="page-heading">
+    <span class="eyebrow">THE IDEAS UNDER THE ALGORITHMS</span>
+    <h1>Make the math make sense.</h1>
+    <p>
+      Vectors become predictions. Derivatives become updates. Probability becomes a way to reason
+      about the unknown. Learn the foundations where they connect to real models.
+    </p>
+  </div>
+  <SubjectPage
+    phaseNumbers={[4, 5, 6]}
+    sequences={[
+      { title: 'The geometry of a prediction', ids: ['vectors', 'matrices', 'linear-regression'] },
+      { title: 'How a model learns', ids: ['derivatives', 'gradient-descent', 'neural-networks'] },
+      {
+        title: 'From uncertainty to a decision',
+        ids: ['bayes-theorem', 'logarithms', 'logistic-regression'],
+      },
+    ]}
+  />
+</Layout>

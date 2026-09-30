@@ -1,0 +1,157 @@
+---
+import '../styles/global.css';
+import {
+  Home,
+  Route,
+  Sigma,
+  ChartNoAxesCombined,
+  BrainCircuit,
+  FolderKanban,
+  Library,
+  MessagesSquare,
+  BookOpen,
+  ChartPie,
+  Info,
+  ArrowUpRight,
+  Sprout,
+} from 'lucide-react';
+import Github from '../components/Github';
+import { ThemeToggle, MobileMenu, StorageNotice } from '../components/ShellControls';
+import { ProgressMini } from '../components/Progress';
+import Search from '../components/Search';
+import { url, githubUrl } from '../utils/urls';
+interface Props {
+  title: string;
+  description?: string;
+  active?: string;
+}
+const {
+  title,
+  description = 'An open-source, project-first learning map. Connect the mathematics, build your intuition, and make data science your own.',
+  active = 'Home',
+} = Astro.props;
+const navigation = [
+  { title: 'Home', href: '', icon: Home },
+  { title: 'Roadmap', href: 'roadmap/', icon: Route },
+  { title: 'Mathematics', href: 'mathematics/', icon: Sigma },
+  { title: 'Statistics', href: 'statistics/', icon: ChartNoAxesCombined },
+  { title: 'Machine Learning', href: 'machine-learning/', icon: BrainCircuit },
+];
+const practice = [
+  { title: 'Projects', href: 'projects/', icon: FolderKanban },
+  { title: 'Resources', href: 'resources/', icon: Library },
+  { title: 'Interview Prep', href: 'interviews/', icon: MessagesSquare },
+  { title: 'Cheat Sheets', href: 'cheatsheets/', icon: BookOpen },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f8f9f5" />
+    <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
+    <title>{title === 'Home' ? 'Gata Science Roadmap — A clear path through data science' : `${title} — Gata Science Roadmap`}</title>
+    <script is:inline>
+      try {
+        const t = localStorage.getItem('gata.theme');
+        document.documentElement.dataset.theme =
+          t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      } catch {
+        document.documentElement.dataset.theme = 'light';
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href={url()}>
+        <span class="brand-mark">
+          <ChartNoAxesCombined size={23} strokeWidth={2.2} />
+        </span>
+        <span>
+          gata<span class="brand-sub">THE DATA SCIENCE ROADMAP</span>
+        </span>
+      </a>
+      <div class="nav-label">YOUR LEARNING SPACE</div>
+      <nav>
+        {navigation.map(({ title, href, icon: Icon }) => (
+          <a
+            href={url(href)}
+            class:list={['nav-item', { active: active === title }]}
+            aria-current={active === title ? 'page' : undefined}
+          >
+            <Icon size={18} strokeWidth={1.65} />
+            <span>{title}</span>
+            {title === 'Roadmap' && <span class="nav-dot" />}
+          </a>
+        ))}
+        <div class="nav-label second">LEARN BY DOING</div>
+        {practice.map(({ title, href, icon: Icon }) => (
+          <a
+            href={url(href)}
+            class:list={['nav-item', { active: active === title }]}
+            aria-current={active === title ? 'page' : undefined}
+          >
+            <Icon size={18} strokeWidth={1.65} />
+            <span>{title}</span>
+          </a>
+        ))}
+        <div class="nav-divider" />
+        <a href={url('progress/')} class:list={['nav-item', { active: active === 'Progress' }]}>
+          <ChartPie size={18} strokeWidth={1.65} />
+          My Progress
+        </a>
+        <a href={url('about/')} class:list={['nav-item', { active: active === 'About' }]}>
+          <Info size={18} strokeWidth={1.65} />
+          About Gata
+        </a>
+      </nav>
+      <div class="sidebar-bottom">
+        <ProgressMini client:load />
+        <a class="sidebar-github" href={githubUrl()}>
+          <Github size={17} />
+          Built in the open
+          <ArrowUpRight size={14} />
+        </a>
+      </div>
+    </aside>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="breadcrumb">
+          <MobileMenu client:load />
+          <span class="breadcrumb-root">Learning workspace</span>
+          <span class="slash">/</span>
+          <span>{active}</span>
+        </div>
+        <div class="header-actions">
+          <Search client:load />
+          <span class="topbar-divider" />
+          <ThemeToggle client:load />
+          <a class="github-top" href={githubUrl()} aria-label="View open-source project">
+            <Github size={19} />
+            <span>GitHub</span>
+            <ArrowUpRight size={13} />
+          </a>
+        </div>
+      </header>
+      <main id="main">
+        <slot />
+      </main>
+      <footer class="footer">
+        <a class="footer-brand" href={url()}>
+          <Sprout size={17} /> A little curiosity goes a long way.
+        </a>
+        <span>Open source. Free to learn. Yours to explore.</span>
+        <a href={url('about/')}>
+          Made for the journey <ArrowUpRight size={13} />
+        </a>
+      </footer>
+    </div>
+    <StorageNotice client:load />
+  </body>
+</html>

@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { url } from '../utils/urls';
+---
+
+<Layout title="Page not found">
+  <div class="page-heading">
+    <span class="eyebrow">A SMALL DETOUR</span>
+    <h1>This path doesn’t lead anywhere.</h1>
+    <p>
+      The page may have moved. Head back to the roadmap, or use search to find the concept you had
+      in mind.
+    </p>
+  </div>
+  <a class="button" href={url('roadmap/')}>
+    Back to the roadmap →
+  </a>
+</Layout>

@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Roadmap from '../components/Roadmap';
+import ConnectionMap from '../components/ConnectionMap';
+import { getCollection } from 'astro:content';
+const connections = (await getCollection('guides')).map((g) => ({
+  id: g.id,
+  title: g.data.title,
+  prerequisites: g.data.prerequisites,
+}));
+import { specializations, phases } from '../data/roadmap';
+import { ArrowUpRight, GitBranch } from 'lucide-react';
+import { url } from '../utils/urls';
+---
+
+<Layout title="Roadmap" active="Roadmap">
+  <div class="page-heading">
+    <span class="eyebrow">
+      <GitBranch size={13} />
+      THE BIG PICTURE
+    </span>
+    <h1>Every concept has a connection.</h1>
+    <p>
+      A complete map from first principles to production. Explore a phase, follow its prerequisites,
+      and make a little progress at your own pace.
+    </p>
+  </div>
+  <Roadmap client:load />
+  <ConnectionMap guides={connections} client:visible />
+  <section id="paths">
+    <div class="section-heading">
+      <div>
+        <h2>Choose a direction.</h2>
+        <p>
+          Every path builds on a shared foundation. Start with phases 0–3, then follow the chapters
+          below.
+        </p>
+      </div>
+    </div>
+    <div class="specialization-grid">
+      {specializations.map((s) => (
+        <article class="specialization-card">
+          <div class="card-top">
+            <GitBranch size={20} />
+            <span class="tag">{s.phases.length} chapters</span>
+          </div>
+          <h3>{s.title}</h3>
+          <p>{s.description}</p>
+          <details>
+            <summary>View core prerequisites</summary>
+            <div class="dependency-links">
+              {s.phases.map((n) => (
+                <a href={url(`learn/${phases[n].id}/`)}>{phases[n].title}</a>
+              ))}
+            </div>
+          </details>
+          <a class="text-link" href={url(`roadmap/?path=${s.id}`)}>
+            Explore this path <ArrowUpRight size={14} />
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+</Layout>

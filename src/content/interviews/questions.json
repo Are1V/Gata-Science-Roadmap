@@ -1,0 +1,182 @@
+[
+  {
+    "id": "question-0",
+    "category": "Python",
+    "question": "Why is a mutable default argument surprising?",
+    "answer": "Defaults are evaluated once when the function is defined. A list default is shared between calls. Use None as the default and create the list inside the function."
+  },
+  {
+    "id": "question-1",
+    "category": "Python",
+    "question": "When would you use a generator?",
+    "answer": "When values can be produced one at a time and do not all need to be stored. A generator saves memory but is consumed as you iterate; it is not a reusable list."
+  },
+  {
+    "id": "question-2",
+    "category": "Python",
+    "question": "How would you test a data-cleaning function?",
+    "answer": "Use a small, deterministic fixture with missing values, duplicates, and boundary cases. Assert the output values, types, row count, and that the input is unchanged if the contract promises that."
+  },
+  {
+    "id": "question-3",
+    "category": "SQL",
+    "question": "How do WHERE and HAVING differ?",
+    "answer": "WHERE filters input rows before grouping. HAVING filters groups after aggregation. To find customers with more than three paid orders, filter paid orders in WHERE and COUNT(*) in HAVING."
+  },
+  {
+    "id": "question-4",
+    "category": "SQL",
+    "question": "How do you find the second order per customer?",
+    "answer": "Use ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY order_time, order_id) in a CTE, then filter to row number 2. The extra order_id makes tied timestamps deterministic."
+  },
+  {
+    "id": "question-5",
+    "category": "SQL",
+    "question": "How would you compute month-over-month growth?",
+    "answer": "Aggregate revenue by month in a CTE, use LAG(revenue) ordered by month, then divide the difference by NULLIF(previous_revenue, 0). Build a calendar spine if months can be missing."
+  },
+  {
+    "id": "question-6",
+    "category": "Statistics",
+    "question": "What does a 95% confidence interval mean?",
+    "answer": "Under the stated sampling model, 95% of intervals produced by this procedure over repeated samples would cover the fixed population parameter. It does not assign a 95% posterior probability to this particular interval."
+  },
+  {
+    "id": "question-7",
+    "category": "Statistics",
+    "question": "Why report effect size alongside a p-value?",
+    "answer": "A p-value depends on both effect size and sample size. A tiny effect may be detectable with huge samples yet have little practical value. Report the effect in meaningful units with uncertainty."
+  },
+  {
+    "id": "question-8",
+    "category": "Statistics",
+    "question": "When is a paired t-test appropriate?",
+    "answer": "When each measurement has a meaningful partner, such as the same person before and after. The test operates on within-pair differences, which should be independent across pairs and satisfy the relevant distribution assumptions."
+  },
+  {
+    "id": "question-9",
+    "category": "Probability",
+    "question": "How can a highly sensitive test have poor positive predictive value?",
+    "answer": "When the condition is rare, false positives from the much larger negative population can outnumber true positives. Bayes\u2019 theorem combines prevalence, sensitivity, and specificity to compute the posterior."
+  },
+  {
+    "id": "question-10",
+    "category": "Probability",
+    "question": "What is the difference between density and probability?",
+    "answer": "A density is probability per unit of the variable and can exceed one. Probability is the integral of that density over an interval and stays between zero and one."
+  },
+  {
+    "id": "question-11",
+    "category": "Probability",
+    "question": "How do likelihood and probability differ?",
+    "answer": "With parameters fixed, a probability model describes possible data. With observed data fixed, the likelihood is a function of the parameters. A likelihood need not integrate to one over parameter space."
+  },
+  {
+    "id": "question-12",
+    "category": "Machine Learning",
+    "question": "How do you detect overfitting?",
+    "answer": "Compare training and validation performance across model capacities or training epochs. A widening gap suggests overfitting, though distribution shift or a flawed split can produce similar symptoms."
+  },
+  {
+    "id": "question-13",
+    "category": "Machine Learning",
+    "question": "Why scale features before KNN?",
+    "answer": "Distance combines coordinate differences. A feature with a large numeric range can dominate the distance even if its units are arbitrary. Fit scaling on training data within the validation pipeline."
+  },
+  {
+    "id": "question-14",
+    "category": "Machine Learning",
+    "question": "How does Lasso differ from Ridge?",
+    "answer": "Lasso adds an L1 penalty and can produce exact zero coefficients because the objective has corners. Ridge adds an L2 penalty and continuously shrinks correlated coefficients, usually without making them exactly zero."
+  },
+  {
+    "id": "question-15",
+    "category": "Deep Learning",
+    "question": "Why are nonlinear activations needed?",
+    "answer": "Composing affine layers without nonlinearities produces another affine mapping. Nonlinear activations allow a network to represent more complex relationships."
+  },
+  {
+    "id": "question-16",
+    "category": "Deep Learning",
+    "question": "What does backpropagation calculate?",
+    "answer": "It applies the chain rule efficiently through a computation graph to obtain derivatives of a scalar loss with respect to parameters. The optimizer, a separate step, uses those gradients to change parameters."
+  },
+  {
+    "id": "question-17",
+    "category": "Deep Learning",
+    "question": "Why call model.eval() in PyTorch?",
+    "answer": "It changes the behavior of layers such as dropout and batch normalization. It does not disable gradient tracking; use torch.no_grad() or inference_mode() separately during inference."
+  },
+  {
+    "id": "question-18",
+    "category": "Product Sense",
+    "question": "A product metric dropped. What do you do first?",
+    "answer": "Check instrumentation and metric definitions, then segment by time, platform, cohort, and acquisition source. Separate composition changes from within-segment changes before proposing a causal explanation."
+  },
+  {
+    "id": "question-19",
+    "category": "Product Sense",
+    "question": "How would you define a successful recommendation feature?",
+    "answer": "Choose a user-value outcome and guardrails, not clicks alone. Track satisfaction or successful consumption, diversity, latency, and long-term retention; validate the effect with an appropriate experiment."
+  },
+  {
+    "id": "question-20",
+    "category": "Product Sense",
+    "question": "Why can overall conversion rise while every segment declines?",
+    "answer": "The mix of traffic can move toward higher-converting segments. This is a form of Simpson\u2019s paradox. Compare segment-specific rates and a standardized rate using fixed segment weights."
+  },
+  {
+    "id": "question-21",
+    "category": "Experimentation",
+    "question": "Why avoid repeatedly checking conventional p-values?",
+    "answer": "Repeated opportunities to stop after a significant result increase the false-positive rate. Fix the analysis time in advance or use a method designed for sequential monitoring."
+  },
+  {
+    "id": "question-22",
+    "category": "Experimentation",
+    "question": "What is a sample-ratio mismatch?",
+    "answer": "Observed treatment allocation differs unexpectedly from the planned ratio. It may indicate assignment, logging, filtering, or exposure problems that invalidate a simple treatment comparison."
+  },
+  {
+    "id": "question-23",
+    "category": "Experimentation",
+    "question": "What determines required sample size?",
+    "answer": "The minimum detectable effect, outcome variance or baseline rate, significance level, desired power, allocation ratio, and design effects such as clustering. Specify them before running the experiment."
+  },
+  {
+    "id": "question-24",
+    "category": "Case Studies",
+    "question": "How would you scope a churn model?",
+    "answer": "Define churn, the prediction timestamp, eligible customers, intervention, and available features. Use a time-aware evaluation and assess value at an outreach budget against a simple baseline."
+  },
+  {
+    "id": "question-25",
+    "category": "Case Studies",
+    "question": "How would you evaluate a fraud model?",
+    "answer": "Use temporally separated data, evaluate precision and recall at operational review capacity, account for delayed and selectively observed labels, and inspect performance by relevant transaction segment."
+  },
+  {
+    "id": "question-26",
+    "category": "Case Studies",
+    "question": "How would you forecast demand for a new item?",
+    "answer": "Start with category and similar-item priors, include known calendar and product features, quantify uncertainty, and evaluate cold-start items separately. Avoid pretending that a new item has its own historical seasonality."
+  },
+  {
+    "id": "question-27",
+    "category": "MLOps",
+    "question": "How do data drift and concept drift differ?",
+    "answer": "Data drift changes the input distribution P(X). Concept drift changes P(Y given X). Input drift alone does not prove a drop in performance, and performance drift needs appropriate labels to assess."
+  },
+  {
+    "id": "question-28",
+    "category": "MLOps",
+    "question": "What belongs in a model registry?",
+    "answer": "The artifact version, training data reference, code and environment versions, metrics, intended use, approval status, and deployment lineage. A model file alone is insufficient for reproducibility."
+  },
+  {
+    "id": "question-29",
+    "category": "MLOps",
+    "question": "When should retraining be blocked?",
+    "answer": "When incoming data fails quality checks, evaluation is unreliable, subgroup or guardrail performance regresses, or deployment cannot be rolled back. A drift alert is a reason to investigate, not unconditional permission to release."
+  }
+]

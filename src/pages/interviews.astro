@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Library from '../components/Library';
+---
+
+<Layout title="Interview Prep" active="Interview Prep">
+  <div class="page-heading">
+    <span class="eyebrow">EXPLAIN IT WITH CONFIDENCE</span>
+    <h1>Know the why behind your answer.</h1>
+    <p>
+      Practice Python, SQL, statistics, machine learning, product sense, and more. Think it through
+      first, then expand an answer to check your reasoning.
+    </p>
+  </div>
+  <Library type="interviews" client:load />
+</Layout>

@@ -1,0 +1,87 @@
+---
+import { getCollection } from 'astro:content';
+import { phases } from '../data/roadmap';
+import { ArrowUpRight, BookOpen, GitBranch } from 'lucide-react';
+import { url } from '../utils/urls';
+interface Props {
+  phaseNumbers: number[];
+  sequences: { title: string; ids: string[] }[];
+}
+const { phaseNumbers, sequences } = Astro.props;
+const guides = (await getCollection('guides')).filter((g) => phaseNumbers.includes(g.data.phase));
+const all = await getCollection('guides');
+---
+
+<section>
+  <div class="section-heading">
+    <div>
+      <h2>Follow the connections.</h2>
+      <p>Each idea becomes a foundation for the next.</p>
+    </div>
+  </div>
+  <div class="concept-sequences">
+    {sequences.map((s) => (
+      <div class="concept-sequence">
+        <h3>
+          <GitBranch size={16} />
+          {s.title}
+        </h3>
+        <div>
+          {s.ids.map((id, i) => (
+            <>
+              <a href={url(`topics/${id}/`)}>{all.find((g) => g.id === id)?.data.title}</a>
+              {i < s.ids.length - 1 && <span aria-hidden="true">→</span>}
+            </>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+<section>
+  <div class="section-heading">
+    <div>
+      <h2>Build your understanding.</h2>
+      <p>Authored lessons with worked examples, equations, and exercises.</p>
+    </div>
+  </div>
+  <div class="resource-grid">
+    {guides.map((g) => (
+      <a class="resource-card" href={url(`topics/${g.id}/`)}>
+        <div class="card-top">
+          <span class="card-icon">
+            <BookOpen size={20} />
+          </span>
+          <span class="tag">{g.data.estimatedHours}h with exercises</span>
+        </div>
+        <h2>{g.data.title}</h2>
+        <p>{g.data.description}</p>
+        <span class="text-link">
+          Open field guide <ArrowUpRight size={14} />
+        </span>
+      </a>
+    ))}
+  </div>
+</section>
+<section>
+  <div class="section-heading">
+    <div>
+      <h2>See the full curriculum.</h2>
+      <p>Explore every concept, with chapter exercises and curated free resources.</p>
+    </div>
+  </div>
+  <div class="progress-sections">
+    {phaseNumbers.map((n) => (
+      <a class="progress-section" href={url(`learn/${phases[n].id}/`)}>
+        <span class="phase-number">{String(n).padStart(2, '0')}</span>
+        <div>
+          <strong>{phases[n].title}</strong>
+          <p class="muted-small">
+            {phases[n].topics.length} concepts · {phases[n].subtitle}
+          </p>
+        </div>
+        <ArrowUpRight size={17} />
+      </a>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ProgressDashboard } from '../components/Progress';
+---
+
+<Layout title="Progress" active="Progress">
+  <div class="page-heading">
+    <span class="eyebrow">YOUR LEARNING JOURNEY</span>
+    <h1>Look how far curiosity takes you.</h1>
+    <p>
+      Every concept counts. Your progress is saved in this browser, with no account and no tracking.
+      Take your time; understanding is the goal.
+    </p>
+  </div>
+  <ProgressDashboard client:load />
+</Layout>

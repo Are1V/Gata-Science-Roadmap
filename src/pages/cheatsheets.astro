@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Library from '../components/Library';
+---
+
+<Layout title="Cheat Sheets" active="Cheat Sheets">
+  <div class="page-heading">
+    <span class="eyebrow">KEEP THE ESSENTIALS CLOSE</span>
+    <h1>Less memorizing. More understanding.</h1>
+    <p>
+      Twelve concise references for the tools and ideas you will use most. Code excerpts are
+      patterns; named training variables refer to your own data.
+    </p>
+  </div>
+  <Library type="cheatsheets" client:load />
+</Layout>

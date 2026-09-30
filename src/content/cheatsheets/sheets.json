@@ -1,0 +1,134 @@
+[
+  {
+    "id": "python",
+    "title": "Python",
+    "principle": "Name \u2192 object; mutable values can be shared.",
+    "code": "def mean(values):\n    if not values:\n        raise ValueError(\"empty input\")\n    return sum(values) / len(values)",
+    "notes": [
+      "Use a context manager for files.",
+      "Use venv for isolated dependencies.",
+      "Prefer small functions with explicit inputs."
+    ]
+  },
+  {
+    "id": "numpy",
+    "title": "NumPy",
+    "principle": "X.shape = (observations, features)",
+    "code": "import numpy as np\nX = np.array([[1., 2.], [3., 4.]])\nX.mean(axis=0)  # [2., 3.]\nX @ np.array([2., 1.])  # [4., 10.]",
+    "notes": [
+      "axis=0 aggregates down rows.",
+      "Check trailing dimensions for broadcasting.",
+      "Use a seeded default_rng for simulations."
+    ]
+  },
+  {
+    "id": "pandas",
+    "title": "Pandas",
+    "principle": "Validate grain and keys before every merge.",
+    "code": "import pandas as pd\ndf = pd.read_csv(\"sales.csv\")\nrevenue = df.groupby(\"region\")[\"amount\"].sum()\njoined = df.merge(customers, on=\"customer_id\",\n                  validate=\"many_to_one\")",
+    "notes": [
+      "isna() reveals missing values.",
+      "transform returns an aligned result.",
+      "Use .loc for explicit row and column selection."
+    ]
+  },
+  {
+    "id": "sql",
+    "title": "SQL",
+    "principle": "FROM \u2192 WHERE \u2192 GROUP BY \u2192 HAVING \u2192 SELECT \u2192 ORDER BY",
+    "code": "SELECT customer_id, order_time,\n  ROW_NUMBER() OVER (\n    PARTITION BY customer_id\n    ORDER BY order_time, order_id\n  ) AS order_number\nFROM orders;",
+    "notes": [
+      "COUNT(column) excludes nulls.",
+      "Window functions retain individual rows.",
+      "Use a deterministic tie-breaker in ordering."
+    ]
+  },
+  {
+    "id": "statistics",
+    "title": "Statistics",
+    "principle": "Standard error of the mean: s / \u221an",
+    "code": "import numpy as np\nx = np.array([2., 4., 6., 8.])\nmean = x.mean()\nsd = x.std(ddof=1)\nse = sd / np.sqrt(len(x))",
+    "notes": [
+      "A p-value is conditional on the null model.",
+      "Report effect sizes and uncertainty.",
+      "Independence assumptions matter more than large n."
+    ]
+  },
+  {
+    "id": "probability",
+    "title": "Probability",
+    "principle": "P(A | B) = P(B | A) P(A) / P(B)",
+    "code": "prior = 0.01\nsensitivity = 0.90\nfalse_positive_rate = 0.05\nposterior = (sensitivity * prior) / (\n    sensitivity * prior +\n    false_positive_rate * (1 - prior)\n)",
+    "notes": [
+      "Independence implies P(A \u2229 B)=P(A)P(B).",
+      "Density is not point probability.",
+      "Likelihood treats data as fixed."
+    ]
+  },
+  {
+    "id": "linear-algebra",
+    "title": "Linear Algebra",
+    "principle": "(n \u00d7 d) @ (d \u00d7 k) \u2192 (n \u00d7 k)",
+    "code": "import numpy as np\nX = np.array([[1., 1.], [1., 2.], [1., 3.]])\ny = np.array([2., 3., 4.])\nbeta = np.linalg.lstsq(X, y, rcond=None)[0]",
+    "notes": [
+      "Dot products measure alignment.",
+      "SVD works on rectangular matrices.",
+      "Solve linear systems instead of computing inverses."
+    ]
+  },
+  {
+    "id": "calculus",
+    "title": "Calculus",
+    "principle": "\u03b8 \u2190 \u03b8 \u2212 \u03b7 \u2207J(\u03b8)",
+    "code": "theta = 3.0\neta = 0.1\nfor _ in range(20):\n    gradient = 2 * theta\n    theta -= eta * gradient",
+    "notes": [
+      "The gradient has one coordinate per parameter.",
+      "Chain rule multiplies local derivatives.",
+      "A zero gradient can also indicate a saddle point."
+    ]
+  },
+  {
+    "id": "machine-learning",
+    "title": "Machine Learning",
+    "principle": "Split \u2192 fit preprocessing \u2192 fit model \u2192 validate",
+    "code": "from sklearn.pipeline import make_pipeline\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.linear_model import LogisticRegression\nmodel = make_pipeline(StandardScaler(),\n                      LogisticRegression())\nmodel.fit(X_train, y_train)",
+    "notes": [
+      "Start with a dummy baseline.",
+      "Match the split to deployment.",
+      "Keep the final test set untouched."
+    ]
+  },
+  {
+    "id": "model-metrics",
+    "title": "Model Metrics",
+    "principle": "Precision = TP/(TP+FP); recall = TP/(TP+FN)",
+    "code": "from sklearn.metrics import (\n    average_precision_score, mean_absolute_error\n)\nap = average_precision_score(y_true, scores)\nmae = mean_absolute_error(actual, predicted)",
+    "notes": [
+      "Use scores, not hard labels, for ranking metrics.",
+      "MAE uses the same units as the target.",
+      "Check calibration if probabilities drive decisions."
+    ]
+  },
+  {
+    "id": "scikit-learn",
+    "title": "Scikit-learn",
+    "principle": "Put all learned transforms inside the pipeline.",
+    "code": "from sklearn.model_selection import cross_val_score\n# model includes preprocessing and estimator\nscores = cross_val_score(\n    model, X, y, cv=5, scoring=\"roc_auc\"\n)",
+    "notes": [
+      "Choose group or temporal splits when needed.",
+      "Set random_state where supported.",
+      "Refit only after choosing hyperparameters."
+    ]
+  },
+  {
+    "id": "pytorch",
+    "title": "PyTorch",
+    "principle": "Forward \u2192 loss \u2192 zero gradients \u2192 backward \u2192 step",
+    "code": "import torch\nmodel = torch.nn.Linear(3, 1)\noptimizer = torch.optim.AdamW(model.parameters())\nx = torch.randn(8, 3)\ny = torch.randn(8, 1)\nloss = ((model(x) - y) ** 2).mean()\noptimizer.zero_grad()\nloss.backward()\noptimizer.step()",
+    "notes": [
+      "Use model.train() during training.",
+      "Use model.eval() plus inference_mode() at inference.",
+      "CrossEntropyLoss expects logits, not softmax probabilities."
+    ]
+  }
+]

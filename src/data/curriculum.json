@@ -1,0 +1,3542 @@
+[
+  {
+    "id": "getting-started",
+    "number": 0,
+    "title": "Getting started",
+    "subtitle": "Find your direction",
+    "description": "Turn an ambiguous question into a measurable decision. Data science combines programming, quantitative reasoning, and domain knowledge; the useful output is often an explanation rather than a model.",
+    "intuition": "Write a decision, a measurable outcome, and a baseline before choosing a tool.",
+    "mistake": "Predictive accuracy alone does not establish business value.",
+    "exercise": "Define a question about bicycle demand. Identify who acts on the answer, the unit of observation, and when a prediction is needed.",
+    "resourceIds": ["python"],
+    "level": "beginner",
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "0-what-data-science-is",
+        "title": "What Data Science is",
+        "kind": "core"
+      },
+      {
+        "id": "0-data-scientist-vs-data-analyst",
+        "title": "Data Scientist vs Data Analyst",
+        "kind": "core"
+      },
+      {
+        "id": "0-data-scientist-vs-ml-engineer",
+        "title": "Data Scientist vs ML Engineer",
+        "kind": "core"
+      },
+      {
+        "id": "0-data-scientist-vs-ai-engineer",
+        "title": "Data Scientist vs AI Engineer",
+        "kind": "core"
+      },
+      {
+        "id": "0-data-scientist-vs-data-engineer",
+        "title": "Data Scientist vs Data Engineer",
+        "kind": "core"
+      },
+      {
+        "id": "0-typical-data-science-workflow",
+        "title": "Typical Data Science workflow",
+        "kind": "core"
+      },
+      {
+        "id": "0-how-to-use-this-roadmap",
+        "title": "How to use this roadmap",
+        "kind": "core"
+      },
+      {
+        "id": "0-setting-up-a-learning-environment",
+        "title": "Setting up a learning environment",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "python-foundations",
+    "number": 1,
+    "title": "Python foundations",
+    "subtitle": "Speak the language of data",
+    "description": "Python values have types, names refer to objects, and mutable objects can be shared. Learn control flow and functions before writing notebook-sized programs. Small pure functions are easier to test and reuse.",
+    "intuition": "A list is an ordered collection; a dictionary maps keys to values. Functions turn repeated steps into explicit contracts.",
+    "mistake": "Mutating a list passed into a function can unexpectedly change the caller\u2019s data.",
+    "exercise": "Read a CSV with the standard library, reject invalid rows, and write three tests for a reusable summary function.",
+    "resourceIds": ["python"],
+    "level": "beginner",
+    "prerequisites": [0],
+    "topics": [
+      {
+        "id": "1-variables",
+        "title": "Variables",
+        "kind": "core"
+      },
+      {
+        "id": "1-data-types",
+        "title": "Data types",
+        "kind": "core"
+      },
+      {
+        "id": "1-operators",
+        "title": "Operators",
+        "kind": "core"
+      },
+      {
+        "id": "1-conditions",
+        "title": "Conditions",
+        "kind": "core"
+      },
+      {
+        "id": "1-loops",
+        "title": "Loops",
+        "kind": "core"
+      },
+      {
+        "id": "1-functions",
+        "title": "Functions",
+        "kind": "core"
+      },
+      {
+        "id": "1-scope",
+        "title": "Scope",
+        "kind": "core"
+      },
+      {
+        "id": "1-lists",
+        "title": "Lists",
+        "kind": "core"
+      },
+      {
+        "id": "1-tuples",
+        "title": "Tuples",
+        "kind": "core"
+      },
+      {
+        "id": "1-dictionaries",
+        "title": "Dictionaries",
+        "kind": "core"
+      },
+      {
+        "id": "1-sets",
+        "title": "Sets",
+        "kind": "core"
+      },
+      {
+        "id": "1-comprehensions",
+        "title": "Comprehensions",
+        "kind": "core"
+      },
+      {
+        "id": "1-exceptions",
+        "title": "Exceptions",
+        "kind": "core"
+      },
+      {
+        "id": "1-file-handling",
+        "title": "File handling",
+        "kind": "core"
+      },
+      {
+        "id": "1-modules",
+        "title": "Modules",
+        "kind": "core"
+      },
+      {
+        "id": "1-packages",
+        "title": "Packages",
+        "kind": "core"
+      },
+      {
+        "id": "1-virtual-environments",
+        "title": "Virtual environments",
+        "kind": "core"
+      },
+      {
+        "id": "1-oop",
+        "title": "OOP",
+        "kind": "core"
+      },
+      {
+        "id": "1-iterators",
+        "title": "Iterators",
+        "kind": "core"
+      },
+      {
+        "id": "1-generators",
+        "title": "Generators",
+        "kind": "core"
+      },
+      {
+        "id": "1-decorators",
+        "title": "Decorators",
+        "kind": "optional"
+      },
+      {
+        "id": "1-lambda-functions",
+        "title": "Lambda functions",
+        "kind": "core"
+      },
+      {
+        "id": "1-typing",
+        "title": "Typing",
+        "kind": "core"
+      },
+      {
+        "id": "1-dataclasses",
+        "title": "Dataclasses",
+        "kind": "core"
+      },
+      {
+        "id": "1-debugging",
+        "title": "Debugging",
+        "kind": "core"
+      },
+      {
+        "id": "1-testing",
+        "title": "Testing",
+        "kind": "core"
+      },
+      {
+        "id": "1-clean-python-practices",
+        "title": "Clean Python practices",
+        "kind": "core"
+      },
+      {
+        "id": "1-jupyter-notebook",
+        "title": "Jupyter Notebook",
+        "kind": "core"
+      },
+      {
+        "id": "1-vs-code",
+        "title": "VS Code",
+        "kind": "recommended"
+      },
+      {
+        "id": "1-pip",
+        "title": "Pip",
+        "kind": "core"
+      },
+      {
+        "id": "1-conda-venv",
+        "title": "Conda/venv",
+        "kind": "recommended"
+      }
+    ]
+  },
+  {
+    "id": "computer-science-essentials",
+    "number": 2,
+    "title": "Computer science essentials",
+    "subtitle": "Think in systems",
+    "description": "Algorithms are procedures with resource costs. A hash lookup has expected constant time, while sorting n records usually costs O(n log n). These differences become visible when data stops fitting in memory.",
+    "intuition": "Choose a structure by the operations you need: a queue for ordered work, a set for membership, and a graph for relationships.",
+    "mistake": "Big-O describes growth, not the wall-clock time of a specific implementation.",
+    "exercise": "Compare list and set membership on increasing input sizes; plot time against n and explain the memory tradeoff.",
+    "resourceIds": ["cs50"],
+    "level": "beginner",
+    "prerequisites": [1],
+    "topics": [
+      {
+        "id": "2-algorithms",
+        "title": "Algorithms",
+        "kind": "core"
+      },
+      {
+        "id": "2-time-complexity",
+        "title": "Time complexity",
+        "kind": "core"
+      },
+      {
+        "id": "2-big-o-notation",
+        "title": "Big-O notation",
+        "kind": "core"
+      },
+      {
+        "id": "2-memory-complexity",
+        "title": "Memory complexity",
+        "kind": "core"
+      },
+      {
+        "id": "2-arrays",
+        "title": "Arrays",
+        "kind": "core"
+      },
+      {
+        "id": "2-stacks",
+        "title": "Stacks",
+        "kind": "core"
+      },
+      {
+        "id": "2-queues",
+        "title": "Queues",
+        "kind": "core"
+      },
+      {
+        "id": "2-hash-tables",
+        "title": "Hash tables",
+        "kind": "core"
+      },
+      {
+        "id": "2-trees",
+        "title": "Trees",
+        "kind": "core"
+      },
+      {
+        "id": "2-graphs",
+        "title": "Graphs",
+        "kind": "core"
+      },
+      {
+        "id": "2-searching",
+        "title": "Searching",
+        "kind": "core"
+      },
+      {
+        "id": "2-sorting",
+        "title": "Sorting",
+        "kind": "core"
+      },
+      {
+        "id": "2-recursion",
+        "title": "Recursion",
+        "kind": "core"
+      },
+      {
+        "id": "2-basic-software-engineering",
+        "title": "Basic software engineering",
+        "kind": "core"
+      },
+      {
+        "id": "2-apis",
+        "title": "APIs",
+        "kind": "core"
+      },
+      {
+        "id": "2-json",
+        "title": "JSON",
+        "kind": "core"
+      },
+      {
+        "id": "2-http-basics",
+        "title": "HTTP basics",
+        "kind": "core"
+      },
+      {
+        "id": "2-command-line",
+        "title": "Command line",
+        "kind": "core"
+      },
+      {
+        "id": "2-linux-basics",
+        "title": "Linux basics",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "git-development-tools",
+    "number": 3,
+    "title": "Git & development tools",
+    "subtitle": "Make your work reproducible",
+    "description": "Git records snapshots of a project. A branch is a movable reference to a commit; a pull request is a place to review changes. Reproducibility also requires recording dependencies, data provenance, and random seeds.",
+    "intuition": "A small commit should represent one coherent change that another person can review or revert.",
+    "mistake": "A notebook with outputs but no execution order or environment file is not a reproducible result.",
+    "exercise": "Create a repository, make a feature branch, add a tested data-loading function, and review your own diff before merging.",
+    "resourceIds": ["git"],
+    "level": "beginner",
+    "prerequisites": [2],
+    "topics": [
+      {
+        "id": "3-git",
+        "title": "Git",
+        "kind": "core"
+      },
+      {
+        "id": "3-github",
+        "title": "GitHub",
+        "kind": "core"
+      },
+      {
+        "id": "3-repositories",
+        "title": "Repositories",
+        "kind": "core"
+      },
+      {
+        "id": "3-commits",
+        "title": "Commits",
+        "kind": "core"
+      },
+      {
+        "id": "3-branches",
+        "title": "Branches",
+        "kind": "core"
+      },
+      {
+        "id": "3-merging",
+        "title": "Merging",
+        "kind": "core"
+      },
+      {
+        "id": "3-pull-requests",
+        "title": "Pull requests",
+        "kind": "core"
+      },
+      {
+        "id": "3-issues",
+        "title": "Issues",
+        "kind": "core"
+      },
+      {
+        "id": "3-github-actions",
+        "title": "GitHub Actions",
+        "kind": "core"
+      },
+      {
+        "id": "3-gitignore",
+        "title": ".gitignore",
+        "kind": "core"
+      },
+      {
+        "id": "3-readme-writing",
+        "title": "README writing",
+        "kind": "recommended"
+      },
+      {
+        "id": "3-open-source-contribution",
+        "title": "Open-source contribution",
+        "kind": "core"
+      },
+      {
+        "id": "3-reproducibility",
+        "title": "Reproducibility",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "mathematics-for-data-science",
+    "number": 4,
+    "title": "Mathematics for data science",
+    "subtitle": "Build mathematical intuition",
+    "description": "A dataset is often a matrix X with rows as observations and columns as features. Algebra describes transformations of that matrix; geometry explains distances, projections, and low-dimensional structure.",
+    "intuition": "The dot product adds coordinate-wise products. A matrix applies many dot products at once, which is exactly what a dense neural-network layer does.",
+    "mistake": "Matrix multiplication is order-sensitive. Check dimensions before applying a formula and avoid explicitly computing inverses for numerical solves.",
+    "exercise": "Use a 3 by 2 feature matrix to calculate predictions, compare cosine and Euclidean distance, and reconstruct a matrix from its SVD.",
+    "resourceIds": ["linear-algebra", "numpy"],
+    "level": "beginner",
+    "prerequisites": [1],
+    "topics": [
+      {
+        "id": "4-arithmetic",
+        "title": "Arithmetic",
+        "kind": "core"
+      },
+      {
+        "id": "4-fractions",
+        "title": "Fractions",
+        "kind": "core"
+      },
+      {
+        "id": "4-percentages",
+        "title": "Percentages",
+        "kind": "core"
+      },
+      {
+        "id": "4-exponents",
+        "title": "Exponents",
+        "kind": "core"
+      },
+      {
+        "id": "4-logarithms",
+        "title": "Logarithms",
+        "kind": "core"
+      },
+      {
+        "id": "4-scientific-notation",
+        "title": "Scientific notation",
+        "kind": "core"
+      },
+      {
+        "id": "4-equations",
+        "title": "Equations",
+        "kind": "core"
+      },
+      {
+        "id": "4-inequalities",
+        "title": "Inequalities",
+        "kind": "core"
+      },
+      {
+        "id": "4-functions",
+        "title": "Functions",
+        "kind": "core"
+      },
+      {
+        "id": "4-inverse-functions",
+        "title": "Inverse functions",
+        "kind": "core"
+      },
+      {
+        "id": "4-polynomial-functions",
+        "title": "Polynomial functions",
+        "kind": "core"
+      },
+      {
+        "id": "4-exponential-functions",
+        "title": "Exponential functions",
+        "kind": "core"
+      },
+      {
+        "id": "4-logarithmic-functions",
+        "title": "Logarithmic functions",
+        "kind": "core"
+      },
+      {
+        "id": "4-logarithms-in-log-loss",
+        "title": "Logarithms in log-loss",
+        "kind": "core"
+      },
+      {
+        "id": "4-exponentials-in-softmax",
+        "title": "Exponentials in softmax",
+        "kind": "core"
+      },
+      {
+        "id": "4-functions-in-model-mappings",
+        "title": "Functions in model mappings",
+        "kind": "core"
+      },
+      {
+        "id": "4-scalars",
+        "title": "Scalars",
+        "kind": "core"
+      },
+      {
+        "id": "4-vectors",
+        "title": "Vectors",
+        "kind": "core"
+      },
+      {
+        "id": "4-vector-magnitude",
+        "title": "Vector magnitude",
+        "kind": "core"
+      },
+      {
+        "id": "4-vector-normalization",
+        "title": "Vector normalization",
+        "kind": "core"
+      },
+      {
+        "id": "4-vector-spaces",
+        "title": "Vector spaces",
+        "kind": "core"
+      },
+      {
+        "id": "4-basis",
+        "title": "Basis",
+        "kind": "core"
+      },
+      {
+        "id": "4-matrices",
+        "title": "Matrices",
+        "kind": "core"
+      },
+      {
+        "id": "4-matrix-dimensions",
+        "title": "Matrix dimensions",
+        "kind": "core"
+      },
+      {
+        "id": "4-matrix-addition",
+        "title": "Matrix addition",
+        "kind": "core"
+      },
+      {
+        "id": "4-matrix-multiplication",
+        "title": "Matrix multiplication",
+        "kind": "core"
+      },
+      {
+        "id": "4-transpose",
+        "title": "Transpose",
+        "kind": "core"
+      },
+      {
+        "id": "4-identity-matrix",
+        "title": "Identity matrix",
+        "kind": "core"
+      },
+      {
+        "id": "4-inverse-matrix",
+        "title": "Inverse matrix",
+        "kind": "core"
+      },
+      {
+        "id": "4-determinant",
+        "title": "Determinant",
+        "kind": "core"
+      },
+      {
+        "id": "4-rank",
+        "title": "Rank",
+        "kind": "core"
+      },
+      {
+        "id": "4-dot-product",
+        "title": "Dot product",
+        "kind": "core"
+      },
+      {
+        "id": "4-inner-products",
+        "title": "Inner products",
+        "kind": "core"
+      },
+      {
+        "id": "4-norms",
+        "title": "Norms",
+        "kind": "core"
+      },
+      {
+        "id": "4-euclidean-distance",
+        "title": "Euclidean distance",
+        "kind": "core"
+      },
+      {
+        "id": "4-manhattan-distance",
+        "title": "Manhattan distance",
+        "kind": "core"
+      },
+      {
+        "id": "4-cosine-similarity",
+        "title": "Cosine similarity",
+        "kind": "core"
+      },
+      {
+        "id": "4-orthogonality",
+        "title": "Orthogonality",
+        "kind": "core"
+      },
+      {
+        "id": "4-projections",
+        "title": "Projections",
+        "kind": "core"
+      },
+      {
+        "id": "4-linear-transformations",
+        "title": "Linear transformations",
+        "kind": "core"
+      },
+      {
+        "id": "4-systems-of-linear-equations",
+        "title": "Systems of linear equations",
+        "kind": "core"
+      },
+      {
+        "id": "4-eigenvalues",
+        "title": "Eigenvalues",
+        "kind": "core"
+      },
+      {
+        "id": "4-eigenvectors",
+        "title": "Eigenvectors",
+        "kind": "core"
+      },
+      {
+        "id": "4-matrix-decomposition",
+        "title": "Matrix decomposition",
+        "kind": "core"
+      },
+      {
+        "id": "4-covariance-matrices",
+        "title": "Covariance matrices",
+        "kind": "core"
+      },
+      {
+        "id": "4-singular-value-decomposition",
+        "title": "Singular value decomposition",
+        "kind": "core"
+      },
+      {
+        "id": "4-positive-definite-matrices",
+        "title": "Positive definite matrices",
+        "kind": "core"
+      },
+      {
+        "id": "4-linear-regression",
+        "title": "Linear Regression",
+        "kind": "core"
+      },
+      {
+        "id": "4-pca",
+        "title": "PCA",
+        "kind": "core"
+      },
+      {
+        "id": "4-neural-networks",
+        "title": "Neural networks",
+        "kind": "core"
+      },
+      {
+        "id": "4-embeddings",
+        "title": "Embeddings",
+        "kind": "core"
+      },
+      {
+        "id": "4-recommendation-systems",
+        "title": "Recommendation systems",
+        "kind": "core"
+      },
+      {
+        "id": "4-dimensionality-reduction",
+        "title": "Dimensionality reduction",
+        "kind": "core"
+      },
+      {
+        "id": "4-optimization",
+        "title": "Optimization",
+        "kind": "core"
+      },
+      {
+        "id": "4-arithmetic-and-algebra",
+        "title": "Arithmetic and Algebra",
+        "kind": "core"
+      },
+      {
+        "id": "4-linear-algebra",
+        "title": "Linear Algebra",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "calculus-optimization",
+    "number": 5,
+    "title": "Calculus & optimization",
+    "subtitle": "Understand how models learn",
+    "description": "A derivative measures local change. Partial derivatives vary one input at a time; a gradient collects them into a vector. Training uses this local information to adjust parameters and reduce an objective.",
+    "intuition": "Think of the loss as terrain. The negative gradient points downhill locally, but the step size determines whether you descend or overshoot.",
+    "mistake": "A small training loss is not proof of generalization, and a fixed learning rate need not decrease loss at every step.",
+    "exercise": "Differentiate a quadratic by hand, implement gradient descent, and compare learning rates of 0.01, 0.1, and 1.1.",
+    "resourceIds": ["calculus", "numpy"],
+    "level": "beginner",
+    "prerequisites": [4],
+    "topics": [
+      {
+        "id": "5-limits",
+        "title": "Limits",
+        "kind": "core"
+      },
+      {
+        "id": "5-continuity",
+        "title": "Continuity",
+        "kind": "core"
+      },
+      {
+        "id": "5-derivatives",
+        "title": "Derivatives",
+        "kind": "core"
+      },
+      {
+        "id": "5-derivative-rules",
+        "title": "Derivative rules",
+        "kind": "core"
+      },
+      {
+        "id": "5-chain-rule",
+        "title": "Chain rule",
+        "kind": "core"
+      },
+      {
+        "id": "5-partial-derivatives",
+        "title": "Partial derivatives",
+        "kind": "core"
+      },
+      {
+        "id": "5-gradients",
+        "title": "Gradients",
+        "kind": "core"
+      },
+      {
+        "id": "5-directional-derivatives",
+        "title": "Directional derivatives",
+        "kind": "core"
+      },
+      {
+        "id": "5-jacobian",
+        "title": "Jacobian",
+        "kind": "core"
+      },
+      {
+        "id": "5-hessian",
+        "title": "Hessian",
+        "kind": "core"
+      },
+      {
+        "id": "5-optimization",
+        "title": "Optimization",
+        "kind": "core"
+      },
+      {
+        "id": "5-minima-and-maxima",
+        "title": "Minima and maxima",
+        "kind": "core"
+      },
+      {
+        "id": "5-gradient-descent",
+        "title": "Gradient descent",
+        "kind": "core"
+      },
+      {
+        "id": "5-stochastic-gradient-descent",
+        "title": "Stochastic gradient descent",
+        "kind": "core"
+      },
+      {
+        "id": "5-batch-gradient-descent",
+        "title": "Batch gradient descent",
+        "kind": "core"
+      },
+      {
+        "id": "5-mini-batch-gradient-descent",
+        "title": "Mini-batch gradient descent",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "probability",
+    "number": 6,
+    "title": "Probability",
+    "subtitle": "Reason about uncertainty",
+    "description": "Probability describes uncertain outcomes with a model. Conditional probability updates the event space after information is observed. Bayes\u2019 theorem reverses a conditional using the prior probability and evidence.",
+    "intuition": "A density is not a probability at one point. For a continuous variable, integrate the density over an interval to get probability.",
+    "mistake": "P(A given B) and P(B given A) are generally different. Rare events make this distinction especially important.",
+    "exercise": "Simulate a diagnostic test with a 1% base rate, 90% sensitivity, and 95% specificity. Estimate the probability of the condition after a positive result.",
+    "resourceIds": ["probability"],
+    "level": "beginner",
+    "prerequisites": [4],
+    "topics": [
+      {
+        "id": "6-experiments",
+        "title": "Experiments",
+        "kind": "core"
+      },
+      {
+        "id": "6-sample-space",
+        "title": "Sample space",
+        "kind": "core"
+      },
+      {
+        "id": "6-events",
+        "title": "Events",
+        "kind": "core"
+      },
+      {
+        "id": "6-probability-rules",
+        "title": "Probability rules",
+        "kind": "core"
+      },
+      {
+        "id": "6-conditional-probability",
+        "title": "Conditional probability",
+        "kind": "core"
+      },
+      {
+        "id": "6-independence",
+        "title": "Independence",
+        "kind": "core"
+      },
+      {
+        "id": "6-bayes-theorem",
+        "title": "Bayes theorem",
+        "kind": "core"
+      },
+      {
+        "id": "6-random-variables",
+        "title": "Random variables",
+        "kind": "core"
+      },
+      {
+        "id": "6-discrete-random-variables",
+        "title": "Discrete random variables",
+        "kind": "core"
+      },
+      {
+        "id": "6-continuous-random-variables",
+        "title": "Continuous random variables",
+        "kind": "core"
+      },
+      {
+        "id": "6-expected-value",
+        "title": "Expected value",
+        "kind": "core"
+      },
+      {
+        "id": "6-variance",
+        "title": "Variance",
+        "kind": "core"
+      },
+      {
+        "id": "6-covariance",
+        "title": "Covariance",
+        "kind": "core"
+      },
+      {
+        "id": "6-bernoulli",
+        "title": "Bernoulli",
+        "kind": "core"
+      },
+      {
+        "id": "6-binomial",
+        "title": "Binomial",
+        "kind": "core"
+      },
+      {
+        "id": "6-uniform",
+        "title": "Uniform",
+        "kind": "core"
+      },
+      {
+        "id": "6-normal-gaussian",
+        "title": "Normal/Gaussian",
+        "kind": "core"
+      },
+      {
+        "id": "6-poisson",
+        "title": "Poisson",
+        "kind": "core"
+      },
+      {
+        "id": "6-exponential",
+        "title": "Exponential",
+        "kind": "core"
+      },
+      {
+        "id": "6-beta",
+        "title": "Beta",
+        "kind": "core"
+      },
+      {
+        "id": "6-gamma",
+        "title": "Gamma",
+        "kind": "optional"
+      },
+      {
+        "id": "6-probability-density-functions",
+        "title": "Probability density functions",
+        "kind": "core"
+      },
+      {
+        "id": "6-cumulative-distribution-functions",
+        "title": "Cumulative distribution functions",
+        "kind": "core"
+      },
+      {
+        "id": "6-likelihood",
+        "title": "Likelihood",
+        "kind": "core"
+      },
+      {
+        "id": "6-maximum-likelihood-estimation",
+        "title": "Maximum likelihood estimation",
+        "kind": "core"
+      },
+      {
+        "id": "6-maximum-a-posteriori-estimation",
+        "title": "Maximum a posteriori estimation",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "statistics",
+    "number": 7,
+    "title": "Statistics",
+    "subtitle": "Learn from samples",
+    "description": "Statistics uses a sample to estimate population properties, with explicit assumptions about how the sample was collected. Standard deviation describes observations; standard error describes an estimator across repeated samples.",
+    "intuition": "A confidence interval is produced by a procedure with long-run coverage. It is not a probability statement about a fixed parameter after seeing the data.",
+    "mistake": "A p-value is not the probability that the null hypothesis is true. Practical importance also depends on effect size and uncertainty.",
+    "exercise": "Bootstrap the difference in mean order value between two samples. Plot the bootstrap distribution and report its limitations.",
+    "resourceIds": ["statistics"],
+    "level": "beginner",
+    "prerequisites": [6],
+    "topics": [
+      {
+        "id": "7-mean",
+        "title": "Mean",
+        "kind": "core"
+      },
+      {
+        "id": "7-median",
+        "title": "Median",
+        "kind": "core"
+      },
+      {
+        "id": "7-mode",
+        "title": "Mode",
+        "kind": "core"
+      },
+      {
+        "id": "7-range",
+        "title": "Range",
+        "kind": "core"
+      },
+      {
+        "id": "7-variance",
+        "title": "Variance",
+        "kind": "core"
+      },
+      {
+        "id": "7-standard-deviation",
+        "title": "Standard deviation",
+        "kind": "core"
+      },
+      {
+        "id": "7-quartiles",
+        "title": "Quartiles",
+        "kind": "core"
+      },
+      {
+        "id": "7-percentiles",
+        "title": "Percentiles",
+        "kind": "core"
+      },
+      {
+        "id": "7-iqr",
+        "title": "IQR",
+        "kind": "core"
+      },
+      {
+        "id": "7-skewness",
+        "title": "Skewness",
+        "kind": "core"
+      },
+      {
+        "id": "7-kurtosis",
+        "title": "Kurtosis",
+        "kind": "core"
+      },
+      {
+        "id": "7-populations",
+        "title": "Populations",
+        "kind": "core"
+      },
+      {
+        "id": "7-samples",
+        "title": "Samples",
+        "kind": "core"
+      },
+      {
+        "id": "7-sampling",
+        "title": "Sampling",
+        "kind": "core"
+      },
+      {
+        "id": "7-sampling-distributions",
+        "title": "Sampling distributions",
+        "kind": "core"
+      },
+      {
+        "id": "7-central-limit-theorem",
+        "title": "Central limit theorem",
+        "kind": "core"
+      },
+      {
+        "id": "7-standard-error",
+        "title": "Standard error",
+        "kind": "core"
+      },
+      {
+        "id": "7-confidence-intervals",
+        "title": "Confidence intervals",
+        "kind": "core"
+      },
+      {
+        "id": "7-null-hypothesis",
+        "title": "Null hypothesis",
+        "kind": "core"
+      },
+      {
+        "id": "7-alternative-hypothesis",
+        "title": "Alternative hypothesis",
+        "kind": "core"
+      },
+      {
+        "id": "7-p-value",
+        "title": "P-value",
+        "kind": "core"
+      },
+      {
+        "id": "7-significance-level",
+        "title": "Significance level",
+        "kind": "core"
+      },
+      {
+        "id": "7-type-i-error",
+        "title": "Type I error",
+        "kind": "core"
+      },
+      {
+        "id": "7-type-ii-error",
+        "title": "Type II error",
+        "kind": "core"
+      },
+      {
+        "id": "7-statistical-power",
+        "title": "Statistical power",
+        "kind": "core"
+      },
+      {
+        "id": "7-z-test",
+        "title": "Z-test",
+        "kind": "core"
+      },
+      {
+        "id": "7-t-test",
+        "title": "T-test",
+        "kind": "core"
+      },
+      {
+        "id": "7-paired-t-test",
+        "title": "Paired t-test",
+        "kind": "core"
+      },
+      {
+        "id": "7-chi-square",
+        "title": "Chi-square",
+        "kind": "core"
+      },
+      {
+        "id": "7-anova",
+        "title": "ANOVA",
+        "kind": "core"
+      },
+      {
+        "id": "7-mann-whitney",
+        "title": "Mann-Whitney",
+        "kind": "core"
+      },
+      {
+        "id": "7-wilcoxon",
+        "title": "Wilcoxon",
+        "kind": "core"
+      },
+      {
+        "id": "7-effect-size",
+        "title": "Effect size",
+        "kind": "core"
+      },
+      {
+        "id": "7-statistical-significance-vs-practical-significance",
+        "title": "Statistical significance vs practical significance",
+        "kind": "core"
+      },
+      {
+        "id": "7-multiple-testing",
+        "title": "Multiple testing",
+        "kind": "core"
+      },
+      {
+        "id": "7-correlation-vs-causation",
+        "title": "Correlation vs causation",
+        "kind": "core"
+      },
+      {
+        "id": "7-descriptive-statistics",
+        "title": "Descriptive Statistics",
+        "kind": "core"
+      },
+      {
+        "id": "7-statistical-inference",
+        "title": "Statistical Inference",
+        "kind": "core"
+      },
+      {
+        "id": "7-hypothesis-testing",
+        "title": "Hypothesis Testing",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "numpy-pandas",
+    "number": 8,
+    "title": "NumPy & Pandas",
+    "subtitle": "Give your data structure",
+    "description": "NumPy stores homogeneous multidimensional arrays and executes vectorized operations. Pandas adds labeled axes, joins, grouped aggregation, and time-aware operations. Together they turn raw records into analysis-ready tables.",
+    "intuition": "Broadcasting aligns trailing dimensions; a Pandas join aligns keys. Both are powerful because alignment replaces manual loops.",
+    "mistake": "A many-to-many merge can multiply rows. Validate key uniqueness and expected output size before trusting an aggregate.",
+    "exercise": "Load sales and customers, validate the merge cardinality, compute monthly revenue by segment, and compare vectorized versus row-wise operations.",
+    "resourceIds": ["pandas", "numpy"],
+    "level": "beginner",
+    "prerequisites": [1],
+    "topics": [
+      {
+        "id": "8-arrays",
+        "title": "Arrays",
+        "kind": "core"
+      },
+      {
+        "id": "8-dimensions",
+        "title": "Dimensions",
+        "kind": "core"
+      },
+      {
+        "id": "8-indexing",
+        "title": "Indexing",
+        "kind": "core"
+      },
+      {
+        "id": "8-slicing",
+        "title": "Slicing",
+        "kind": "core"
+      },
+      {
+        "id": "8-broadcasting",
+        "title": "Broadcasting",
+        "kind": "core"
+      },
+      {
+        "id": "8-vectorized-operations",
+        "title": "Vectorized operations",
+        "kind": "core"
+      },
+      {
+        "id": "8-aggregation",
+        "title": "Aggregation",
+        "kind": "core"
+      },
+      {
+        "id": "8-reshaping",
+        "title": "Reshaping",
+        "kind": "core"
+      },
+      {
+        "id": "8-linear-algebra",
+        "title": "Linear algebra",
+        "kind": "core"
+      },
+      {
+        "id": "8-random-module",
+        "title": "Random module",
+        "kind": "core"
+      },
+      {
+        "id": "8-series",
+        "title": "Series",
+        "kind": "core"
+      },
+      {
+        "id": "8-dataframe",
+        "title": "DataFrame",
+        "kind": "core"
+      },
+      {
+        "id": "8-loading-data",
+        "title": "Loading data",
+        "kind": "core"
+      },
+      {
+        "id": "8-filtering",
+        "title": "Filtering",
+        "kind": "core"
+      },
+      {
+        "id": "8-sorting",
+        "title": "Sorting",
+        "kind": "core"
+      },
+      {
+        "id": "8-missing-data",
+        "title": "Missing data",
+        "kind": "core"
+      },
+      {
+        "id": "8-duplicates",
+        "title": "Duplicates",
+        "kind": "core"
+      },
+      {
+        "id": "8-groupby",
+        "title": "Groupby",
+        "kind": "core"
+      },
+      {
+        "id": "8-merge",
+        "title": "Merge",
+        "kind": "core"
+      },
+      {
+        "id": "8-join",
+        "title": "Join",
+        "kind": "core"
+      },
+      {
+        "id": "8-concat",
+        "title": "Concat",
+        "kind": "core"
+      },
+      {
+        "id": "8-pivot-tables",
+        "title": "Pivot tables",
+        "kind": "core"
+      },
+      {
+        "id": "8-datetime",
+        "title": "Datetime",
+        "kind": "core"
+      },
+      {
+        "id": "8-categorical-variables",
+        "title": "Categorical variables",
+        "kind": "core"
+      },
+      {
+        "id": "8-apply",
+        "title": "Apply",
+        "kind": "core"
+      },
+      {
+        "id": "8-transform",
+        "title": "Transform",
+        "kind": "core"
+      },
+      {
+        "id": "8-performance-considerations",
+        "title": "Performance considerations",
+        "kind": "core"
+      },
+      {
+        "id": "8-numpy",
+        "title": "NumPy",
+        "kind": "core"
+      },
+      {
+        "id": "8-pandas",
+        "title": "Pandas",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "sql",
+    "number": 9,
+    "title": "SQL",
+    "subtitle": "Ask better questions of data",
+    "description": "SQL expresses a result as transformations of relations. Filtering happens before grouping; HAVING filters groups. Window functions calculate across related rows without collapsing them into a single row.",
+    "intuition": "GROUP BY changes the unit of analysis. A window preserves individual records while adding rankings or running totals.",
+    "mistake": "Filtering a right-table column in WHERE can unintentionally turn a LEFT JOIN into an INNER JOIN.",
+    "exercise": "Find each customer\u2019s second order, monthly revenue growth with LAG, and the three highest-revenue products per category using a CTE.",
+    "resourceIds": ["sql"],
+    "level": "beginner",
+    "prerequisites": [1],
+    "topics": [
+      {
+        "id": "9-select",
+        "title": "SELECT",
+        "kind": "core"
+      },
+      {
+        "id": "9-where",
+        "title": "WHERE",
+        "kind": "core"
+      },
+      {
+        "id": "9-order-by",
+        "title": "ORDER BY",
+        "kind": "core"
+      },
+      {
+        "id": "9-group-by",
+        "title": "GROUP BY",
+        "kind": "core"
+      },
+      {
+        "id": "9-having",
+        "title": "HAVING",
+        "kind": "core"
+      },
+      {
+        "id": "9-case",
+        "title": "CASE",
+        "kind": "core"
+      },
+      {
+        "id": "9-aggregate-functions",
+        "title": "Aggregate functions",
+        "kind": "core"
+      },
+      {
+        "id": "9-inner-join",
+        "title": "INNER JOIN",
+        "kind": "core"
+      },
+      {
+        "id": "9-left-join",
+        "title": "LEFT JOIN",
+        "kind": "core"
+      },
+      {
+        "id": "9-right-join",
+        "title": "RIGHT JOIN",
+        "kind": "core"
+      },
+      {
+        "id": "9-full-join",
+        "title": "FULL JOIN",
+        "kind": "core"
+      },
+      {
+        "id": "9-subqueries",
+        "title": "Subqueries",
+        "kind": "core"
+      },
+      {
+        "id": "9-cte",
+        "title": "CTE",
+        "kind": "core"
+      },
+      {
+        "id": "9-recursive-cte",
+        "title": "Recursive CTE",
+        "kind": "optional"
+      },
+      {
+        "id": "9-window-functions",
+        "title": "Window functions",
+        "kind": "core"
+      },
+      {
+        "id": "9-row-number",
+        "title": "ROW_NUMBER",
+        "kind": "core"
+      },
+      {
+        "id": "9-rank",
+        "title": "RANK",
+        "kind": "core"
+      },
+      {
+        "id": "9-dense-rank",
+        "title": "DENSE_RANK",
+        "kind": "core"
+      },
+      {
+        "id": "9-lag",
+        "title": "LAG",
+        "kind": "core"
+      },
+      {
+        "id": "9-lead",
+        "title": "LEAD",
+        "kind": "core"
+      },
+      {
+        "id": "9-partitions",
+        "title": "Partitions",
+        "kind": "core"
+      },
+      {
+        "id": "9-date-functions",
+        "title": "Date functions",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "data-cleaning",
+    "number": 10,
+    "title": "Data cleaning",
+    "subtitle": "Build trust before models",
+    "description": "Cleaning makes the meaning and validity of records explicit. Distinguish impossible values from rare but valid observations. Missingness can be informative, and deleting incomplete records can change the population you study.",
+    "intuition": "Write a data contract: expected types, ranges, unique keys, and missing-value policy. Check it at every boundary.",
+    "mistake": "Fit imputers and scalers on training data only. Never remove valid rare outcomes merely to improve a score.",
+    "exercise": "Audit a dataset, log each cleaning decision, compare complete-case and imputed analyses, and quantify which groups lose records.",
+    "resourceIds": ["pandas"],
+    "level": "beginner",
+    "prerequisites": [9],
+    "topics": [
+      {
+        "id": "10-missing-values",
+        "title": "Missing values",
+        "kind": "core"
+      },
+      {
+        "id": "10-duplicate-observations",
+        "title": "Duplicate observations",
+        "kind": "core"
+      },
+      {
+        "id": "10-incorrect-data-types",
+        "title": "Incorrect data types",
+        "kind": "core"
+      },
+      {
+        "id": "10-inconsistent-labels",
+        "title": "Inconsistent labels",
+        "kind": "core"
+      },
+      {
+        "id": "10-invalid-values",
+        "title": "Invalid values",
+        "kind": "core"
+      },
+      {
+        "id": "10-data-leakage",
+        "title": "Data leakage",
+        "kind": "core"
+      },
+      {
+        "id": "10-outlier-detection",
+        "title": "Outlier detection",
+        "kind": "core"
+      },
+      {
+        "id": "10-outlier-handling",
+        "title": "Outlier handling",
+        "kind": "core"
+      },
+      {
+        "id": "10-noisy-data",
+        "title": "Noisy data",
+        "kind": "core"
+      },
+      {
+        "id": "10-imputation",
+        "title": "Imputation",
+        "kind": "core"
+      },
+      {
+        "id": "10-scaling",
+        "title": "Scaling",
+        "kind": "core"
+      },
+      {
+        "id": "10-normalization",
+        "title": "Normalization",
+        "kind": "core"
+      },
+      {
+        "id": "10-standardization",
+        "title": "Standardization",
+        "kind": "core"
+      },
+      {
+        "id": "10-encoding",
+        "title": "Encoding",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "exploratory-data-analysis",
+    "number": 11,
+    "title": "Exploratory data analysis",
+    "subtitle": "See the story in the data",
+    "description": "EDA studies distributions, relationships, missingness, and unusual observations before making modeling claims. Begin with the unit of observation and target definition, then work from univariate to multivariate views.",
+    "intuition": "A plot is a diagnostic question: a histogram asks about shape; a scatter plot asks about a relationship; small multiples ask whether it holds across groups.",
+    "mistake": "A correlation can reflect a confounder or a shared time trend. Avoid letting test-set exploration guide model decisions.",
+    "exercise": "Create an EDA report with five question-led plots, a missingness table, segment comparisons, and three explicitly labeled hypotheses.",
+    "resourceIds": ["matplotlib"],
+    "level": "beginner",
+    "prerequisites": [10],
+    "topics": [
+      {
+        "id": "11-univariate-analysis",
+        "title": "Univariate analysis",
+        "kind": "core"
+      },
+      {
+        "id": "11-bivariate-analysis",
+        "title": "Bivariate analysis",
+        "kind": "core"
+      },
+      {
+        "id": "11-multivariate-analysis",
+        "title": "Multivariate analysis",
+        "kind": "core"
+      },
+      {
+        "id": "11-distributions",
+        "title": "Distributions",
+        "kind": "core"
+      },
+      {
+        "id": "11-correlations",
+        "title": "Correlations",
+        "kind": "core"
+      },
+      {
+        "id": "11-relationships",
+        "title": "Relationships",
+        "kind": "core"
+      },
+      {
+        "id": "11-segmentation",
+        "title": "Segmentation",
+        "kind": "core"
+      },
+      {
+        "id": "11-missingness-analysis",
+        "title": "Missingness analysis",
+        "kind": "core"
+      },
+      {
+        "id": "11-anomaly-inspection",
+        "title": "Anomaly inspection",
+        "kind": "core"
+      },
+      {
+        "id": "11-target-analysis",
+        "title": "Target analysis",
+        "kind": "core"
+      },
+      {
+        "id": "11-feature-target-relationships",
+        "title": "Feature-target relationships",
+        "kind": "core"
+      },
+      {
+        "id": "11-matplotlib",
+        "title": "Matplotlib",
+        "kind": "core"
+      },
+      {
+        "id": "11-plotly",
+        "title": "Plotly",
+        "kind": "recommended"
+      }
+    ]
+  },
+  {
+    "id": "machine-learning-foundations",
+    "number": 12,
+    "title": "Machine learning foundations",
+    "subtitle": "From observations to predictions",
+    "description": "A supervised model maps features to a label using examples. Unsupervised learning discovers structure without labeled targets. Parameters are learned from data; hyperparameters control the learning procedure.",
+    "intuition": "The goal is performance on future observations from the intended population, not memorization of the training set.",
+    "mistake": "Repeatedly choosing models on the test set makes it part of training. Preserve a final untouched evaluation set.",
+    "exercise": "Define a prediction time, split strategy, dummy baseline, primary metric, and error-analysis plan before fitting a real model.",
+    "resourceIds": ["sklearn"],
+    "level": "beginner",
+    "prerequisites": [7, 8, 10, 11],
+    "topics": [
+      {
+        "id": "12-supervised-learning",
+        "title": "Supervised learning",
+        "kind": "core"
+      },
+      {
+        "id": "12-unsupervised-learning",
+        "title": "Unsupervised learning",
+        "kind": "core"
+      },
+      {
+        "id": "12-semi-supervised-learning",
+        "title": "Semi-supervised learning",
+        "kind": "core"
+      },
+      {
+        "id": "12-regression",
+        "title": "Regression",
+        "kind": "core"
+      },
+      {
+        "id": "12-classification",
+        "title": "Classification",
+        "kind": "core"
+      },
+      {
+        "id": "12-clustering",
+        "title": "Clustering",
+        "kind": "core"
+      },
+      {
+        "id": "12-features",
+        "title": "Features",
+        "kind": "core"
+      },
+      {
+        "id": "12-labels",
+        "title": "Labels",
+        "kind": "core"
+      },
+      {
+        "id": "12-training-data",
+        "title": "Training data",
+        "kind": "core"
+      },
+      {
+        "id": "12-validation-data",
+        "title": "Validation data",
+        "kind": "core"
+      },
+      {
+        "id": "12-test-data",
+        "title": "Test data",
+        "kind": "core"
+      },
+      {
+        "id": "12-model-parameters",
+        "title": "Model parameters",
+        "kind": "core"
+      },
+      {
+        "id": "12-hyperparameters",
+        "title": "Hyperparameters",
+        "kind": "core"
+      },
+      {
+        "id": "12-inference",
+        "title": "Inference",
+        "kind": "core"
+      },
+      {
+        "id": "12-generalization",
+        "title": "Generalization",
+        "kind": "core"
+      },
+      {
+        "id": "12-bias",
+        "title": "Bias",
+        "kind": "core"
+      },
+      {
+        "id": "12-variance",
+        "title": "Variance",
+        "kind": "core"
+      },
+      {
+        "id": "12-bias-variance-tradeoff",
+        "title": "Bias-variance tradeoff",
+        "kind": "core"
+      },
+      {
+        "id": "12-underfitting",
+        "title": "Underfitting",
+        "kind": "core"
+      },
+      {
+        "id": "12-overfitting",
+        "title": "Overfitting",
+        "kind": "core"
+      },
+      {
+        "id": "12-regularization",
+        "title": "Regularization",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "regression",
+    "number": 13,
+    "title": "Regression",
+    "subtitle": "Predict quantities",
+    "description": "Linear regression predicts a numeric outcome as a weighted sum of features. Least squares chooses coefficients minimizing squared residuals. Polynomial features expand the representation while the model remains linear in its coefficients.",
+    "intuition": "Each coefficient describes a conditional change in the fitted prediction. It is not automatically a causal effect.",
+    "mistake": "Collinear features destabilize coefficients. Prefer numerical least-squares solvers to directly inverting X transpose X.",
+    "exercise": "Fit ordinary least squares, Ridge, and Lasso on the same split; compare validation error, coefficient stability, and residual patterns.",
+    "resourceIds": ["sklearn-linear"],
+    "level": "intermediate",
+    "prerequisites": [4, 5, 12],
+    "topics": [
+      {
+        "id": "13-equation-of-a-line",
+        "title": "Equation of a line",
+        "kind": "core"
+      },
+      {
+        "id": "13-multiple-linear-regression",
+        "title": "Multiple linear regression",
+        "kind": "core"
+      },
+      {
+        "id": "13-coefficients",
+        "title": "Coefficients",
+        "kind": "core"
+      },
+      {
+        "id": "13-intercept",
+        "title": "Intercept",
+        "kind": "core"
+      },
+      {
+        "id": "13-residuals",
+        "title": "Residuals",
+        "kind": "core"
+      },
+      {
+        "id": "13-least-squares",
+        "title": "Least squares",
+        "kind": "core"
+      },
+      {
+        "id": "13-cost-function",
+        "title": "Cost function",
+        "kind": "core"
+      },
+      {
+        "id": "13-mean-squared-error",
+        "title": "Mean Squared Error",
+        "kind": "core"
+      },
+      {
+        "id": "13-normal-equation",
+        "title": "Normal equation",
+        "kind": "core"
+      },
+      {
+        "id": "13-gradient-descent-solution",
+        "title": "Gradient descent solution",
+        "kind": "core"
+      },
+      {
+        "id": "13-assumptions-of-linear-regression",
+        "title": "Assumptions of linear regression",
+        "kind": "core"
+      },
+      {
+        "id": "13-r",
+        "title": "R\u00b2",
+        "kind": "core"
+      },
+      {
+        "id": "13-adjusted-r",
+        "title": "Adjusted R\u00b2",
+        "kind": "core"
+      },
+      {
+        "id": "13-mae",
+        "title": "MAE",
+        "kind": "core"
+      },
+      {
+        "id": "13-mse",
+        "title": "MSE",
+        "kind": "core"
+      },
+      {
+        "id": "13-rmse",
+        "title": "RMSE",
+        "kind": "core"
+      },
+      {
+        "id": "13-polynomial-features",
+        "title": "Polynomial features",
+        "kind": "core"
+      },
+      {
+        "id": "13-overfitting",
+        "title": "Overfitting",
+        "kind": "core"
+      },
+      {
+        "id": "13-degree-selection",
+        "title": "Degree selection",
+        "kind": "core"
+      },
+      {
+        "id": "13-ridge-regression",
+        "title": "Ridge Regression",
+        "kind": "core"
+      },
+      {
+        "id": "13-lasso-regression",
+        "title": "Lasso Regression",
+        "kind": "core"
+      },
+      {
+        "id": "13-elastic-net",
+        "title": "Elastic Net",
+        "kind": "core"
+      },
+      {
+        "id": "13-linear-regression",
+        "title": "Linear Regression",
+        "kind": "core"
+      },
+      {
+        "id": "13-polynomial-regression",
+        "title": "Polynomial Regression",
+        "kind": "core"
+      },
+      {
+        "id": "13-l1-regularization",
+        "title": "L1 regularization",
+        "kind": "core"
+      },
+      {
+        "id": "13-l2-regularization",
+        "title": "L2 regularization",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "classification",
+    "number": 14,
+    "title": "Classification",
+    "subtitle": "Predict categories thoughtfully",
+    "description": "Classifiers estimate categories or scores. Logistic regression models log odds linearly; nearest neighbors use local similarity; Naive Bayes factors likelihoods; SVMs seek a separating margin.",
+    "intuition": "A probability estimate and a decision threshold are separate objects. The threshold should reflect the cost of mistakes.",
+    "mistake": "An uncalibrated score is not a reliable probability. A 0.5 threshold is rarely an automatic operational choice.",
+    "exercise": "Compare logistic regression, KNN, and an SVM with scaling inside cross-validation. Explain a threshold using false-positive and false-negative costs.",
+    "resourceIds": ["sklearn"],
+    "level": "intermediate",
+    "prerequisites": [4, 5, 6, 12],
+    "topics": [
+      {
+        "id": "14-odds",
+        "title": "Odds",
+        "kind": "core"
+      },
+      {
+        "id": "14-log-odds",
+        "title": "Log odds",
+        "kind": "core"
+      },
+      {
+        "id": "14-sigmoid-function",
+        "title": "Sigmoid function",
+        "kind": "core"
+      },
+      {
+        "id": "14-probability",
+        "title": "Probability",
+        "kind": "core"
+      },
+      {
+        "id": "14-decision-boundaries",
+        "title": "Decision boundaries",
+        "kind": "core"
+      },
+      {
+        "id": "14-log-loss",
+        "title": "Log-loss",
+        "kind": "core"
+      },
+      {
+        "id": "14-maximum-likelihood",
+        "title": "Maximum likelihood",
+        "kind": "core"
+      },
+      {
+        "id": "14-distance-metrics",
+        "title": "Distance metrics",
+        "kind": "core"
+      },
+      {
+        "id": "14-euclidean-distance",
+        "title": "Euclidean distance",
+        "kind": "core"
+      },
+      {
+        "id": "14-choice-of-k",
+        "title": "Choice of K",
+        "kind": "core"
+      },
+      {
+        "id": "14-curse-of-dimensionality",
+        "title": "Curse of dimensionality",
+        "kind": "core"
+      },
+      {
+        "id": "14-bayes-theorem",
+        "title": "Bayes theorem",
+        "kind": "core"
+      },
+      {
+        "id": "14-conditional-independence",
+        "title": "Conditional independence",
+        "kind": "core"
+      },
+      {
+        "id": "14-gaussian-naive-bayes",
+        "title": "Gaussian Naive Bayes",
+        "kind": "core"
+      },
+      {
+        "id": "14-multinomial-naive-bayes",
+        "title": "Multinomial Naive Bayes",
+        "kind": "core"
+      },
+      {
+        "id": "14-hyperplanes",
+        "title": "Hyperplanes",
+        "kind": "core"
+      },
+      {
+        "id": "14-margins",
+        "title": "Margins",
+        "kind": "core"
+      },
+      {
+        "id": "14-support-vectors",
+        "title": "Support vectors",
+        "kind": "core"
+      },
+      {
+        "id": "14-hard-margin",
+        "title": "Hard margin",
+        "kind": "core"
+      },
+      {
+        "id": "14-soft-margin",
+        "title": "Soft margin",
+        "kind": "core"
+      },
+      {
+        "id": "14-kernel-trick",
+        "title": "Kernel trick",
+        "kind": "core"
+      },
+      {
+        "id": "14-rbf-kernel",
+        "title": "RBF kernel",
+        "kind": "core"
+      },
+      {
+        "id": "14-logistic-regression",
+        "title": "Logistic Regression",
+        "kind": "core"
+      },
+      {
+        "id": "14-k-nearest-neighbors",
+        "title": "K-Nearest Neighbors",
+        "kind": "core"
+      },
+      {
+        "id": "14-naive-bayes",
+        "title": "Naive Bayes",
+        "kind": "core"
+      },
+      {
+        "id": "14-support-vector-machines",
+        "title": "Support Vector Machines",
+        "kind": "core"
+      },
+      {
+        "id": "14-binary-cross-entropy",
+        "title": "Binary cross-entropy",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "tree-based-models",
+    "number": 15,
+    "title": "Tree-based models",
+    "subtitle": "Learn nonlinear rules",
+    "description": "A decision tree recursively splits observations to make child groups purer. Bagging averages diverse trees to reduce variance. Boosting sequentially adds models that address the current ensemble\u2019s errors.",
+    "intuition": "In gradient boosting, each added tree approximates a descent direction in prediction space, using negative loss gradients as targets.",
+    "mistake": "Deep trees can memorize tiny subgroups. Tune depth and leaf size, and use early stopping without leaking test information.",
+    "exercise": "Train a tree, a random forest, and a gradient-boosted ensemble. Compare validation curves, fit time, and performance across important subgroups.",
+    "resourceIds": ["sklearn-ensemble"],
+    "level": "intermediate",
+    "prerequisites": [14],
+    "topics": [
+      {
+        "id": "15-decision-trees",
+        "title": "Decision Trees",
+        "kind": "core"
+      },
+      {
+        "id": "15-entropy",
+        "title": "Entropy",
+        "kind": "core"
+      },
+      {
+        "id": "15-information-gain",
+        "title": "Information gain",
+        "kind": "core"
+      },
+      {
+        "id": "15-gini-impurity",
+        "title": "Gini impurity",
+        "kind": "core"
+      },
+      {
+        "id": "15-tree-depth",
+        "title": "Tree depth",
+        "kind": "core"
+      },
+      {
+        "id": "15-pruning",
+        "title": "Pruning",
+        "kind": "core"
+      },
+      {
+        "id": "15-random-forest",
+        "title": "Random Forest",
+        "kind": "core"
+      },
+      {
+        "id": "15-bagging",
+        "title": "Bagging",
+        "kind": "core"
+      },
+      {
+        "id": "15-bootstrap-sampling",
+        "title": "Bootstrap sampling",
+        "kind": "core"
+      },
+      {
+        "id": "15-random-feature-selection",
+        "title": "Random feature selection",
+        "kind": "core"
+      },
+      {
+        "id": "15-adaboost",
+        "title": "AdaBoost",
+        "kind": "core"
+      },
+      {
+        "id": "15-gradient-boosting",
+        "title": "Gradient Boosting",
+        "kind": "core"
+      },
+      {
+        "id": "15-xgboost",
+        "title": "XGBoost",
+        "kind": "core"
+      },
+      {
+        "id": "15-lightgbm",
+        "title": "LightGBM",
+        "kind": "core"
+      },
+      {
+        "id": "15-catboost",
+        "title": "CatBoost",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "model-evaluation",
+    "number": 16,
+    "title": "Model evaluation",
+    "subtitle": "Measure what matters",
+    "description": "Metrics encode priorities. Precision asks how often alerts are right; recall asks how many positive cases are found. Regression metrics penalize errors differently, so select one that reflects the decision.",
+    "intuition": "The confusion matrix is a ledger of decisions. Changing a threshold moves observations between its four cells.",
+    "mistake": "Accuracy hides failures on rare positives; ROC-AUC may obscure poor precision. MAPE is unstable at zero and near-zero targets.",
+    "exercise": "Compute precision, recall, F1, PR-AUC, and calibration for an imbalanced classifier. Choose a threshold under a fixed alert budget.",
+    "resourceIds": ["sklearn-metrics"],
+    "level": "intermediate",
+    "prerequisites": [15],
+    "topics": [
+      {
+        "id": "16-confusion-matrix",
+        "title": "Confusion matrix",
+        "kind": "core"
+      },
+      {
+        "id": "16-accuracy",
+        "title": "Accuracy",
+        "kind": "core"
+      },
+      {
+        "id": "16-precision",
+        "title": "Precision",
+        "kind": "core"
+      },
+      {
+        "id": "16-recall",
+        "title": "Recall",
+        "kind": "core"
+      },
+      {
+        "id": "16-specificity",
+        "title": "Specificity",
+        "kind": "core"
+      },
+      {
+        "id": "16-f1-score",
+        "title": "F1-score",
+        "kind": "core"
+      },
+      {
+        "id": "16-roc-curve",
+        "title": "ROC curve",
+        "kind": "core"
+      },
+      {
+        "id": "16-roc-auc",
+        "title": "ROC-AUC",
+        "kind": "core"
+      },
+      {
+        "id": "16-pr-auc",
+        "title": "PR-AUC",
+        "kind": "core"
+      },
+      {
+        "id": "16-log-loss",
+        "title": "Log loss",
+        "kind": "core"
+      },
+      {
+        "id": "16-calibration",
+        "title": "Calibration",
+        "kind": "core"
+      },
+      {
+        "id": "16-mae",
+        "title": "MAE",
+        "kind": "core"
+      },
+      {
+        "id": "16-mse",
+        "title": "MSE",
+        "kind": "core"
+      },
+      {
+        "id": "16-rmse",
+        "title": "RMSE",
+        "kind": "core"
+      },
+      {
+        "id": "16-r",
+        "title": "R\u00b2",
+        "kind": "core"
+      },
+      {
+        "id": "16-mape",
+        "title": "MAPE",
+        "kind": "core"
+      },
+      {
+        "id": "16-rmsle",
+        "title": "RMSLE",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "validation",
+    "number": 17,
+    "title": "Validation",
+    "subtitle": "Make honest comparisons",
+    "description": "Validation approximates deployment. Random folds work for exchangeable observations; grouped folds keep related entities together; temporal folds respect the arrow of time. Every learned preprocessing step belongs inside the fold.",
+    "intuition": "Ask what information will exist at prediction time and which observations share a source. Build the split around those boundaries.",
+    "mistake": "Duplicates, target-derived fields, future aggregates, and preprocessing fit before the split all leak information.",
+    "exercise": "Evaluate the same model with random, grouped, and temporal splits. Explain which estimate matches the intended use and why the others are optimistic.",
+    "resourceIds": ["sklearn-validation"],
+    "level": "intermediate",
+    "prerequisites": [16],
+    "topics": [
+      {
+        "id": "17-holdout-validation",
+        "title": "Holdout validation",
+        "kind": "core"
+      },
+      {
+        "id": "17-train-validation-test",
+        "title": "Train/validation/test",
+        "kind": "core"
+      },
+      {
+        "id": "17-k-fold-cross-validation",
+        "title": "K-fold cross-validation",
+        "kind": "core"
+      },
+      {
+        "id": "17-stratified-k-fold",
+        "title": "Stratified k-fold",
+        "kind": "core"
+      },
+      {
+        "id": "17-repeated-k-fold",
+        "title": "Repeated k-fold",
+        "kind": "core"
+      },
+      {
+        "id": "17-leave-one-out",
+        "title": "Leave-one-out",
+        "kind": "core"
+      },
+      {
+        "id": "17-group-cross-validation",
+        "title": "Group cross-validation",
+        "kind": "core"
+      },
+      {
+        "id": "17-time-series-validation",
+        "title": "Time-series validation",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "feature-engineering",
+    "number": 18,
+    "title": "Feature engineering",
+    "subtitle": "Represent the problem well",
+    "description": "Features translate raw observations into a representation a model can use. Encodings, interactions, transformations, and domain-specific aggregates can reveal patterns while preserving prediction-time availability.",
+    "intuition": "A log transform changes multiplicative differences into additive differences. An interaction allows one feature\u2019s effect to depend on another.",
+    "mistake": "Target encoding must be computed out of fold. Do not assign arbitrary numeric distances to nominal categories without justification.",
+    "exercise": "Build a preprocessing pipeline for numeric, categorical, and timestamp fields. Add one justified interaction and test its contribution.",
+    "resourceIds": ["sklearn-preprocessing"],
+    "level": "intermediate",
+    "prerequisites": [17],
+    "topics": [
+      {
+        "id": "18-numerical-features",
+        "title": "Numerical features",
+        "kind": "core"
+      },
+      {
+        "id": "18-categorical-features",
+        "title": "Categorical features",
+        "kind": "core"
+      },
+      {
+        "id": "18-ordinal-features",
+        "title": "Ordinal features",
+        "kind": "core"
+      },
+      {
+        "id": "18-encoding",
+        "title": "Encoding",
+        "kind": "core"
+      },
+      {
+        "id": "18-one-hot-encoding",
+        "title": "One-hot encoding",
+        "kind": "core"
+      },
+      {
+        "id": "18-label-encoding",
+        "title": "Label encoding",
+        "kind": "core"
+      },
+      {
+        "id": "18-target-encoding",
+        "title": "Target encoding",
+        "kind": "core"
+      },
+      {
+        "id": "18-scaling",
+        "title": "Scaling",
+        "kind": "core"
+      },
+      {
+        "id": "18-transformations",
+        "title": "Transformations",
+        "kind": "core"
+      },
+      {
+        "id": "18-logarithmic-transformations",
+        "title": "Logarithmic transformations",
+        "kind": "core"
+      },
+      {
+        "id": "18-polynomial-features",
+        "title": "Polynomial features",
+        "kind": "core"
+      },
+      {
+        "id": "18-interaction-terms",
+        "title": "Interaction terms",
+        "kind": "core"
+      },
+      {
+        "id": "18-binning",
+        "title": "Binning",
+        "kind": "core"
+      },
+      {
+        "id": "18-datetime-features",
+        "title": "Datetime features",
+        "kind": "core"
+      },
+      {
+        "id": "18-text-features",
+        "title": "Text features",
+        "kind": "core"
+      },
+      {
+        "id": "18-domain-based-features",
+        "title": "Domain-based features",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "feature-selection",
+    "number": 19,
+    "title": "Feature selection",
+    "subtitle": "Keep useful information",
+    "description": "Filter methods score features independently of a fitted model; wrappers evaluate subsets; embedded methods select during fitting. Selection is part of training and must occur inside the validation procedure.",
+    "intuition": "A feature can be weak alone and useful in interaction. Redundant features can share or dilute measured importance.",
+    "mistake": "Selecting variables using all labels before cross-validation leaks the validation outcome into training.",
+    "exercise": "Compare mutual-information filtering, recursive feature elimination, and Lasso. Measure stability across folds, not only the best score.",
+    "resourceIds": ["sklearn-selection"],
+    "level": "intermediate",
+    "prerequisites": [18],
+    "topics": [
+      {
+        "id": "19-filter-methods",
+        "title": "Filter methods",
+        "kind": "core"
+      },
+      {
+        "id": "19-wrapper-methods",
+        "title": "Wrapper methods",
+        "kind": "core"
+      },
+      {
+        "id": "19-embedded-methods",
+        "title": "Embedded methods",
+        "kind": "core"
+      },
+      {
+        "id": "19-correlation-filtering",
+        "title": "Correlation filtering",
+        "kind": "core"
+      },
+      {
+        "id": "19-mutual-information",
+        "title": "Mutual information",
+        "kind": "core"
+      },
+      {
+        "id": "19-recursive-feature-elimination",
+        "title": "Recursive feature elimination",
+        "kind": "core"
+      },
+      {
+        "id": "19-lasso",
+        "title": "Lasso",
+        "kind": "core"
+      },
+      {
+        "id": "19-tree-based-importance",
+        "title": "Tree-based importance",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "hyperparameter-optimization",
+    "number": 20,
+    "title": "Hyperparameter optimization",
+    "subtitle": "Search with a budget",
+    "description": "Hyperparameters control model capacity and optimization. Grid search enumerates choices; random search samples a space; Bayesian methods use previous trials to choose informative candidates.",
+    "intuition": "Use logarithmic scales for parameters spanning orders of magnitude, and spend trials where outcomes are sensitive.",
+    "mistake": "A large search can overfit the validation process. Use nested validation for an unbiased estimate of the entire selection procedure.",
+    "exercise": "Run equal-budget grid and random searches, then an Optuna study. Save every trial and compare score against compute time.",
+    "resourceIds": ["optuna"],
+    "level": "intermediate",
+    "prerequisites": [19],
+    "topics": [
+      {
+        "id": "20-grid-search",
+        "title": "Grid Search",
+        "kind": "core"
+      },
+      {
+        "id": "20-random-search",
+        "title": "Random Search",
+        "kind": "core"
+      },
+      {
+        "id": "20-bayesian-optimization",
+        "title": "Bayesian Optimization",
+        "kind": "core"
+      },
+      {
+        "id": "20-optuna",
+        "title": "Optuna",
+        "kind": "core"
+      },
+      {
+        "id": "20-search-spaces",
+        "title": "Search spaces",
+        "kind": "core"
+      },
+      {
+        "id": "20-validation-strategies",
+        "title": "Validation strategies",
+        "kind": "core"
+      },
+      {
+        "id": "20-optimization-objectives",
+        "title": "Optimization objectives",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "unsupervised-learning",
+    "number": 21,
+    "title": "Unsupervised learning",
+    "subtitle": "Discover hidden structure",
+    "description": "Clustering organizes observations by a chosen notion of similarity. Dimensionality reduction compresses representations. K-Means minimizes within-cluster squared distances; PCA finds orthogonal directions of maximum variance.",
+    "intuition": "Neither clusters nor a two-dimensional embedding are ground truth. They depend on scaling, distance, parameters, and the sample.",
+    "mistake": "t-SNE and UMAP plots can distort global distances. Do not interpret empty space or cluster sizes as direct population evidence.",
+    "exercise": "Standardize a feature matrix, compare K-Means and DBSCAN, and explain PCA components using loadings and explained variance.",
+    "resourceIds": ["sklearn-decomposition"],
+    "level": "intermediate",
+    "prerequisites": [4, 7, 8],
+    "topics": [
+      {
+        "id": "21-k-means",
+        "title": "K-Means",
+        "kind": "core"
+      },
+      {
+        "id": "21-hierarchical-clustering",
+        "title": "Hierarchical clustering",
+        "kind": "core"
+      },
+      {
+        "id": "21-dbscan",
+        "title": "DBSCAN",
+        "kind": "core"
+      },
+      {
+        "id": "21-gaussian-mixture-models",
+        "title": "Gaussian Mixture Models",
+        "kind": "core"
+      },
+      {
+        "id": "21-pca",
+        "title": "PCA",
+        "kind": "core"
+      },
+      {
+        "id": "21-t-sne",
+        "title": "T-SNE",
+        "kind": "core"
+      },
+      {
+        "id": "21-umap",
+        "title": "UMAP",
+        "kind": "optional"
+      },
+      {
+        "id": "21-variance",
+        "title": "Variance",
+        "kind": "core"
+      },
+      {
+        "id": "21-covariance",
+        "title": "Covariance",
+        "kind": "core"
+      },
+      {
+        "id": "21-eigenvectors",
+        "title": "Eigenvectors",
+        "kind": "core"
+      },
+      {
+        "id": "21-eigenvalues",
+        "title": "Eigenvalues",
+        "kind": "core"
+      },
+      {
+        "id": "21-principal-components",
+        "title": "Principal components",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "time-series",
+    "number": 22,
+    "title": "Time series",
+    "subtitle": "Respect the order of time",
+    "description": "Time-series observations can depend on their past. Trend, seasonality, and changing variance make temporal structure part of the problem. A useful forecast must specify horizon, aggregation, and update cadence.",
+    "intuition": "Compare against a seasonal naive forecast before complex models. Lagged features must be shifted so they contain only past information.",
+    "mistake": "Centered rolling windows and full-data normalization leak the future. Evaluate using rolling forecast origins and the actual deployment horizon.",
+    "exercise": "Forecast weekly demand with seasonal naive, exponential smoothing, and lag-feature regression. Report error by horizon and backtest period.",
+    "resourceIds": ["forecasting"],
+    "level": "intermediate",
+    "prerequisites": [21],
+    "topics": [
+      {
+        "id": "22-time-series-structure",
+        "title": "Time-series structure",
+        "kind": "core"
+      },
+      {
+        "id": "22-trend",
+        "title": "Trend",
+        "kind": "core"
+      },
+      {
+        "id": "22-seasonality",
+        "title": "Seasonality",
+        "kind": "core"
+      },
+      {
+        "id": "22-stationarity",
+        "title": "Stationarity",
+        "kind": "core"
+      },
+      {
+        "id": "22-autocorrelation",
+        "title": "Autocorrelation",
+        "kind": "core"
+      },
+      {
+        "id": "22-acf",
+        "title": "ACF",
+        "kind": "core"
+      },
+      {
+        "id": "22-pacf",
+        "title": "PACF",
+        "kind": "core"
+      },
+      {
+        "id": "22-moving-averages",
+        "title": "Moving averages",
+        "kind": "core"
+      },
+      {
+        "id": "22-exponential-smoothing",
+        "title": "Exponential smoothing",
+        "kind": "core"
+      },
+      {
+        "id": "22-ar",
+        "title": "AR",
+        "kind": "core"
+      },
+      {
+        "id": "22-ma",
+        "title": "MA",
+        "kind": "core"
+      },
+      {
+        "id": "22-arma",
+        "title": "ARMA",
+        "kind": "core"
+      },
+      {
+        "id": "22-arima",
+        "title": "ARIMA",
+        "kind": "core"
+      },
+      {
+        "id": "22-sarima",
+        "title": "SARIMA",
+        "kind": "core"
+      },
+      {
+        "id": "22-prophet",
+        "title": "Prophet",
+        "kind": "optional"
+      },
+      {
+        "id": "22-machine-learning-approaches",
+        "title": "Machine-learning approaches",
+        "kind": "core"
+      },
+      {
+        "id": "22-feature-engineering-for-time-series",
+        "title": "Feature engineering for time series",
+        "kind": "core"
+      },
+      {
+        "id": "22-time-series-cross-validation",
+        "title": "Time-series cross-validation",
+        "kind": "core"
+      },
+      {
+        "id": "22-forecasting-metrics",
+        "title": "Forecasting metrics",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "id": "deep-learning",
+    "number": 23,
+    "title": "Deep learning",
+    "subtitle": "Compose learnable transformations",
+    "description": "A neural network composes affine transformations and nonlinear activations. Backpropagation applies the chain rule to compute parameter gradients; an optimizer uses those gradients to update weights.",
+    "intuition": "Without nonlinearities, multiple dense layers collapse into a single linear mapping. Representation learning comes from nonlinear composition.",
+    "mistake": "Forgetting to zero gradients accumulates them across steps. Evaluation mode also matters for dropout and batch normalization.",
+    "exercise": "Implement a two-layer classifier in NumPy and PyTorch, check a gradient numerically, and compare learning curves with and without dropout.",
+    "resourceIds": ["pytorch"],
+    "level": "advanced",
+    "prerequisites": [4, 5, 12],
+    "topics": [
+      {
+        "id": "23-perceptron",
+        "title": "Perceptron",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-neural-networks",
+        "title": "Neural networks",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-weights",
+        "title": "Weights",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-biases",
+        "title": "Biases",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-activation-functions",
+        "title": "Activation functions",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-forward-propagation",
+        "title": "Forward propagation",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-loss-functions",
+        "title": "Loss functions",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-backpropagation",
+        "title": "Backpropagation",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-gradient-descent",
+        "title": "Gradient descent",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-sigmoid",
+        "title": "Sigmoid",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-tanh",
+        "title": "Tanh",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-relu",
+        "title": "ReLU",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-leaky-relu",
+        "title": "Leaky ReLU",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-gelu",
+        "title": "GELU",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-softmax",
+        "title": "Softmax",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-mse",
+        "title": "MSE",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-binary-cross-entropy",
+        "title": "Binary cross-entropy",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-categorical-cross-entropy",
+        "title": "Categorical cross-entropy",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-sgd",
+        "title": "SGD",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-momentum",
+        "title": "Momentum",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-rmsprop",
+        "title": "RMSProp",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-adam",
+        "title": "Adam",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-adamw",
+        "title": "AdamW",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-batch-normalization",
+        "title": "Batch normalization",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-dropout",
+        "title": "Dropout",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-initialization",
+        "title": "Initialization",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-learning-rate",
+        "title": "Learning rate",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-epochs",
+        "title": "Epochs",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-batches",
+        "title": "Batches",
+        "kind": "advanced"
+      }
+    ]
+  },
+  {
+    "id": "natural-language-processing",
+    "number": 24,
+    "title": "Natural language processing",
+    "subtitle": "Turn language into representations",
+    "description": "Text models turn token sequences into numeric features. TF-IDF weights informative terms; embeddings encode learned relationships; attention lets a token combine information from other positions.",
+    "intuition": "A transformer\u2019s attention weights depend on the current input. They are not a universal explanation of why a prediction was made.",
+    "mistake": "Random splits can leak near-duplicate text, authors, or future documents. Tokenization and vocabulary fitting also belong inside training.",
+    "exercise": "Build a TF-IDF sentiment baseline, compare it with pretrained embeddings, and inspect errors by negation, language, and document length.",
+    "resourceIds": ["huggingface"],
+    "level": "advanced",
+    "prerequisites": [23],
+    "topics": [
+      {
+        "id": "24-text-preprocessing",
+        "title": "Text preprocessing",
+        "kind": "advanced"
+      },
+      {
+        "id": "24-tokenization",
+        "title": "Tokenization",
+        "kind": "advanced"
+      },
+      {
+        "id": "24-stemming",
+        "title": "Stemming",
+        "kind": "advanced"
+      },
+      {
+        "id": "24-lemmatization",
+        "title": "Lemmatization",
+        "kind": "advanced"
+      },
+      {
+        "id": "24-bag-of-words",
+        "title": "Bag of words",
+        "kind": "advanced"
+      },
+      {
+        "id": "24-tf-idf",
+        "title": "TF-IDF",
+        "kind": "advanced"
+      },
+      {
+        "id": "24-word-embeddings",
+        "title": "Word embeddings",
+        "kind": "advanced"
+      },
+      {
+        "id": "24-word2vec",
+        "title": "Word2Vec",
+        "kind": "advanced"
+      },
+      {
+        "id": "24-glove",
+        "title": "GloVe",
+        "kind": "advanced"
+      },
+      {
+        "id": "24-attention",
+        "title": "Attention",
+        "kind": "advanced"
+      },
+      {
+        "id": "24-transformers",
+        "title": "Transformers",
+        "kind": "advanced"
+      },
+      {
+        "id": "24-bert",
+        "title": "BERT",
+        "kind": "advanced"
+      },
+      {
+        "id": "24-embeddings",
+        "title": "Embeddings",
+        "kind": "advanced"
+      },
+      {
+        "id": "24-text-classification",
+        "title": "Text classification",
+        "kind": "advanced"
+      },
+      {
+        "id": "24-semantic-similarity",
+        "title": "Semantic similarity",
+        "kind": "advanced"
+      }
+    ]
+  },
+  {
+    "id": "computer-vision",
+    "number": 25,
+    "title": "Computer vision",
+    "subtitle": "Learn from pixels",
+    "description": "An image is a tensor with spatial axes and channels. Convolutions share local filters across positions; pooling aggregates nearby responses. Transfer learning reuses representations learned from a larger dataset.",
+    "intuition": "Early filters can detect local edges; later representations combine patterns over larger receptive fields.",
+    "mistake": "Augmentations must preserve the label. A horizontal flip may be harmless for an animal photo but wrong for a directional symbol.",
+    "exercise": "Fine-tune a pretrained image classifier, split by source entity, and compare performance under changes in lighting and image quality.",
+    "resourceIds": ["pytorch-vision"],
+    "level": "advanced",
+    "prerequisites": [24],
+    "topics": [
+      {
+        "id": "25-images-as-tensors",
+        "title": "Images as tensors",
+        "kind": "advanced"
+      },
+      {
+        "id": "25-pixels",
+        "title": "Pixels",
+        "kind": "advanced"
+      },
+      {
+        "id": "25-channels",
+        "title": "Channels",
+        "kind": "advanced"
+      },
+      {
+        "id": "25-image-preprocessing",
+        "title": "Image preprocessing",
+        "kind": "advanced"
+      },
+      {
+        "id": "25-convolutions",
+        "title": "Convolutions",
+        "kind": "advanced"
+      },
+      {
+        "id": "25-cnns",
+        "title": "CNNs",
+        "kind": "advanced"
+      },
+      {
+        "id": "25-pooling",
+        "title": "Pooling",
+        "kind": "advanced"
+      },
+      {
+        "id": "25-augmentation",
+        "title": "Augmentation",
+        "kind": "advanced"
+      },
+      {
+        "id": "25-transfer-learning",
+        "title": "Transfer learning",
+        "kind": "advanced"
+      }
+    ]
+  },
+  {
+    "id": "recommender-systems",
+    "number": 26,
+    "title": "Recommender systems",
+    "subtitle": "Make relevance personal",
+    "description": "Content-based methods compare item attributes. Collaborative methods learn from user-item interactions; factorization represents users and items in a shared latent space. Ranking orders candidates by relevance.",
+    "intuition": "An unobserved interaction is not necessarily a negative preference. Exposure affects what feedback can be observed.",
+    "mistake": "Random interaction splits may leak future tastes. Evaluate ranking by time and handle cold-start users and items explicitly.",
+    "exercise": "Build a popularity baseline and a matrix-factorization recommender. Compare Recall@K and coverage with a temporal holdout.",
+    "resourceIds": ["recsys"],
+    "level": "advanced",
+    "prerequisites": [25],
+    "topics": [
+      {
+        "id": "26-content-based-filtering",
+        "title": "Content-based filtering",
+        "kind": "advanced"
+      },
+      {
+        "id": "26-collaborative-filtering",
+        "title": "Collaborative filtering",
+        "kind": "advanced"
+      },
+      {
+        "id": "26-user-item-matrices",
+        "title": "User-item matrices",
+        "kind": "advanced"
+      },
+      {
+        "id": "26-matrix-factorization",
+        "title": "Matrix factorization",
+        "kind": "advanced"
+      },
+      {
+        "id": "26-similarity",
+        "title": "Similarity",
+        "kind": "advanced"
+      },
+      {
+        "id": "26-embeddings",
+        "title": "Embeddings",
+        "kind": "advanced"
+      },
+      {
+        "id": "26-ranking",
+        "title": "Ranking",
+        "kind": "advanced"
+      }
+    ]
+  },
+  {
+    "id": "explainable-ai",
+    "number": 27,
+    "title": "Explainable AI",
+    "subtitle": "Understand model behavior",
+    "description": "Permutation importance measures how shuffling a feature changes a score. PDP averages model responses; ICE shows individual responses. SHAP allocates a prediction difference using Shapley-value ideas.",
+    "intuition": "An explanation describes a model under assumptions about background data and feature dependence. It does not prove a causal mechanism.",
+    "mistake": "Correlated features complicate attribution. PDP can evaluate implausible combinations, and local explanations can vary with the chosen reference.",
+    "exercise": "Compare permutation importance, ICE, and SHAP on one model. Show a case where correlated features make rankings unstable.",
+    "resourceIds": ["shap"],
+    "level": "advanced",
+    "prerequisites": [26],
+    "topics": [
+      {
+        "id": "27-feature-importance",
+        "title": "Feature importance",
+        "kind": "advanced"
+      },
+      {
+        "id": "27-permutation-importance",
+        "title": "Permutation importance",
+        "kind": "advanced"
+      },
+      {
+        "id": "27-pdp",
+        "title": "PDP",
+        "kind": "advanced"
+      },
+      {
+        "id": "27-ice",
+        "title": "ICE",
+        "kind": "advanced"
+      },
+      {
+        "id": "27-shap",
+        "title": "SHAP",
+        "kind": "advanced"
+      },
+      {
+        "id": "27-lime",
+        "title": "LIME",
+        "kind": "advanced"
+      }
+    ]
+  },
+  {
+    "id": "experimentation-a-b-testing",
+    "number": 28,
+    "title": "Experimentation & A/B testing",
+    "subtitle": "Learn by changing one thing",
+    "description": "A randomized experiment estimates the effect of an intervention. Define the randomization unit, primary metric, minimum detectable effect, duration, and guardrails before assignment.",
+    "intuition": "Randomization makes treatment assignment independent of potential outcomes in expectation; adequate sample size controls uncertainty.",
+    "mistake": "Peeking and stopping when a conventional p-value crosses a threshold inflates false positives. Account for clustering and multiple comparisons.",
+    "exercise": "Design a checkout experiment. Estimate sample size, specify exclusions before launch, and report an effect with a confidence interval.",
+    "resourceIds": ["statistics"],
+    "level": "advanced",
+    "prerequisites": [27],
+    "topics": [
+      {
+        "id": "28-experiment-design",
+        "title": "Experiment design",
+        "kind": "advanced"
+      },
+      {
+        "id": "28-control-treatment",
+        "title": "Control/treatment",
+        "kind": "advanced"
+      },
+      {
+        "id": "28-randomization",
+        "title": "Randomization",
+        "kind": "advanced"
+      },
+      {
+        "id": "28-metrics",
+        "title": "Metrics",
+        "kind": "advanced"
+      },
+      {
+        "id": "28-hypothesis-testing",
+        "title": "Hypothesis testing",
+        "kind": "advanced"
+      },
+      {
+        "id": "28-sample-size",
+        "title": "Sample size",
+        "kind": "advanced"
+      },
+      {
+        "id": "28-statistical-power",
+        "title": "Statistical power",
+        "kind": "advanced"
+      },
+      {
+        "id": "28-confidence-intervals",
+        "title": "Confidence intervals",
+        "kind": "advanced"
+      },
+      {
+        "id": "28-p-values",
+        "title": "P-values",
+        "kind": "advanced"
+      },
+      {
+        "id": "28-multiple-comparisons",
+        "title": "Multiple comparisons",
+        "kind": "advanced"
+      },
+      {
+        "id": "28-uplift",
+        "title": "Uplift",
+        "kind": "advanced"
+      },
+      {
+        "id": "28-practical-significance",
+        "title": "Practical significance",
+        "kind": "advanced"
+      }
+    ]
+  },
+  {
+    "id": "causal-inference",
+    "number": 29,
+    "title": "Causal inference",
+    "subtitle": "Ask what would change",
+    "description": "Prediction asks what is likely to happen; causal inference asks what would happen under an intervention. Confounding creates paths that make observational comparisons differ from treatment effects.",
+    "intuition": "A DAG records causal assumptions, not just correlations. Adjustment should block confounding paths without opening collider paths.",
+    "mistake": "Propensity scores do not fix unmeasured confounding. Difference-in-differences relies on a credible parallel-trends assumption.",
+    "exercise": "Draw a DAG for a marketing intervention, identify confounders, and compare an observational estimate with a simulated randomized experiment.",
+    "resourceIds": ["causal"],
+    "level": "advanced",
+    "prerequisites": [6, 7, 28],
+    "topics": [
+      {
+        "id": "29-correlation-vs-causation",
+        "title": "Correlation vs causation",
+        "kind": "advanced"
+      },
+      {
+        "id": "29-confounding",
+        "title": "Confounding",
+        "kind": "advanced"
+      },
+      {
+        "id": "29-dags",
+        "title": "DAGs",
+        "kind": "advanced"
+      },
+      {
+        "id": "29-treatment-effects",
+        "title": "Treatment effects",
+        "kind": "advanced"
+      },
+      {
+        "id": "29-propensity-scores",
+        "title": "Propensity scores",
+        "kind": "advanced"
+      },
+      {
+        "id": "29-difference-in-differences",
+        "title": "Difference-in-differences",
+        "kind": "advanced"
+      },
+      {
+        "id": "29-instrumental-variables",
+        "title": "Instrumental variables",
+        "kind": "optional"
+      }
+    ]
+  },
+  {
+    "id": "data-engineering-basics",
+    "number": 30,
+    "title": "Data engineering basics",
+    "subtitle": "Move data reliably",
+    "description": "Data engineering turns source events into dependable datasets. ETL transforms before loading; ELT transforms in the destination. Batch jobs process bounded collections; streams process events as they arrive.",
+    "intuition": "A pipeline needs contracts, retries, idempotency, and observability. Re-running yesterday\u2019s partition should not duplicate yesterday\u2019s revenue.",
+    "mistake": "A successful job can still produce incorrect data. Monitor freshness, volume, schema changes, and key constraints.",
+    "exercise": "Create an incremental ingestion pipeline with a watermark, deduplication, validation, and a documented backfill procedure.",
+    "resourceIds": ["spark"],
+    "level": "advanced",
+    "prerequisites": [29],
+    "topics": [
+      {
+        "id": "30-databases",
+        "title": "Databases",
+        "kind": "advanced"
+      },
+      {
+        "id": "30-relational-databases",
+        "title": "Relational databases",
+        "kind": "advanced"
+      },
+      {
+        "id": "30-nosql-basics",
+        "title": "NoSQL basics",
+        "kind": "advanced"
+      },
+      {
+        "id": "30-etl",
+        "title": "ETL",
+        "kind": "advanced"
+      },
+      {
+        "id": "30-elt",
+        "title": "ELT",
+        "kind": "advanced"
+      },
+      {
+        "id": "30-data-warehouses",
+        "title": "Data warehouses",
+        "kind": "advanced"
+      },
+      {
+        "id": "30-data-lakes",
+        "title": "Data lakes",
+        "kind": "advanced"
+      },
+      {
+        "id": "30-pipelines",
+        "title": "Pipelines",
+        "kind": "advanced"
+      },
+      {
+        "id": "30-apis",
+        "title": "APIs",
+        "kind": "advanced"
+      },
+      {
+        "id": "30-batch-processing",
+        "title": "Batch processing",
+        "kind": "advanced"
+      },
+      {
+        "id": "30-streaming-basics",
+        "title": "Streaming basics",
+        "kind": "advanced"
+      },
+      {
+        "id": "30-spark-basics",
+        "title": "Spark basics",
+        "kind": "advanced"
+      }
+    ]
+  },
+  {
+    "id": "production-data-science",
+    "number": 31,
+    "title": "Production data science",
+    "subtitle": "Make a model useful",
+    "description": "Production adds contracts around a model: input validation, dependency control, configuration, logging, tests, and a serving interface. The training and inference transformations must match.",
+    "intuition": "A model artifact is only one part of a prediction system. Its environment, feature definitions, and versioned interface are equally important.",
+    "mistake": "Loading untrusted pickle artifacts can execute code. Avoid logging sensitive inputs, and test failure paths as carefully as happy paths.",
+    "exercise": "Package a trained pipeline behind a validated FastAPI endpoint. Add a Dockerfile, health check, latency measurement, and rollback instructions.",
+    "resourceIds": ["fastapi"],
+    "level": "advanced",
+    "prerequisites": [30],
+    "topics": [
+      {
+        "id": "31-reproducible-projects",
+        "title": "Reproducible projects",
+        "kind": "advanced"
+      },
+      {
+        "id": "31-environment-management",
+        "title": "Environment management",
+        "kind": "advanced"
+      },
+      {
+        "id": "31-package-management",
+        "title": "Package management",
+        "kind": "advanced"
+      },
+      {
+        "id": "31-configuration",
+        "title": "Configuration",
+        "kind": "advanced"
+      },
+      {
+        "id": "31-logging",
+        "title": "Logging",
+        "kind": "advanced"
+      },
+      {
+        "id": "31-testing",
+        "title": "Testing",
+        "kind": "advanced"
+      },
+      {
+        "id": "31-model-serialization",
+        "title": "Model serialization",
+        "kind": "advanced"
+      },
+      {
+        "id": "31-apis",
+        "title": "APIs",
+        "kind": "advanced"
+      },
+      {
+        "id": "31-fastapi",
+        "title": "FastAPI",
+        "kind": "advanced"
+      },
+      {
+        "id": "31-docker",
+        "title": "Docker",
+        "kind": "advanced"
+      },
+      {
+        "id": "31-deployment",
+        "title": "Deployment",
+        "kind": "advanced"
+      },
+      {
+        "id": "31-cloud-basics",
+        "title": "Cloud basics",
+        "kind": "advanced"
+      }
+    ]
+  },
+  {
+    "id": "mlops",
+    "number": 32,
+    "title": "MLOps",
+    "subtitle": "Keep learning systems healthy",
+    "description": "MLOps manages the lifecycle of datasets, experiments, models, and deployments. Tracking records evidence; a registry links approved artifacts to lineage; monitoring detects changes after release.",
+    "intuition": "Data drift describes changing inputs; concept drift describes changing relationships between inputs and outcomes. Neither is identical to measured performance loss.",
+    "mistake": "Automatically retraining after any drift alert can reinforce data errors. Gate changes with data checks and a meaningful evaluation set.",
+    "exercise": "Track experiments, register a model, simulate a shifted dataset, and write a monitoring runbook with alert thresholds and an owner.",
+    "resourceIds": ["mlflow"],
+    "level": "advanced",
+    "prerequisites": [31],
+    "topics": [
+      {
+        "id": "32-experiment-tracking",
+        "title": "Experiment tracking",
+        "kind": "advanced"
+      },
+      {
+        "id": "32-mlflow",
+        "title": "MLflow",
+        "kind": "advanced"
+      },
+      {
+        "id": "32-model-registry",
+        "title": "Model registry",
+        "kind": "advanced"
+      },
+      {
+        "id": "32-model-versioning",
+        "title": "Model versioning",
+        "kind": "advanced"
+      },
+      {
+        "id": "32-data-versioning",
+        "title": "Data versioning",
+        "kind": "advanced"
+      },
+      {
+        "id": "32-dvc",
+        "title": "DVC",
+        "kind": "advanced"
+      },
+      {
+        "id": "32-ci-cd",
+        "title": "CI/CD",
+        "kind": "advanced"
+      },
+      {
+        "id": "32-automated-training-pipelines",
+        "title": "Automated training pipelines",
+        "kind": "advanced"
+      },
+      {
+        "id": "32-monitoring",
+        "title": "Monitoring",
+        "kind": "advanced"
+      },
+      {
+        "id": "32-model-drift",
+        "title": "Model drift",
+        "kind": "advanced"
+      },
+      {
+        "id": "32-data-drift",
+        "title": "Data drift",
+        "kind": "advanced"
+      },
+      {
+        "id": "32-performance-monitoring",
+        "title": "Performance monitoring",
+        "kind": "advanced"
+      },
+      {
+        "id": "32-retraining",
+        "title": "Retraining",
+        "kind": "advanced"
+      }
+    ]
+  },
+  {
+    "id": "responsible-data-science",
+    "number": 33,
+    "title": "Responsible data science",
+    "subtitle": "Build with accountability",
+    "description": "Responsible practice considers whose data is used, who benefits, and who bears errors. Privacy, security, fairness, and reproducibility are design requirements throughout the lifecycle.",
+    "intuition": "Fairness metrics express different values and can conflict. Choose them with affected stakeholders and document the resulting tradeoffs.",
+    "mistake": "Removing a protected attribute does not eliminate proxies. Aggregate accuracy can hide severe failures for small groups.",
+    "exercise": "Write a model card with intended use, excluded uses, data provenance, subgroup metrics, privacy controls, and a route to contest decisions.",
+    "resourceIds": ["model-cards"],
+    "level": "advanced",
+    "prerequisites": [32],
+    "topics": [
+      {
+        "id": "33-bias",
+        "title": "Bias",
+        "kind": "advanced"
+      },
+      {
+        "id": "33-fairness",
+        "title": "Fairness",
+        "kind": "advanced"
+      },
+      {
+        "id": "33-interpretability",
+        "title": "Interpretability",
+        "kind": "advanced"
+      },
+      {
+        "id": "33-explainability",
+        "title": "Explainability",
+        "kind": "advanced"
+      },
+      {
+        "id": "33-privacy",
+        "title": "Privacy",
+        "kind": "advanced"
+      },
+      {
+        "id": "33-security",
+        "title": "Security",
+        "kind": "advanced"
+      },
+      {
+        "id": "33-responsible-ai",
+        "title": "Responsible AI",
+        "kind": "advanced"
+      },
+      {
+        "id": "33-data-ethics",
+        "title": "Data ethics",
+        "kind": "advanced"
+      },
+      {
+        "id": "33-reproducibility",
+        "title": "Reproducibility",
+        "kind": "advanced"
+      }
+    ]
+  },
+  {
+    "id": "specialization-paths",
+    "number": 34,
+    "title": "Specialization paths",
+    "subtitle": "Choose your next direction",
+    "description": "Specialization builds on a common foundation in programming, mathematical reasoning, validation, and communication. Choose a branch by the kind of problem you want to solve, then demonstrate it with an end-to-end project.",
+    "intuition": "Depth is useful when it connects domain assumptions to measurable outcomes. The same technique may need different validation in health, finance, and consumer products.",
+    "mistake": "Do not skip validation or ethics because a branch is technically advanced. Domain-specific costs and constraints change the whole workflow.",
+    "exercise": "Choose one path, map your existing skills to its prerequisites, and scope a portfolio project with a baseline and a realistic evaluation plan.",
+    "resourceIds": ["sklearn"],
+    "level": "advanced",
+    "prerequisites": [12, 17, 31, 33],
+    "topics": [
+      {
+        "id": "34-machine-learning-scientist",
+        "title": "Machine Learning Scientist",
+        "kind": "advanced"
+      },
+      {
+        "id": "34-product-data-scientist",
+        "title": "Product Data Scientist",
+        "kind": "advanced"
+      },
+      {
+        "id": "34-nlp-data-scientist",
+        "title": "NLP Data Scientist",
+        "kind": "advanced"
+      },
+      {
+        "id": "34-computer-vision-data-scientist",
+        "title": "Computer Vision Data Scientist",
+        "kind": "advanced"
+      },
+      {
+        "id": "34-time-series-forecasting-scientist",
+        "title": "Time-Series / Forecasting Scientist",
+        "kind": "advanced"
+      },
+      {
+        "id": "34-healthcare-data-scientist",
+        "title": "Healthcare Data Scientist",
+        "kind": "advanced"
+      },
+      {
+        "id": "34-financial-data-scientist",
+        "title": "Financial Data Scientist",
+        "kind": "advanced"
+      },
+      {
+        "id": "34-recommendation-systems",
+        "title": "Recommendation Systems",
+        "kind": "advanced"
+      },
+      {
+        "id": "34-research-data-scientist",
+        "title": "Research Data Scientist",
+        "kind": "advanced"
+      },
+      {
+        "id": "34-analytics-data-scientist",
+        "title": "Analytics Data Scientist",
+        "kind": "advanced"
+      }
+    ]
+  }
+]

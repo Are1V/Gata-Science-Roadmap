@@ -1,0 +1,54 @@
+name: Verify and deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run check
+      - run: npm test
+      - name: Configure site URLs
+        shell: bash
+        run: |
+          repo_name="${GITHUB_REPOSITORY#*/}"
+          base_path="/$repo_name/"
+          if [[ "$repo_name" == *.github.io ]]; then base_path="/"; fi
+          echo "BASE_PATH=$base_path" >> "$GITHUB_ENV"
+          echo "SITE_URL=https://${GITHUB_REPOSITORY_OWNER}.github.io" >> "$GITHUB_ENV"
+          echo "PUBLIC_REPOSITORY_URL=https://github.com/$GITHUB_REPOSITORY" >> "$GITHUB_ENV"
+      - run: npm run build
+      - run: npm run check:links
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
+        with:
+          path: dist
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment

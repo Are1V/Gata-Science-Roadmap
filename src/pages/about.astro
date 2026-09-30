@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { phases, topics, resources } from '../data/roadmap';
+import { getCollection } from 'astro:content';
+import { ArrowUpRight } from 'lucide-react';
+import Github from '../components/Github';
+import { repository, url } from '../utils/urls';
+const guides = await getCollection('guides');
+---
+
+<Layout title="About" active="About">
+  <div class="page-heading">
+    <span class="eyebrow">A FIELD GUIDE, NOT A FINISH LINE</span>
+    <h1>A place for people who ask why.</h1>
+    <p>
+      Gata Science Roadmap is an open-source learning map for data science. It connects theory to
+      practice, and makes a big field feel a little more navigable.
+    </p>
+  </div>
+  <article class="prose about-prose">
+    <h2>Learn the connections, not just the tools.</h2>
+    <p>
+      A library can fit a model in a line of code. Understanding why it works takes a little longer.
+      Gata Science Roadmap brings the mathematics back into the conversation: projections inside
+      regression, probability inside classification, and the chain rule inside neural networks.
+    </p>
+    <h2>What’s here today</h2>
+    <p>
+      The first edition maps {topics.length} concepts across {phases.length} chapters, with{' '}
+      {guides.length} detailed guides and {resources.length} curated resources. Every chapter has an
+      explanation, prerequisites, a practice task, and sources for further study. Book icons
+      identify the deeper authored lessons; other concept entries connect to their chapter
+      resources. The curriculum is complete in scope, while the detailed lesson library can continue
+      to grow.
+    </p>
+    <p>
+      Progress is a personal checklist, not a certificate. Choose a path that serves your goals,
+      revisit foundations when needed, and make room for projects.
+    </p>
+    <h2>Your learning, your browser.</h2>
+    <p>
+      No login, database, analytics, or paid API. Topic and project completions stay in your
+      browser’s local storage. Clearing site data removes them. You can export a record from{' '}
+      <a href={url('progress/')}>My Progress</a>. External resources have their own privacy
+      practices.
+    </p>
+    <h2 id="open-source">Built in the open</h2>
+    <p>
+      Gata Science Roadmap is licensed under MIT. The repository includes contribution instructions,
+      content schemas, issue templates, tests, and a GitHub Pages deployment workflow. Add a guide,
+      improve an explanation, or share a better free resource.
+    </p>
+    {repository ? (
+      <a class="button" href={repository}>
+        <Github size={16} />
+        View on GitHub
+        <ArrowUpRight size={14} />
+      </a>
+    ) : (
+      <div class="callout">
+        <strong>This is a local edition.</strong>
+        <p>
+          The source is in this workspace. A public repository and live URL have not been configured
+          yet. When a repository is connected, the GitHub links will point to it.
+        </p>
+      </div>
+    )}
+    <h2>With thanks</h2>
+    <p>
+      The map is inspired by the idea of interactive learning roadmaps, including roadmap.sh, with
+      original design, code, and educational writing. The broader project stands on the work of
+      open-source tool maintainers, documentation authors, and educators who make their materials
+      freely available.
+    </p>
+    <p>Built with Astro, React, TypeScript, Tailwind CSS, React Flow, KaTeX, and Lucide.</p>
+  </article>
+</Layout>
