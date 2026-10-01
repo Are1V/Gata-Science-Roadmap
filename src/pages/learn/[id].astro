@@ -1,225 +1,54 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { phases, deepGuides, resources } from '../../data/roadmap';
-import { CompleteButton } from '../../components/Progress';
-import {
-  ArrowLeft,
-  ArrowRight,
-  ArrowUpRight,
-  BookOpen,
-  Lightbulb,
-  GitBranch,
-  CircleAlert,
-} from 'lucide-react';
+import { phases } from '../../data/roadmap';
+import { learningOrder } from '../../data/learning';
+import TopicList from '../../components/TopicList';
+import { ArrowLeft, ArrowRight, Flag } from 'lucide-react';
 import projects from '../../content/projects/projects.json';
+import { projectMilestones } from '../../data/map';
 import { url } from '../../utils/urls';
 export function getStaticPaths() {
   return phases.map((phase) => ({ params: { id: phase.id }, props: { phase } }));
 }
 const { phase } = Astro.props;
-const relatedProjects = projects.filter((p) => p.prerequisites.includes(phase.number)).slice(0, 3);
-const guides = [
-  ...new Map(
-    phase.topics.filter((t) => deepGuides[t.id]).map((t) => [deepGuides[t.id], t]),
-  ).entries(),
-];
+const project = projects.find((p) => p.id === projectMilestones[phase.number]);
+const index = learningOrder.indexOf(phase.number);
+const next = phases[learningOrder[index + 1]];
 ---
 
 <Layout title={phase.title} active="Roadmap">
   <a href={url('roadmap/')} class="back-link">
     <ArrowLeft size={14} />
-    Back to the complete map
+    Back to the map
   </a>
-  <div class="chapter-layout">
-    <article>
-      <div class="page-heading">
-        <span class="eyebrow">
-          PHASE {String(phase.number).padStart(2, '0')} · {phase.level}
-        </span>
-        <h1>{phase.title}</h1>
-        <p>{phase.description}</p>
-      </div>
-      <div class="callout">
-        <strong class="inline-icon">
-          <Lightbulb size={17} />
-          The intuition
-        </strong>
-        <p>{phase.intuition}</p>
-      </div>
-      {phase.number === 0 && (
-        <section class="prose">
-          <h2>A decision, not just a model</h2>
-          <p>
-            Start with a question and an action. An analyst typically emphasizes reporting and
-            decision support; a data scientist also designs experiments and predictive models. ML
-            engineers build reliable training and serving systems. AI engineers assemble
-            applications around learned models, while data engineers make data pipelines dependable.
-            Titles overlap; judge a role by its actual responsibilities.
-          </p>
-          <h2>Set up your workspace</h2>
-          <p>
-            Install a supported Python release, Git, and an editor such as VS Code. Create a virtual
-            environment with <code>python -m venv .venv</code>, activate it using the command for
-            your shell, then install Jupyter, NumPy, Pandas, Matplotlib, and scikit-learn. Record
-            the installed versions in your project.
-          </p>
-          <pre><code>python -m pip install jupyterlab numpy pandas matplotlib scikit-learn<br/>python -m pip freeze &gt; requirements.txt<br/>jupyter lab</code></pre>
-          <h2>How to use this map</h2>
-          <p>
-            Read a chapter, open its detailed guides, and work through the linked official
-            resources. Mark individual concepts complete only when you can explain them and solve a
-            small example. Build a project at each stage. Return to the math links whenever a model
-            feels like a black box. Completion is your own learning record, not a certification.
-          </p>
-        </section>
-      )}
-      <section class="chapter-section">
-        <h2>
-          <GitBranch size={18} />
-          Before you begin
-        </h2>
-        <div class="dependency-links">
-          {phase.prerequisites.length ? (
-            phase.prerequisites.map((n) => (
-              <a href={url(`learn/${phases[n].id}/`)}>
-                {phases[n].title}
-                <ArrowUpRight size={12} />
-              </a>
-            ))
-          ) : (
-            <span>No prerequisites. You’re in the right place.</span>
-          )}
+  <div class="page-heading compact-chapter-heading">
+    <span class="eyebrow">
+      {phase.level} · {phase.topics.length} topics
+    </span>
+    <h1>{phase.title}</h1>
+    <p>{phase.description}</p>
+  </div>
+  <div class="compact-chapter">
+    <TopicList phase={phase.number} client:load />
+    {project && (
+      <section class="topic-practice">
+        <div>
+          <h2>
+            <Flag size={18} /> {project.title}
+          </h2>
+          <p>{project.problem}</p>
         </div>
+        <a class="text-link" href={url(`projects/#${project.id}`)}>
+          Start practice
+          <ArrowRight size={14} />
+        </a>
       </section>
-      {guides.length > 0 && (
-        <section class="chapter-section">
-          <h2>Go deeper with a field guide</h2>
-          <div class="guide-links">
-            {guides.map(([id, t]) => (
-              <a href={url(`topics/${id}/?concept=${t.id}`)}>
-                <BookOpen size={17} />
-                <div>
-                  <strong>{t.title}</strong>
-                  <span>Intuition · Mathematics · Code · Exercises</span>
-                </div>
-                <ArrowUpRight size={15} />
-              </a>
-            ))}
-          </div>
-        </section>
-      )}
-      <section class="chapter-section">
-        <div class="section-heading">
-          <h2>Your concept checklist</h2>
-          <span class="tag">{phase.topics.length} topics</span>
-        </div>
-        <p class="muted-small">
-          Use the chapter resources to study each concept. The book icon opens an authored deep
-          dive.
-        </p>
-        <div class="topic-checklist">
-          {phase.topics.map((t) => (
-            <div id={t.id}>
-              <a
-                href={
-                  deepGuides[t.id]
-                    ? url(`topics/${deepGuides[t.id]}/?concept=${t.id}`)
-                    : '#chapter-resources'
-                }
-              >
-                <span class:list={['kind-dot', t.kind]} />
-                {t.title}
-                {deepGuides[t.id] && <BookOpen size={13} />}
-              </a>
-              <CompleteButton id={t.id} client:load />
-            </div>
-          ))}
-        </div>
-      </section>
-      <section class="chapter-section">
-        <h2>
-          <CircleAlert size={18} />A common pitfall
-        </h2>
-        <p>{phase.mistake}</p>
-      </section>
-      <section class="chapter-section">
-        <h2>Put it into practice</h2>
-        <p>{phase.exercise}</p>
-        <div class="exercise-checks">
-          <span>Before moving on, can you…</span>
-          <ul>
-            <li>Explain the chapter’s main idea to someone new to the subject?</li>
-            <li>Complete the exercise and describe the assumptions you made?</li>
-            <li>Show a failure case and explain how you detected it?</li>
-          </ul>
-        </div>
-      </section>
-      <section class="free-resources" id="chapter-resources">
-        <h2>Learn from the source.</h2>
-        <p class="muted-small">Free documentation and courses selected for this chapter.</p>
-        {phase.resourceIds.map((id) => {
-          const r = resources.find((r) => r.id === id)!;
-          return (
-            <a href={r.url} target="_blank" rel="noreferrer">
-              <BookOpen size={18} />
-              <div>
-                <strong>{r.title}</strong>
-                <span>
-                  {r.provider} · {r.type}
-                </span>
-              </div>
-              <ArrowUpRight size={17} />
-            </a>
-          );
-        })}
-      </section>
-      {relatedProjects.length > 0 && (
-        <section class="chapter-section">
-          <h2>Make it a project</h2>
-          <div class="guide-links">
-            {relatedProjects.map((p) => (
-              <a href={url(`projects/#${p.id}`)}>
-                <div>
-                  <strong>{p.title}</strong>
-                  <span>{p.level}</span>
-                </div>
-                <ArrowUpRight size={16} />
-              </a>
-            ))}
-          </div>
-        </section>
-      )}
-      <div class="chapter-pagination">
-        {phase.number > 0 && (
-          <a href={url(`learn/${phases[phase.number - 1].id}/`)}>
-            <ArrowLeft size={15} />
-            <div>
-              <small>PREVIOUS CHAPTER</small>
-              {phases[phase.number - 1].title}
-            </div>
-          </a>
-        )}
-        {phase.number < 34 && (
-          <a href={url(`learn/${phases[phase.number + 1].id}/`)}>
-            <div>
-              <small>NEXT CHAPTER</small>
-              {phases[phase.number + 1].title}
-            </div>
-            <ArrowRight size={15} />
-          </a>
-        )}
-      </div>
-    </article>
-    <aside class="chapter-aside">
-      <span class="eyebrow">YOUR NEXT SMALL STEP</span>
-      <h3>{phase.subtitle}</h3>
-      <p>
-        You don’t need to master everything at once. Follow the prerequisites, try the exercise,
-        then come back with better questions.
-      </p>
-      <a class="text-link" href={url('progress/')}>
-        See your progress <ArrowUpRight size={13} />
+    )}
+    {next && (
+      <a class="text-link chapter-next" href={url(`learn/${next.id}/`)}>
+        Next: {next.title}
+        <ArrowRight size={14} />
       </a>
-    </aside>
+    )}
   </div>
 </Layout>

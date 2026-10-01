@@ -1,76 +1,47 @@
-# Contributing to Gata Science Roadmap
+# Contributing
 
-Make a small, coherent change and explain how you checked it. Content contributions are just as valuable as code.
+Small, focused improvements are welcome. Open an issue for a broken video, a better lesson, an incorrect explanation, or a missing topic. Explain the learner's problem and the proposed change.
 
-## Development
+## Add or update a topic
 
-Use Node 22.12+ and `npm ci`. Start the site with `npm run dev`. Run `npm run lint`, `npm run check`, `npm test`, and `npm run build` before opening a pull request. For interactive changes, run `npm run test:e2e` after building. Check mobile, keyboard navigation, and both themes.
+1. Add a uniquely named topic to `src/data/curriculum.json`. Preserve existing IDs because they identify saved progress and shared links.
+2. Add its entry to `src/data/topic-lessons.json`: one short explanation, one reason it matters, prerequisite topic IDs, a primary video ID, a practical task, and an existing project ID. An alternative video is optional.
+3. Add a new video to `src/data/videos.json` only if the ID is not already present. Prefer updating one shared catalog record over duplicating metadata.
+4. Add a milestone or featured node to `src/data/map.ts` if it helps learners understand progression. Keep prerequisite edges acyclic and specialties independent where appropriate.
 
-## Add a curriculum concept
+Keep the default UI concise. Longer original explanations belong in optional Markdown notes, not in the topic drawer.
 
-1. Edit the appropriate chapter in `src/data/curriculum.json`.
-2. Add a topic with a stable unique ID, readable title, and `kind`: `core`, `recommended`, `optional`, or `advanced`.
-3. IDs use `<phase-number>-<concept-slug>`. Preserve existing IDs; learners' saved progress refers to them.
-4. Update the chapter explanation or resource selection if the new concept needs additional context.
+## Select a video
 
-Example metadata (choose the actual chapter before adding it):
+Check that the video exists, is free and public, actually teaches the concept, and fits the learner's prerequisites. Review its examples, assumptions, language, and software versions. Prefer a focused lesson over a long course unless the relevant course chapter is clearly identified.
 
-```json
-{ "id": "5-convexity", "title": "Convexity", "kind": "recommended" }
+Compare plausible alternatives using topic fit, clarity, technical accuracy, educator expertise, recency when relevant, and available audience feedback. Do not choose only by views, accept the first search result without review, or assume one channel is strongest for every topic. Avoid misleading titles and low-quality generated instruction.
+
+Each video record needs:
+
+- `youtubeId`, title, and channel from the real source;
+- difficulty and duration in seconds (`0` means unavailable; the UI omits it);
+- a publisher or video `sourceUrl`, ISO `reviewedAt` date, and original `selectionReason`;
+- a precise `verification` note describing what was checked.
+
+Optional `viewsAtReview` and `publishedAt` fields must come from actual metadata. Omit unavailable likes, ratings, and durations. Do not invent timestamps. `videoStart` on a lesson must match a published chapter and remain inside the video's duration.
+
+Run `npm run check:videos`. Review the resulting report manually: blocked requests and timeouts are inconclusive, while successful metadata retrieval still does not prove playback in every location. Use the broken-video template for links that cannot be confirmed. Do not silently replace a topic with an unrelated course.
+
+## Development checks
+
+```sh
+npm ci
+npm run lint
+npm run check
+npm test
+npm run check:videos -- --offline
+npm run build
+npm run check:links
+npx playwright install chromium
+npm run test:e2e
 ```
 
-This automatically updates chapter checklists, search, graph expansion, and progress denominators. Do not edit UI components to add a topic.
+Check desktop and mobile, light and dark mode, and keyboard operation. For route or asset changes, also build with `BASE_PATH=/Gata-Science-Roadmap/` and run the link and browser checks with that base path.
 
-## Add a detailed guide
-
-Create `src/content/guides/<slug>.md`. Use this frontmatter structure:
-
-```yaml
-title: Convexity and optimization
-description: How the shape of an objective changes what optimization can guarantee.
-phase: 5
-topicId: 5-convexity
-prerequisites: [derivatives, gradient-descent]
-resources: [calculus]
-project: house-prices
-estimatedHours: 3
-```
-
-Use these sections: What is it?, Why does it matter?, Intuition, Mathematics, Example, Python / From Scratch, Using a Library, Common Mistakes, Interview Questions, and Exercises. Include three or more substantive interview prompts. The page automatically adds clickable prerequisites, the project, free resources, and a completion control. An optional `lab` can select an existing `gradient`, `sigmoid`, or `vectors` demonstration.
-
-Write inline math between `$` and display math between `$$`. Include units, dimensions, assumptions, and numerical examples. Show the connection to an actual ML method. Explain numerical stability and where a simple educational implementation stops being suitable for real use.
-
-Add the concept-to-guide mapping to `deepGuides` in `src/data/roadmap.ts`. A guide's `prerequisites` refer to other **guide IDs**, not phase numbers. Tests catch missing references and cycles. The page route and mathematical graph are generated from the collection.
-
-The guide should make a real addition to the library. Do not generate pages that merely repeat a title and a generic definition. If no guide is authored yet, retain the honest curriculum entry linked to the chapter resources.
-
-## Add a resource
-
-Add a record to `src/content/resources/resources.json` with `id`, `title`, `provider`, `url`, and `type` (`Documentation`, `Course`, `Book`, or `Paper`). Prefer HTTPS links to official documentation, universities, or reputable free textbooks. Verify that the educational content is available without payment. Optional paid certificates are acceptable; paid-only lessons are not.
-
-Reference its ID in chapter `resourceIds` or guide `resources`. Run `npm run check:resources` and inspect `reports/resource-links.json`. A status code alone cannot confirm educational quality or future availability, so open the material and check its relevance too.
-
-## Add a project
-
-Edit `src/content/projects/projects.json`. Include a stable `id`, `title`, `level`, numeric chapter `prerequisites`, `problem`, `dataset`, `datasetUrl`, `objectives`, `output`, `evaluation`, and suggested `structure`. Provide an actual accessible dataset, mention any free account requirement, define a baseline and evaluation strategy, and avoid full solutions.
-
-Use the same convention for project completion IDs: `project-<id>`. The library, global search, and chapter associations update automatically.
-
-## Change roadmap structure
-
-Chapter `prerequisites` refer to earlier phase numbers and generate visible edges. `specializations` in `src/data/roadmap.ts` selects relevant chapters after the common initial foundation. Lesson frontmatter generates the separate mathematical dependency view.
-
-Avoid cycles and unclear implied dependencies. Optionality describes curriculum priority, not permission to ignore a real prerequisite. Keep labels concise and check that expanded branches remain navigable.
-
-## Correct content
-
-Name the page or concept, explain the issue, cite a primary source when possible, and provide a corrected explanation with assumptions. Distinguish factual errors from alternate notation or pedagogical preferences. Never imply that correlation or a model explanation establishes causation.
-
-## Review checklist
-
-- Accurate math, working links, and meaningful exercises.
-- Existing progress IDs preserved.
-- No copyrighted textbook passages or copied branding.
-- No fake statistics or invented public URLs.
-- Types, lint, content tests, build, and relevant browser tests pass.
-- No secrets, large datasets, environment files, or generated build files in the change.
+Describe the change and relevant validation in your pull request. Do not commit credentials, downloaded video content, dependencies, build output, or local progress data. Respect the license and attribution of external teaching material.

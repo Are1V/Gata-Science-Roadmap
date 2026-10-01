@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   ReactFlow,
   Background,
@@ -11,35 +11,22 @@ import {
 } from '@xyflow/react';
 import {
   ArrowRight,
-  ArrowUpRight,
   ChevronDown,
   LayoutList,
   Network,
   Search,
-  X,
-  BookOpen,
   Check,
+  Flag,
+  Play,
 } from 'lucide-react';
-import { phases, specializations, deepGuides, type Phase } from '../data/roadmap';
+import { phases, specializations, type Phase } from '../data/roadmap';
+import { categories, categoryForPhase, openTopic } from '../data/learning';
+import { stages, projectMilestones, featuredTopics } from '../data/map';
+import projects from '../content/projects/projects.json';
 import { useProgress } from '../hooks/useProgress';
 import { CompleteButton } from './Progress';
 import { url } from '../utils/urls';
 type PhaseData = { phase: Phase; completed: number; expand: () => void; expanded: boolean };
-const stages = [
-  { name: 'Start here', range: [0, 3] },
-  { name: 'Math & statistics', range: [4, 7] },
-  { name: 'Work with data', range: [8, 11] },
-  {
-    name: 'Machine learning',
-    range: [12, 17],
-  },
-  { name: 'Go deeper', range: [18, 23] },
-  {
-    name: 'Applied fields',
-    range: [24, 29],
-  },
-  { name: 'Ship responsibly', range: [30, 34] },
-] as const;
 function PhaseNode({ data }: { data: PhaseData }) {
   return (
     <div className={`flow-phase ${data.completed === data.phase.topics.length ? 'done' : ''}`}>
@@ -47,7 +34,11 @@ function PhaseNode({ data }: { data: PhaseData }) {
       <Handle type="source" position={Position.Left} id="left" />
       <Handle type="source" position={Position.Right} id="right" />
       <div className="flow-phase-top">
-        <span>{String(data.phase.number).padStart(2, '0')}</span>
+        <span>
+          {data.phase.number < 4 && data.phase.number !== 1
+            ? 'Foundations'
+            : categoryForPhase(data.phase.number)}
+        </span>
         <span>
           {data.completed}/{data.phase.topics.length}
         </span>
@@ -74,38 +65,40 @@ function PhaseNode({ data }: { data: PhaseData }) {
     </div>
   );
 }
-function PreviewNode({ data }: NodeProps) {
+function TopicNode({ data }: NodeProps) {
   return (
     <div className={`flow-topic ${data.done ? 'done' : ''} ${String(data.kind)}`}>
       <Handle type="target" position={data.side === 'left' ? Position.Right : Position.Left} />
+      {data.kind === 'project' && <Flag size={13} />}
       <span>{String(data.title)}</span>
       {Boolean(data.done) && <Check size={14} />}
     </div>
   );
 }
-const nodeTypes = { phase: PhaseNode, preview: PreviewNode };
+const nodeTypes = { phase: PhaseNode, preview: TopicNode };
 export default function Roadmap() {
   const { completed } = useProgress();
+  const [ready, setReady] = useState(false);
   const [level, setLevel] = useState('all'),
+    [category, setCategory] = useState('all'),
     [path, setPath] = useState('all'),
     [query, setQuery] = useState(''),
     [view, setView] = useState('map'),
     [stage, setStage] = useState(0),
-    [expanded, setExpanded] = useState<number[]>([]),
-    [selected, setSelected] = useState<{ phase: Phase; topicId?: string } | null>(null);
-  const dialog = useRef<HTMLDialogElement>(null);
+    [expanded, setExpanded] = useState<number | null>(null);
   useEffect(() => {
-    const p = new URLSearchParams(location.search).get('path');
+    setReady(true);
+    const params = new URLSearchParams(location.search);
+    const p = params.get('path');
     if (p && specializations.some((s) => s.id === p)) setPath(p);
-    if (window.innerWidth < 760) setView('list');
+    const c = params.get('category');
+    if (c && categories.some((x) => x === c)) setCategory(c);
+    if (innerWidth < 760) setView('list');
   }, []);
-  useEffect(() => {
-    if (selected) dialog.current?.showModal();
-    else dialog.current?.close();
-  }, [selected]);
   const filtered = phases.filter(
     (p) =>
       (level === 'all' || p.level === level) &&
+      (category === 'all' || categoryForPhase(p.number) === category) &&
       (path === 'all' ||
         p.number < 4 ||
         specializations.find((s) => s.id === path)?.phases.includes(p.number)) &&
@@ -114,122 +107,173 @@ export default function Roadmap() {
           .toLowerCase()
           .includes(query.toLowerCase())),
   );
-  const stagePhases = filtered.filter(
-    (p) => p.number >= stages[stage].range[0] && p.number <= stages[stage].range[1],
-  );
-  useEffect(() => {
-    if (!filtered.length || stagePhases.length) return;
-    const first = stages.findIndex((s) =>
-      filtered.some((p) => p.number >= s.range[0] && p.number <= s.range[1]),
+  const activeStage = filtered.some((p) => stages[stage].phases.includes(p.number))
+    ? stage
+    : Math.max(
+        0,
+        stages.findIndex((s) => filtered.some((p) => s.phases.includes(p.number))),
+      );
+  const stagePhases = stages[activeStage].phases
+    .map((n) => filtered.find((p) => p.number === n))
+    .filter((p): p is Phase => Boolean(p));
+  const toggle = (n: number) => setExpanded((old) => (old === n ? null : n));
+  const matchingTopics = (p: Phase) =>
+    p.topics.filter(
+      (t) =>
+        !query ||
+        p.title.toLowerCase().includes(query.toLowerCase()) ||
+        t.title.toLowerCase().includes(query.toLowerCase()),
     );
-    if (first >= 0) setStage(first);
-  }, [level, path, query]);
-  const toggle = (number: number) => setExpanded((old) => (old.includes(number) ? [] : [number]));
   const { nodes, edges } = useMemo(() => {
-    const nodes: Node[] = [];
-    const edges: Edge[] = [];
+    const nodes: Node[] = [],
+      edges: Edge[] = [];
     stagePhases.forEach((p, i) => {
-      const isExpanded = expanded.includes(p.number);
       const side = i % 2 === 0 ? 'right' : 'left';
       nodes.push({
         id: p.id,
         type: 'phase',
-        position: { x: 375, y: 32 + i * 190 },
+        position: { x: 375, y: 32 + i * 215 },
         data: {
           phase: p,
           completed: p.topics.filter((t) => completed.includes(t.id)).length,
           expand: () => toggle(p.number),
-          expanded: isExpanded,
+          expanded: expanded === p.number,
         },
       });
-      p.topics
-        .filter((t) => t.kind === 'core')
-        .slice(0, 3)
-        .forEach((t, j) => {
-          nodes.push({
-            id: t.id,
-            type: 'preview',
-            position: { x: side === 'right' ? 720 : 30, y: 24 + i * 190 + j * 47 },
-            data: { title: t.title, kind: t.kind, done: completed.includes(t.id), side },
-          });
-          edges.push({
-            id: `${p.id}-${t.id}`,
-            source: p.id,
-            sourceHandle: side,
-            target: t.id,
-            type: 'smoothstep',
-            style: { stroke: 'var(--accent)', strokeWidth: 1.5 },
-          });
+      const featured = featuredTopics[p.number]
+        ?.map((id) => p.topics.find((t) => t.id === id))
+        .filter(Boolean);
+      const preview = query
+        ? matchingTopics(p)
+        : featured?.length
+          ? featured
+          : p.topics.filter((t) => t.kind === 'core');
+      preview.slice(0, 3).forEach((t, j) => {
+        if (!t) return;
+        nodes.push({
+          id: t.id,
+          type: 'preview',
+          position: { x: side === 'right' ? 720 : 30, y: 24 + i * 215 + j * 49 },
+          data: { title: t.title, kind: t.kind, done: completed.includes(t.id), side },
         });
+        edges.push({
+          id: `${p.id}-${t.id}`,
+          source: p.id,
+          sourceHandle: side,
+          target: t.id,
+          type: 'smoothstep',
+          style: { stroke: 'var(--accent)', strokeWidth: 1.25 },
+        });
+      });
+      const project = projects.find((x) => x.id === projectMilestones[p.number]);
+      if (project && !query) {
+        const other = side === 'right' ? 'left' : 'right';
+        nodes.push({
+          id: `project-${project.id}`,
+          type: 'preview',
+          position: { x: other === 'right' ? 720 : 30, y: 65 + i * 215 },
+          data: {
+            title: project.title,
+            kind: 'project',
+            side: other,
+            done: completed.includes(`project-${project.id}`),
+          },
+        });
+        edges.push({
+          id: `${p.id}-project`,
+          source: p.id,
+          sourceHandle: other,
+          target: `project-${project.id}`,
+          type: 'smoothstep',
+          style: { stroke: 'var(--muted)', strokeDasharray: '5 4' },
+        });
+      }
       p.prerequisites.forEach((n) => {
-        const pre = phases[n];
         if (stagePhases.some((f) => f.number === n))
           edges.push({
-            id: `${pre.id}-${p.id}`,
-            source: pre.id,
+            id: `${phases[n].id}-${p.id}`,
+            source: phases[n].id,
             target: p.id,
             type: 'smoothstep',
-            style: { stroke: 'var(--accent)', strokeWidth: 2 },
+            style: { stroke: 'var(--accent)', strokeWidth: 1.5 },
           });
       });
     });
     return { nodes, edges };
-  }, [stagePhases.map((p) => p.id).join(','), expanded.join(','), completed.join(',')]);
-  const nextPhase =
-    stagePhases.find(
-      (p) =>
-        p.topics.some((t) => !completed.includes(t.id)) &&
-        p.prerequisites.every((n) => phases[n].topics.every((t) => completed.includes(t.id))),
-    ) || stagePhases.find((p) => p.topics.some((t) => !completed.includes(t.id)));
-  const nextTopic = nextPhase?.topics.find((t) => !completed.includes(t.id));
-  const selectedTopic = selected?.phase.topics.find((t) => t.id === selected.topicId);
-  const guide = selectedTopic ? deepGuides[selectedTopic.id] : undefined;
+  }, [stagePhases.map((p) => p.id).join(','), completed.join(','), expanded, query]);
+  const nextTopic = stagePhases
+    .flatMap((p) => p.topics)
+    .find((t) => t.kind === 'core' && !completed.includes(t.id));
+  const renderTopics = (p: Phase) => (
+    <div className="stage-topic-grid">
+      {matchingTopics(p).map((t) => (
+        <div key={t.id}>
+          <button onClick={() => openTopic(t.id)}>
+            <span className={`kind-dot ${t.kind}`} />
+            {t.title}
+            <Play size={12} />
+          </button>
+          <CompleteButton id={t.id} />
+        </div>
+      ))}
+    </div>
+  );
   return (
     <>
       <div className="roadmap-start">
-        {nextPhase && nextTopic && (
-          <a href={url(`learn/${nextPhase.id}/#${nextTopic.id}`)}>
-            Next topic <ArrowRight size={14} /> {nextTopic.title}
-          </a>
+        {nextTopic && (
+          <button className="text-button" onClick={() => openTopic(nextTopic.id)}>
+            Next topic <ArrowRight size={14} />
+            {nextTopic.title}
+          </button>
         )}
-        <span>Click a concept to learn it. Check it off when you’re ready.</span>
+        <span>Click a topic. Watch a lesson. Try it.</span>
       </div>
       <nav className="stage-nav" aria-label="Roadmap sections">
         {stages
           .map((s, i) => ({ ...s, index: i }))
-          .filter(
-            (s) =>
-              (level === 'all' && path === 'all' && !query) ||
-              filtered.some((p) => p.number >= s.range[0] && p.number <= s.range[1]),
-          )
+          .filter((s) => filtered.some((p) => s.phases.includes(p.number)))
           .map((s) => (
             <button
               key={s.name}
-              className={stage === s.index ? 'selected' : ''}
-              aria-current={stage === s.index ? 'step' : undefined}
-              onClick={() => setStage(s.index)}
+              className={activeStage === s.index ? 'selected' : ''}
+              aria-current={activeStage === s.index ? 'step' : undefined}
+              onClick={() => {
+                setStage(s.index);
+                setExpanded(null);
+              }}
             >
               <span>{String(s.index + 1).padStart(2, '0')}</span>
               {s.name}
             </button>
           ))}
       </nav>
-      <div className="stage-intro">
-        <strong>{stages[stage].name}</strong>
-        <span>{stagePhases.length} chapters</span>
-      </div>
       <div className="roadmap-toolbar">
         <div className="filter-input">
           <Search size={16} />
           <input
+            disabled={!ready}
             aria-label="Filter roadmap"
-            placeholder="Find a topic..."
+            placeholder="Find a topic…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
         </div>
         <select
           className="filter-select"
+          disabled={!ready}
+          aria-label="Filter by category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option value="all">All subjects</option>
+          {categories.map((c) => (
+            <option key={c}>{c}</option>
+          ))}
+        </select>
+        <select
+          className="filter-select"
+          disabled={!ready}
           aria-label="Filter by level"
           value={level}
           onChange={(e) => setLevel(e.target.value)}
@@ -243,13 +287,14 @@ export default function Roadmap() {
         </select>
         <select
           className="filter-select"
+          disabled={!ready}
           aria-label="Filter by specialization"
           value={path}
           onChange={(e) => setPath(e.target.value)}
         >
-          <option value="all">All learning paths</option>
+          <option value="all">All paths</option>
           {specializations.map((s) => (
-            <option value={s.id} key={s.id}>
+            <option key={s.id} value={s.id}>
               {s.title}
             </option>
           ))}
@@ -260,70 +305,88 @@ export default function Roadmap() {
             onClick={() => setView('map')}
             aria-pressed={view === 'map'}
           >
-            <Network size={15} /> Map
+            <Network size={15} />
+            Map
           </button>
           <button
             className={view === 'list' ? 'selected' : ''}
             onClick={() => setView('list')}
             aria-pressed={view === 'list'}
           >
-            <LayoutList size={15} /> List
+            <LayoutList size={15} />
+            List
           </button>
+        </div>
+      </div>
+      <div className="stage-intro">
+        <strong>{stages[activeStage].name}</strong>
+        <div className="map-legend">
+          <span>
+            <i className="kind-dot core" />
+            Recommended
+          </span>
+          <span>
+            <i className="kind-dot optional" />
+            Optional
+          </span>
+          <span>
+            <Flag size={12} />
+            Project
+          </span>
+          <span>
+            <Check size={12} />
+            Complete
+          </span>
         </div>
       </div>
       {view === 'map' &&
         stagePhases
-          .filter((p) => expanded.includes(p.number))
+          .filter((p) => p.number === expanded)
           .map((p) => (
             <section className="stage-topics" key={p.id}>
               <div className="stage-topics-heading">
-                <div>
-                  <span>CHAPTER {String(p.number).padStart(2, '0')}</span>
-                  <h3>{p.title}: topics</h3>
-                </div>
-                <a className="text-link" href={url(`learn/${p.id}/`)}>
-                  Read chapter <ArrowRight size={14} />
-                </a>
+                <h3>{p.title}: topics</h3>
+                <button className="text-button" onClick={() => setExpanded(null)}>
+                  Close
+                </button>
               </div>
-              <p>{p.description}</p>
-              <div className="stage-topic-grid">
-                {p.topics.map((t) => (
-                  <div key={t.id}>
-                    <button onClick={() => setSelected({ phase: p, topicId: t.id })}>
-                      <span className={`kind-dot ${t.kind}`} />
-                      {t.title}
-                      {deepGuides[t.id] && <BookOpen size={13} />}
-                    </button>
-                    <CompleteButton id={t.id} />
-                  </div>
-                ))}
-              </div>
+              {renderTopics(p)}
             </section>
           ))}
-      {stagePhases.length === 0 ? (
+      {!stagePhases.length ? (
         <div className="empty-state">
-          No phases match these filters. Try another concept or learning path.
+          No topics match these filters.
           <br />
           <button
             className="text-button"
             onClick={() => {
               setQuery('');
               setLevel('all');
+              setCategory('all');
               setPath('all');
             }}
           >
             Clear filters
           </button>
         </div>
+      ) : query ? (
+        <div className="search-topic-matches">
+          {stagePhases.map((p) => (
+            <section key={p.id}>
+              <h3>{p.title}</h3>
+              {renderTopics(p)}
+            </section>
+          ))}
+        </div>
       ) : view === 'map' ? (
         <div
           className="roadmap-canvas"
-          style={{ height: Math.max(520, stagePhases.length * 190 + 50) }}
+          style={{ height: Math.max(520, stagePhases.length * 215 + 35) }}
           role="region"
           aria-label="Interactive data science roadmap"
         >
           <ReactFlow
-            key={`${stage}-${level}-${path}-${query}`}
+            key={`${activeStage}-${level}-${path}-${category}`}
             nodes={nodes}
             edges={edges}
             nodeTypes={nodeTypes}
@@ -334,11 +397,12 @@ export default function Roadmap() {
             nodesDraggable={false}
             nodesConnectable={false}
             onNodeClick={(_e, node) => {
-              const p = phases.find((p) => p.id === node.id);
-              if (p) setSelected({ phase: p });
+              if (node.id.startsWith('project-'))
+                location.href = url(`projects/#${node.id.slice(8)}`);
               else {
-                const phase = phases.find((p) => p.topics.some((t) => t.id === node.id));
-                if (phase) setSelected({ phase, topicId: node.id });
+                const p = phases.find((p) => p.id === node.id);
+                if (p) toggle(p.number);
+                else openTopic(node.id);
               }
             }}
           >
@@ -352,7 +416,7 @@ export default function Roadmap() {
             <section key={p.id} className="roadmap-list-phase">
               <button
                 className="phase-list-heading"
-                aria-expanded={expanded.includes(p.number)}
+                aria-expanded={expanded === p.number}
                 onClick={() => toggle(p.number)}
               >
                 <span className="phase-number">{String(p.number).padStart(2, '0')}</span>
@@ -363,111 +427,24 @@ export default function Roadmap() {
                     complete · {p.level}
                   </span>
                 </div>
-                <ChevronDown className={expanded.includes(p.number) ? 'rotated' : ''} size={18} />
+                <ChevronDown size={18} />
               </button>
-              {expanded.includes(p.number) && (
+              {expanded === p.number && (
                 <div className="list-topics">
-                  <p>{p.description}</p>
-                  <a className="text-link" href={url(`learn/${p.id}/`)}>
-                    Read the chapter <ArrowRight size={14} />
-                  </a>
-                  <div className="topic-checklist">
-                    {p.topics
-                      .filter(
-                        (t) =>
-                          !query ||
-                          p.title.toLowerCase().includes(query.toLowerCase()) ||
-                          t.title.toLowerCase().includes(query.toLowerCase()),
-                      )
-                      .map((t) => (
-                        <div key={t.id}>
-                          <button onClick={() => setSelected({ phase: p, topicId: t.id })}>
-                            <span className={`kind-dot ${t.kind}`} />
-                            {t.title}
-                            {deepGuides[t.id] && <BookOpen size={12} />}
-                          </button>
-                          <CompleteButton id={t.id} />
-                        </div>
-                      ))}
-                  </div>
+                  {renderTopics(p)}
+                  {projectMilestones[p.number] && (
+                    <a className="text-link" href={url(`projects/#${projectMilestones[p.number]}`)}>
+                      <Flag size={14} />
+                      Practice project
+                      <ArrowRight size={14} />
+                    </a>
+                  )}
                 </div>
               )}
             </section>
           ))}
         </div>
       )}
-      <dialog
-        aria-label="Topic details"
-        ref={dialog}
-        className="topic-dialog"
-        onCancel={() => setSelected(null)}
-        onClick={(e) => {
-          if (e.target === dialog.current) setSelected(null);
-        }}
-      >
-        {selected && (
-          <div className="topic-dialog-content">
-            <div className="section-heading">
-              <span className="eyebrow">
-                PHASE {String(selected.phase.number).padStart(2, '0')} · {selected.phase.level}
-              </span>
-              <button
-                className="icon-button"
-                aria-label="Close topic"
-                onClick={() => setSelected(null)}
-              >
-                <X size={21} />
-              </button>
-            </div>
-            <h2>{selectedTopic?.title || selected.phase.title}</h2>
-            <p className="topic-dialog-subtitle">
-              {selectedTopic ? selected.phase.title : selected.phase.subtitle}
-            </p>
-            {!selectedTopic && <p>{selected.phase.intuition}</p>}
-            {selected.phase.prerequisites.length > 0 && <h3>Learn first</h3>}
-            {selected.phase.prerequisites.length > 0 && (
-              <div className="dependency-links">
-                {selected.phase.prerequisites.map((n) => (
-                  <a key={n} href={url(`learn/${phases[n].id}/`)}>
-                    {phases[n].title}
-                    <ArrowUpRight size={12} />
-                  </a>
-                ))}
-              </div>
-            )}
-            <div className="inline-actions">
-              {guide ? (
-                <a className="button" href={url(`topics/${guide}/?concept=${selectedTopic!.id}`)}>
-                  Open guide <ArrowRight size={14} />
-                </a>
-              ) : (
-                <a
-                  className="button"
-                  href={url(
-                    `learn/${selected.phase.id}/${selectedTopic ? '#' + selectedTopic.id : ''}`,
-                  )}
-                >
-                  Open chapter <ArrowRight size={14} />
-                </a>
-              )}
-              {selectedTopic ? (
-                <CompleteButton id={selectedTopic.id} />
-              ) : (
-                <button
-                  className="button secondary"
-                  onClick={() => {
-                    toggle(selected.phase.number);
-                    setSelected(null);
-                  }}
-                >
-                  {expanded.includes(selected.phase.number) ? 'Collapse' : 'Expand'}{' '}
-                  {selected.phase.topics.length} topics
-                </button>
-              )}
-            </div>
-          </div>
-        )}
-      </dialog>
     </>
   );
 }

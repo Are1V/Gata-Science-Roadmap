@@ -8,7 +8,9 @@
     "intuition": "Write a decision, a measurable outcome, and a baseline before choosing a tool.",
     "mistake": "Predictive accuracy alone does not establish business value.",
     "exercise": "Define a question about bicycle demand. Identify who acts on the answer, the unit of observation, and when a prediction is needed.",
-    "resourceIds": ["python"],
+    "resourceIds": [
+      "python"
+    ],
     "level": "beginner",
     "prerequisites": [],
     "topics": [
@@ -63,9 +65,13 @@
     "intuition": "A list is an ordered collection; a dictionary maps keys to values. Functions turn repeated steps into explicit contracts.",
     "mistake": "Mutating a list passed into a function can unexpectedly change the caller\u2019s data.",
     "exercise": "Read a CSV with the standard library, reject invalid rows, and write three tests for a reusable summary function.",
-    "resourceIds": ["python"],
+    "resourceIds": [
+      "python"
+    ],
     "level": "beginner",
-    "prerequisites": [0],
+    "prerequisites": [
+      0
+    ],
     "topics": [
       {
         "id": "1-variables",
@@ -221,6 +227,16 @@
         "id": "1-conda-venv",
         "title": "Conda/venv",
         "kind": "recommended"
+      },
+      {
+        "id": "1-strings",
+        "title": "Strings",
+        "kind": "core"
+      },
+      {
+        "id": "1-numbers",
+        "title": "Numbers",
+        "kind": "core"
       }
     ]
   },
@@ -233,9 +249,13 @@
     "intuition": "Choose a structure by the operations you need: a queue for ordered work, a set for membership, and a graph for relationships.",
     "mistake": "Big-O describes growth, not the wall-clock time of a specific implementation.",
     "exercise": "Compare list and set membership on increasing input sizes; plot time against n and explain the memory tradeoff.",
-    "resourceIds": ["cs50"],
+    "resourceIds": [
+      "cs50"
+    ],
     "level": "beginner",
-    "prerequisites": [1],
+    "prerequisites": [
+      1
+    ],
     "topics": [
       {
         "id": "2-algorithms",
@@ -343,9 +363,13 @@
     "intuition": "A small commit should represent one coherent change that another person can review or revert.",
     "mistake": "A notebook with outputs but no execution order or environment file is not a reproducible result.",
     "exercise": "Create a repository, make a feature branch, add a tested data-loading function, and review your own diff before merging.",
-    "resourceIds": ["git"],
+    "resourceIds": [
+      "git"
+    ],
     "level": "beginner",
-    "prerequisites": [1],
+    "prerequisites": [
+      1
+    ],
     "topics": [
       {
         "id": "3-git",
@@ -423,9 +447,14 @@
     "intuition": "The dot product adds coordinate-wise products. A matrix applies many dot products at once, which is exactly what a dense neural-network layer does.",
     "mistake": "Matrix multiplication is order-sensitive. Check dimensions before applying a formula and avoid explicitly computing inverses for numerical solves.",
     "exercise": "Use a 3 by 2 feature matrix to calculate predictions, compare cosine and Euclidean distance, and reconstruct a matrix from its SVD.",
-    "resourceIds": ["linear-algebra", "numpy"],
+    "resourceIds": [
+      "linear-algebra",
+      "numpy"
+    ],
     "level": "beginner",
-    "prerequisites": [0],
+    "prerequisites": [
+      0
+    ],
     "topics": [
       {
         "id": "4-arithmetic",
@@ -718,9 +747,14 @@
     "intuition": "Think of the loss as terrain. The negative gradient points downhill locally, but the step size determines whether you descend or overshoot.",
     "mistake": "A small training loss is not proof of generalization, and a fixed learning rate need not decrease loss at every step.",
     "exercise": "Differentiate a quadratic by hand, implement gradient descent, and compare learning rates of 0.01, 0.1, and 1.1.",
-    "resourceIds": ["calculus", "numpy"],
+    "resourceIds": [
+      "calculus",
+      "numpy"
+    ],
     "level": "beginner",
-    "prerequisites": [4],
+    "prerequisites": [
+      4
+    ],
     "topics": [
       {
         "id": "5-limits",
@@ -801,6 +835,21 @@
         "id": "5-mini-batch-gradient-descent",
         "title": "Mini-batch gradient descent",
         "kind": "core"
+      },
+      {
+        "id": "5-objective-functions",
+        "title": "Objective functions",
+        "kind": "core"
+      },
+      {
+        "id": "5-loss-functions",
+        "title": "Loss functions",
+        "kind": "core"
+      },
+      {
+        "id": "5-learning-rate",
+        "title": "Learning rate",
+        "kind": "core"
       }
     ]
   },
@@ -813,9 +862,13 @@
     "intuition": "A density is not a probability at one point. For a continuous variable, integrate the density over an interval to get probability.",
     "mistake": "P(A given B) and P(B given A) are generally different. Rare events make this distinction especially important.",
     "exercise": "Simulate a diagnostic test with a 1% base rate, 90% sensitivity, and 95% specificity. Estimate the probability of the condition after a positive result.",
-    "resourceIds": ["probability"],
+    "resourceIds": [
+      "probability"
+    ],
     "level": "beginner",
-    "prerequisites": [4],
+    "prerequisites": [
+      4
+    ],
     "topics": [
       {
         "id": "6-experiments",
@@ -958,9 +1011,13 @@
     "intuition": "A confidence interval is produced by a procedure with long-run coverage. It is not a probability statement about a fixed parameter after seeing the data.",
     "mistake": "A p-value is not the probability that the null hypothesis is true. Practical importance also depends on effect size and uncertainty.",
     "exercise": "Bootstrap the difference in mean order value between two samples. Plot the bootstrap distribution and report its limitations.",
-    "resourceIds": ["statistics"],
+    "resourceIds": [
+      "statistics"
+    ],
     "level": "beginner",
-    "prerequisites": [6],
+    "prerequisites": [
+      6
+    ],
     "topics": [
       {
         "id": "7-mean",
@@ -1168,9 +1225,14 @@
     "intuition": "Broadcasting aligns trailing dimensions; a Pandas join aligns keys. Both are powerful because alignment replaces manual loops.",
     "mistake": "A many-to-many merge can multiply rows. Validate key uniqueness and expected output size before trusting an aggregate.",
     "exercise": "Load sales and customers, validate the merge cardinality, compute monthly revenue by segment, and compare vectorized versus row-wise operations.",
-    "resourceIds": ["pandas", "numpy"],
+    "resourceIds": [
+      "pandas",
+      "numpy"
+    ],
     "level": "beginner",
-    "prerequisites": [1],
+    "prerequisites": [
+      1
+    ],
     "topics": [
       {
         "id": "8-arrays",
@@ -1316,6 +1378,21 @@
         "id": "8-pandas",
         "title": "Pandas",
         "kind": "core"
+      },
+      {
+        "id": "8-csv-loading",
+        "title": "CSV loading",
+        "kind": "core"
+      },
+      {
+        "id": "8-excel-loading",
+        "title": "Excel loading",
+        "kind": "core"
+      },
+      {
+        "id": "8-pandas-indexing",
+        "title": "Pandas indexing",
+        "kind": "core"
       }
     ]
   },
@@ -1328,9 +1405,13 @@
     "intuition": "GROUP BY changes the unit of analysis. A window preserves individual records while adding rankings or running totals.",
     "mistake": "Filtering a right-table column in WHERE can unintentionally turn a LEFT JOIN into an INNER JOIN.",
     "exercise": "Find each customer\u2019s second order, monthly revenue growth with LAG, and the three highest-revenue products per category using a CTE.",
-    "resourceIds": ["sql"],
+    "resourceIds": [
+      "sql"
+    ],
     "level": "beginner",
-    "prerequisites": [0],
+    "prerequisites": [
+      0
+    ],
     "topics": [
       {
         "id": "9-select",
@@ -1441,6 +1522,11 @@
         "id": "9-date-functions",
         "title": "Date functions",
         "kind": "core"
+      },
+      {
+        "id": "9-distinct",
+        "title": "DISTINCT",
+        "kind": "core"
       }
     ]
   },
@@ -1453,9 +1539,14 @@
     "intuition": "Write a data contract: expected types, ranges, unique keys, and missing-value policy. Check it at every boundary.",
     "mistake": "Fit imputers and scalers on training data only. Never remove valid rare outcomes merely to improve a score.",
     "exercise": "Audit a dataset, log each cleaning decision, compare complete-case and imputed analyses, and quantify which groups lose records.",
-    "resourceIds": ["pandas"],
+    "resourceIds": [
+      "pandas"
+    ],
     "level": "beginner",
-    "prerequisites": [8, 9],
+    "prerequisites": [
+      8,
+      9
+    ],
     "topics": [
       {
         "id": "10-missing-values",
@@ -1538,9 +1629,15 @@
     "intuition": "A plot is a diagnostic question: a histogram asks about shape; a scatter plot asks about a relationship; small multiples ask whether it holds across groups.",
     "mistake": "A correlation can reflect a confounder or a shared time trend. Avoid letting test-set exploration guide model decisions.",
     "exercise": "Create an EDA report with five question-led plots, a missingness table, segment comparisons, and three explicitly labeled hypotheses.",
-    "resourceIds": ["matplotlib"],
+    "resourceIds": [
+      "matplotlib"
+    ],
     "level": "beginner",
-    "prerequisites": [7, 8, 10],
+    "prerequisites": [
+      7,
+      8,
+      10
+    ],
     "topics": [
       {
         "id": "11-univariate-analysis",
@@ -1618,9 +1715,16 @@
     "intuition": "The goal is performance on future observations from the intended population, not memorization of the training set.",
     "mistake": "Repeatedly choosing models on the test set makes it part of training. Preserve a final untouched evaluation set.",
     "exercise": "Define a prediction time, split strategy, dummy baseline, primary metric, and error-analysis plan before fitting a real model.",
-    "resourceIds": ["sklearn"],
+    "resourceIds": [
+      "sklearn"
+    ],
     "level": "beginner",
-    "prerequisites": [7, 8, 10, 11],
+    "prerequisites": [
+      7,
+      8,
+      10,
+      11
+    ],
     "topics": [
       {
         "id": "12-supervised-learning",
@@ -1738,9 +1842,15 @@
     "intuition": "Each coefficient describes a conditional change in the fitted prediction. It is not automatically a causal effect.",
     "mistake": "Collinear features destabilize coefficients. Prefer numerical least-squares solvers to directly inverting X transpose X.",
     "exercise": "Fit ordinary least squares, Ridge, and Lasso on the same split; compare validation error, coefficient stability, and residual patterns.",
-    "resourceIds": ["sklearn-linear"],
+    "resourceIds": [
+      "sklearn-linear"
+    ],
     "level": "intermediate",
-    "prerequisites": [4, 5, 12],
+    "prerequisites": [
+      4,
+      5,
+      12
+    ],
     "topics": [
       {
         "id": "13-equation-of-a-line",
@@ -1883,9 +1993,15 @@
     "intuition": "A probability estimate and a decision threshold are separate objects. The threshold should reflect the cost of mistakes.",
     "mistake": "An uncalibrated score is not a reliable probability. A 0.5 threshold is rarely an automatic operational choice.",
     "exercise": "Compare logistic regression, KNN, and an SVM with scaling inside cross-validation. Explain a threshold using false-positive and false-negative costs.",
-    "resourceIds": ["sklearn"],
+    "resourceIds": [
+      "sklearn"
+    ],
     "level": "intermediate",
-    "prerequisites": [4, 6, 12],
+    "prerequisites": [
+      4,
+      6,
+      12
+    ],
     "topics": [
       {
         "id": "14-odds",
@@ -2033,9 +2149,14 @@
     "intuition": "In gradient boosting, each added tree approximates a descent direction in prediction space, using negative loss gradients as targets.",
     "mistake": "Deep trees can memorize tiny subgroups. Tune depth and leaf size, and use early stopping without leaking test information.",
     "exercise": "Train a tree, a random forest, and a gradient-boosted ensemble. Compare validation curves, fit time, and performance across important subgroups.",
-    "resourceIds": ["sklearn-ensemble"],
+    "resourceIds": [
+      "sklearn-ensemble"
+    ],
     "level": "intermediate",
-    "prerequisites": [7, 12],
+    "prerequisites": [
+      7,
+      12
+    ],
     "topics": [
       {
         "id": "15-decision-trees",
@@ -2123,9 +2244,16 @@
     "intuition": "The confusion matrix is a ledger of decisions. Changing a threshold moves observations between its four cells.",
     "mistake": "Accuracy hides failures on rare positives; ROC-AUC may obscure poor precision. MAPE is unstable at zero and near-zero targets.",
     "exercise": "Compute precision, recall, F1, PR-AUC, and calibration for an imbalanced classifier. Choose a threshold under a fixed alert budget.",
-    "resourceIds": ["sklearn-metrics"],
+    "resourceIds": [
+      "sklearn-metrics"
+    ],
     "level": "intermediate",
-    "prerequisites": [12, 13, 14, 15],
+    "prerequisites": [
+      12,
+      13,
+      14,
+      15
+    ],
     "topics": [
       {
         "id": "16-confusion-matrix",
@@ -2223,9 +2351,14 @@
     "intuition": "Ask what information will exist at prediction time and which observations share a source. Build the split around those boundaries.",
     "mistake": "Duplicates, target-derived fields, future aggregates, and preprocessing fit before the split all leak information.",
     "exercise": "Evaluate the same model with random, grouped, and temporal splits. Explain which estimate matches the intended use and why the others are optimistic.",
-    "resourceIds": ["sklearn-validation"],
+    "resourceIds": [
+      "sklearn-validation"
+    ],
     "level": "intermediate",
-    "prerequisites": [12, 16],
+    "prerequisites": [
+      12,
+      16
+    ],
     "topics": [
       {
         "id": "17-holdout-validation",
@@ -2278,9 +2411,15 @@
     "intuition": "A log transform changes multiplicative differences into additive differences. An interaction allows one feature\u2019s effect to depend on another.",
     "mistake": "Target encoding must be computed out of fold. Do not assign arbitrary numeric distances to nominal categories without justification.",
     "exercise": "Build a preprocessing pipeline for numeric, categorical, and timestamp fields. Add one justified interaction and test its contribution.",
-    "resourceIds": ["sklearn-preprocessing"],
+    "resourceIds": [
+      "sklearn-preprocessing"
+    ],
     "level": "intermediate",
-    "prerequisites": [8, 10, 12],
+    "prerequisites": [
+      8,
+      10,
+      12
+    ],
     "topics": [
       {
         "id": "18-numerical-features",
@@ -2373,9 +2512,13 @@
     "intuition": "A feature can be weak alone and useful in interaction. Redundant features can share or dilute measured importance.",
     "mistake": "Selecting variables using all labels before cross-validation leaks the validation outcome into training.",
     "exercise": "Compare mutual-information filtering, recursive feature elimination, and Lasso. Measure stability across folds, not only the best score.",
-    "resourceIds": ["sklearn-selection"],
+    "resourceIds": [
+      "sklearn-selection"
+    ],
     "level": "intermediate",
-    "prerequisites": [18],
+    "prerequisites": [
+      18
+    ],
     "topics": [
       {
         "id": "19-filter-methods",
@@ -2416,6 +2559,11 @@
         "id": "19-tree-based-importance",
         "title": "Tree-based importance",
         "kind": "core"
+      },
+      {
+        "id": "19-permutation-importance",
+        "title": "Permutation importance",
+        "kind": "core"
       }
     ]
   },
@@ -2428,9 +2576,14 @@
     "intuition": "Use logarithmic scales for parameters spanning orders of magnitude, and spend trials where outcomes are sensitive.",
     "mistake": "A large search can overfit the validation process. Use nested validation for an unbiased estimate of the entire selection procedure.",
     "exercise": "Run equal-budget grid and random searches, then an Optuna study. Save every trial and compare score against compute time.",
-    "resourceIds": ["optuna"],
+    "resourceIds": [
+      "optuna"
+    ],
     "level": "intermediate",
-    "prerequisites": [17, 19],
+    "prerequisites": [
+      17,
+      19
+    ],
     "topics": [
       {
         "id": "20-grid-search",
@@ -2478,9 +2631,15 @@
     "intuition": "Neither clusters nor a two-dimensional embedding are ground truth. They depend on scaling, distance, parameters, and the sample.",
     "mistake": "t-SNE and UMAP plots can distort global distances. Do not interpret empty space or cluster sizes as direct population evidence.",
     "exercise": "Standardize a feature matrix, compare K-Means and DBSCAN, and explain PCA components using loadings and explained variance.",
-    "resourceIds": ["sklearn-decomposition"],
+    "resourceIds": [
+      "sklearn-decomposition"
+    ],
     "level": "intermediate",
-    "prerequisites": [4, 7, 8],
+    "prerequisites": [
+      4,
+      7,
+      8
+    ],
     "topics": [
       {
         "id": "21-k-means",
@@ -2553,9 +2712,15 @@
     "intuition": "Compare against a seasonal naive forecast before complex models. Lagged features must be shifted so they contain only past information.",
     "mistake": "Centered rolling windows and full-data normalization leak the future. Evaluate using rolling forecast origins and the actual deployment horizon.",
     "exercise": "Forecast weekly demand with seasonal naive, exponential smoothing, and lag-feature regression. Report error by horizon and backtest period.",
-    "resourceIds": ["forecasting"],
+    "resourceIds": [
+      "forecasting"
+    ],
     "level": "intermediate",
-    "prerequisites": [7, 8, 17],
+    "prerequisites": [
+      7,
+      8,
+      17
+    ],
     "topics": [
       {
         "id": "22-time-series-structure",
@@ -2663,9 +2828,15 @@
     "intuition": "Without nonlinearities, multiple dense layers collapse into a single linear mapping. Representation learning comes from nonlinear composition.",
     "mistake": "Forgetting to zero gradients accumulates them across steps. Evaluation mode also matters for dropout and batch normalization.",
     "exercise": "Implement a two-layer classifier in NumPy and PyTorch, check a gradient numerically, and compare learning curves with and without dropout.",
-    "resourceIds": ["pytorch"],
+    "resourceIds": [
+      "pytorch"
+    ],
     "level": "advanced",
-    "prerequisites": [4, 5, 12],
+    "prerequisites": [
+      4,
+      5,
+      12
+    ],
     "topics": [
       {
         "id": "23-perceptron",
@@ -2811,6 +2982,11 @@
         "id": "23-batches",
         "title": "Batches",
         "kind": "advanced"
+      },
+      {
+        "id": "23-pytorch",
+        "title": "PyTorch",
+        "kind": "core"
       }
     ]
   },
@@ -2823,9 +2999,16 @@
     "intuition": "A transformer\u2019s attention weights depend on the current input. They are not a universal explanation of why a prediction was made.",
     "mistake": "Random splits can leak near-duplicate text, authors, or future documents. Tokenization and vocabulary fitting also belong inside training.",
     "exercise": "Build a TF-IDF sentiment baseline, compare it with pretrained embeddings, and inspect errors by negation, language, and document length.",
-    "resourceIds": ["huggingface"],
+    "resourceIds": [
+      "huggingface"
+    ],
     "level": "advanced",
-    "prerequisites": [1, 8, 14, 23],
+    "prerequisites": [
+      1,
+      8,
+      14,
+      23
+    ],
     "topics": [
       {
         "id": "24-text-preprocessing",
@@ -2913,9 +3096,14 @@
     "intuition": "Early filters can detect local edges; later representations combine patterns over larger receptive fields.",
     "mistake": "Augmentations must preserve the label. A horizontal flip may be harmless for an animal photo but wrong for a directional symbol.",
     "exercise": "Fine-tune a pretrained image classifier, split by source entity, and compare performance under changes in lighting and image quality.",
-    "resourceIds": ["pytorch-vision"],
+    "resourceIds": [
+      "pytorch-vision"
+    ],
     "level": "advanced",
-    "prerequisites": [8, 23],
+    "prerequisites": [
+      8,
+      23
+    ],
     "topics": [
       {
         "id": "25-images-as-tensors",
@@ -2973,9 +3161,16 @@
     "intuition": "An unobserved interaction is not necessarily a negative preference. Exposure affects what feedback can be observed.",
     "mistake": "Random interaction splits may leak future tastes. Evaluate ranking by time and handle cold-start users and items explicitly.",
     "exercise": "Build a popularity baseline and a matrix-factorization recommender. Compare Recall@K and coverage with a temporal holdout.",
-    "resourceIds": ["recsys"],
+    "resourceIds": [
+      "recsys"
+    ],
     "level": "advanced",
-    "prerequisites": [4, 9, 12, 21],
+    "prerequisites": [
+      4,
+      9,
+      12,
+      21
+    ],
     "topics": [
       {
         "id": "26-content-based-filtering",
@@ -3023,9 +3218,16 @@
     "intuition": "An explanation describes a model under assumptions about background data and feature dependence. It does not prove a causal mechanism.",
     "mistake": "Correlated features complicate attribution. PDP can evaluate implausible combinations, and local explanations can vary with the chosen reference.",
     "exercise": "Compare permutation importance, ICE, and SHAP on one model. Show a case where correlated features make rankings unstable.",
-    "resourceIds": ["shap"],
+    "resourceIds": [
+      "shap"
+    ],
     "level": "advanced",
-    "prerequisites": [13, 14, 15, 16],
+    "prerequisites": [
+      13,
+      14,
+      15,
+      16
+    ],
     "topics": [
       {
         "id": "27-feature-importance",
@@ -3056,6 +3258,11 @@
         "id": "27-lime",
         "title": "LIME",
         "kind": "advanced"
+      },
+      {
+        "id": "27-shapley-values",
+        "title": "Shapley values",
+        "kind": "core"
       }
     ]
   },
@@ -3068,9 +3275,16 @@
     "intuition": "Randomization makes treatment assignment independent of potential outcomes in expectation; adequate sample size controls uncertainty.",
     "mistake": "Peeking and stopping when a conventional p-value crosses a threshold inflates false positives. Account for clustering and multiple comparisons.",
     "exercise": "Design a checkout experiment. Estimate sample size, specify exclusions before launch, and report an effect with a confidence interval.",
-    "resourceIds": ["statistics"],
+    "resourceIds": [
+      "statistics"
+    ],
     "level": "advanced",
-    "prerequisites": [6, 7, 16, 17],
+    "prerequisites": [
+      6,
+      7,
+      16,
+      17
+    ],
     "topics": [
       {
         "id": "28-experiment-design",
@@ -3143,9 +3357,15 @@
     "intuition": "A DAG records causal assumptions, not just correlations. Adjustment should block confounding paths without opening collider paths.",
     "mistake": "Propensity scores do not fix unmeasured confounding. Difference-in-differences relies on a credible parallel-trends assumption.",
     "exercise": "Draw a DAG for a marketing intervention, identify confounders, and compare an observational estimate with a simulated randomized experiment.",
-    "resourceIds": ["causal"],
+    "resourceIds": [
+      "causal"
+    ],
     "level": "advanced",
-    "prerequisites": [6, 7, 28],
+    "prerequisites": [
+      6,
+      7,
+      28
+    ],
     "topics": [
       {
         "id": "29-correlation-vs-causation",
@@ -3193,9 +3413,14 @@
     "intuition": "A pipeline needs contracts, retries, idempotency, and observability. Re-running yesterday\u2019s partition should not duplicate yesterday\u2019s revenue.",
     "mistake": "A successful job can still produce incorrect data. Monitor freshness, volume, schema changes, and key constraints.",
     "exercise": "Create an incremental ingestion pipeline with a watermark, deduplication, validation, and a documented backfill procedure.",
-    "resourceIds": ["spark"],
+    "resourceIds": [
+      "spark"
+    ],
     "level": "advanced",
-    "prerequisites": [9, 10],
+    "prerequisites": [
+      9,
+      10
+    ],
     "topics": [
       {
         "id": "30-databases",
@@ -3268,9 +3493,15 @@
     "intuition": "A model artifact is only one part of a prediction system. Its environment, feature definitions, and versioned interface are equally important.",
     "mistake": "Loading untrusted pickle artifacts can execute code. Avoid logging sensitive inputs, and test failure paths as carefully as happy paths.",
     "exercise": "Package a trained pipeline behind a validated FastAPI endpoint. Add a Dockerfile, health check, latency measurement, and rollback instructions.",
-    "resourceIds": ["fastapi"],
+    "resourceIds": [
+      "fastapi"
+    ],
     "level": "advanced",
-    "prerequisites": [3, 17, 30],
+    "prerequisites": [
+      3,
+      17,
+      30
+    ],
     "topics": [
       {
         "id": "31-reproducible-projects",
@@ -3343,9 +3574,15 @@
     "intuition": "Data drift describes changing inputs; concept drift describes changing relationships between inputs and outcomes. Neither is identical to measured performance loss.",
     "mistake": "Automatically retraining after any drift alert can reinforce data errors. Gate changes with data checks and a meaningful evaluation set.",
     "exercise": "Track experiments, register a model, simulate a shifted dataset, and write a monitoring runbook with alert thresholds and an owner.",
-    "resourceIds": ["mlflow"],
+    "resourceIds": [
+      "mlflow"
+    ],
     "level": "advanced",
-    "prerequisites": [3, 17, 31],
+    "prerequisites": [
+      3,
+      17,
+      31
+    ],
     "topics": [
       {
         "id": "32-experiment-tracking",
@@ -3423,9 +3660,15 @@
     "intuition": "Fairness metrics express different values and can conflict. Choose them with affected stakeholders and document the resulting tradeoffs.",
     "mistake": "Removing a protected attribute does not eliminate proxies. Aggregate accuracy can hide severe failures for small groups.",
     "exercise": "Write a model card with intended use, excluded uses, data provenance, subgroup metrics, privacy controls, and a route to contest decisions.",
-    "resourceIds": ["model-cards"],
+    "resourceIds": [
+      "model-cards"
+    ],
     "level": "advanced",
-    "prerequisites": [7, 17, 31],
+    "prerequisites": [
+      7,
+      17,
+      31
+    ],
     "topics": [
       {
         "id": "33-bias",
@@ -3483,9 +3726,16 @@
     "intuition": "Depth is useful when it connects domain assumptions to measurable outcomes. The same technique may need different validation in health, finance, and consumer products.",
     "mistake": "Do not skip validation or ethics because a branch is technically advanced. Domain-specific costs and constraints change the whole workflow.",
     "exercise": "Choose one path, map your existing skills to its prerequisites, and scope a portfolio project with a baseline and a realistic evaluation plan.",
-    "resourceIds": ["sklearn"],
+    "resourceIds": [
+      "sklearn"
+    ],
     "level": "advanced",
-    "prerequisites": [12, 17, 31, 33],
+    "prerequisites": [
+      12,
+      17,
+      31,
+      33
+    ],
     "topics": [
       {
         "id": "34-machine-learning-scientist",
@@ -3536,6 +3786,150 @@
         "id": "34-analytics-data-scientist",
         "title": "Analytics Data Scientist",
         "kind": "advanced"
+      }
+    ]
+  },
+  {
+    "number": 35,
+    "id": "data-visualization",
+    "title": "Data visualization",
+    "subtitle": "Choose a chart. Tell the truth.",
+    "description": "Make clear, honest charts that answer a specific question.",
+    "intuition": "Choose a chart. Tell the truth.",
+    "mistake": "Choosing decoration over a readable comparison.",
+    "exercise": "Use the penguins dataset to compare a distribution, relationship, and group difference with three labeled charts.",
+    "resourceIds": [
+      "matplotlib"
+    ],
+    "level": "beginner",
+    "prerequisites": [
+      8,
+      11
+    ],
+    "topics": [
+      {
+        "id": "35-matplotlib",
+        "title": "Matplotlib",
+        "kind": "core"
+      },
+      {
+        "id": "35-plotly",
+        "title": "Plotly",
+        "kind": "core"
+      },
+      {
+        "id": "35-line-plots",
+        "title": "Line plots",
+        "kind": "core"
+      },
+      {
+        "id": "35-bar-charts",
+        "title": "Bar charts",
+        "kind": "core"
+      },
+      {
+        "id": "35-histograms",
+        "title": "Histograms",
+        "kind": "core"
+      },
+      {
+        "id": "35-box-plots",
+        "title": "Box plots",
+        "kind": "core"
+      },
+      {
+        "id": "35-scatter-plots",
+        "title": "Scatter plots",
+        "kind": "core"
+      },
+      {
+        "id": "35-heatmaps",
+        "title": "Heatmaps",
+        "kind": "core"
+      },
+      {
+        "id": "35-choosing-a-visualization",
+        "title": "Choosing a visualization",
+        "kind": "core"
+      },
+      {
+        "id": "35-misleading-visualizations",
+        "title": "Misleading visualizations",
+        "kind": "core"
+      },
+      {
+        "id": "35-storytelling-with-data",
+        "title": "Storytelling with data",
+        "kind": "core"
+      }
+    ]
+  },
+  {
+    "number": 36,
+    "id": "career-preparation",
+    "title": "Career preparation",
+    "subtitle": "Show your work.",
+    "description": "Turn projects into evidence of your skills and prepare to explain your decisions.",
+    "intuition": "Show your work.",
+    "mistake": "Listing tools without showing a decision, result, or limitation.",
+    "exercise": "Publish one reproducible project and rehearse a two-minute explanation of its tradeoffs.",
+    "resourceIds": [
+      "git"
+    ],
+    "level": "intermediate",
+    "prerequisites": [
+      3
+    ],
+    "topics": [
+      {
+        "id": "36-github-portfolio",
+        "title": "GitHub portfolio",
+        "kind": "core"
+      },
+      {
+        "id": "36-project-readme",
+        "title": "Project README",
+        "kind": "core"
+      },
+      {
+        "id": "36-kaggle",
+        "title": "Kaggle",
+        "kind": "core"
+      },
+      {
+        "id": "36-resume",
+        "title": "Resume",
+        "kind": "core"
+      },
+      {
+        "id": "36-linkedin",
+        "title": "LinkedIn",
+        "kind": "core"
+      },
+      {
+        "id": "36-sql-interviews",
+        "title": "SQL interviews",
+        "kind": "core"
+      },
+      {
+        "id": "36-statistics-interviews",
+        "title": "Statistics interviews",
+        "kind": "core"
+      },
+      {
+        "id": "36-ml-interviews",
+        "title": "ML interviews",
+        "kind": "core"
+      },
+      {
+        "id": "36-case-studies",
+        "title": "Case studies",
+        "kind": "core"
+      },
+      {
+        "id": "36-behavioral-interviews",
+        "title": "Behavioral interviews",
+        "kind": "core"
       }
     ]
   }

@@ -1,0 +1,46 @@
+export const stages = [
+  { name: 'Start here', phases: [0, 1, 2, 3] },
+  { name: 'Math & statistics', phases: [4, 5, 6, 7] },
+  { name: 'Work with data', phases: [8, 9, 10, 11, 35] },
+  { name: 'Machine learning', phases: [12, 13, 14, 15, 16, 17] },
+  { name: 'Go deeper', phases: [18, 19, 20, 21, 22, 23] },
+  { name: 'Applied fields', phases: [24, 25, 26, 27, 28, 29] },
+  { name: 'Ship & grow', phases: [30, 31, 32, 33, 34, 36] },
+];
+export const projectMilestones: Record<number, string> = {
+  1: 'python-mini',
+  8: 'exploratory-analysis',
+  9: 'sql-sales',
+  13: 'house-prices',
+  15: 'churn',
+  21: 'segmentation',
+  22: 'sales-forecasting',
+  23: 'deep-learning-app',
+  24: 'sentiment',
+  26: 'recommendation-system',
+  28: 'ab-experiment',
+  31: 'prediction-api',
+  32: 'monitoring-dashboard',
+  36: 'portfolio',
+};
+export const featuredTopics: Record<number, string[]> = {
+  1: ['1-variables', '1-functions', '1-lists'],
+  4: ['4-vectors', '4-matrices', '4-eigenvectors'],
+  5: ['5-derivatives', '5-gradients', '5-gradient-descent'],
+  6: ['6-conditional-probability', '6-bayes-theorem', '6-random-variables'],
+  13: ['13-linear-regression', '13-ridge-regression', '13-lasso-regression'],
+  14: ['14-logistic-regression', '14-k-nearest-neighbors', '14-naive-bayes'],
+  15: ['15-decision-trees', '15-random-forest', '15-gradient-boosting'],
+  21: ['21-k-means', '21-pca', '21-dbscan'],
+  23: ['23-neural-networks', '23-backpropagation', '23-pytorch'],
+};
+export const connectedAlgorithms = [
+  '13-linear-regression',
+  '14-logistic-regression',
+  '21-pca',
+  '23-neural-networks',
+  '14-naive-bayes',
+  '14-k-nearest-neighbors',
+  '21-k-means',
+  '15-decision-trees',
+];

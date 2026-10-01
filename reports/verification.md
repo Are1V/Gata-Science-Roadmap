@@ -1,24 +1,27 @@
-# V1 verification
+# Video-first redesign verification
 
-Checked on 2026-09-30 in Chromium on Linux, using Node 22.23.3.
+Checked on 2026-10-01 in Chromium on Linux.
 
 ## Passing checks
 
-- `npm run lint`: TypeScript and JavaScript lint.
-- `npm run check`: 37 source/config files; zero errors, warnings, or hints.
-- `npm test`: five content-integrity tests, including uniqueness, complete phase coverage, valid references, and acyclic prerequisites.
-- `npm run build`: 66 static HTML pages.
-- `npm run check:links`: 3,173 internal page, fragment, and asset references validated.
-- `npm run test:e2e`: 11 browser tests pass at both `/` and `/Gata-Science-Roadmap/`.
-- `npm run check:resources`: all 45 unique resource and dataset URLs responded successfully; full response evidence is in `resource-links.json`.
-- 37 Python teaching code blocks parse with Python's `ast.parse`. This is a syntax check; all external Python libraries were not installed or executed in this workspace.
+- `npm run lint`: no lint errors.
+- `npm run check`: 45 source/config files; zero errors, warnings, or hints.
+- `npm test`: 10 content tests covering topic/video coverage, unique IDs, valid references, project milestones, preserved guide aliases, and acyclic prerequisites.
+- `npm run check:videos -- --offline`: all 636 topics reference valid catalog records.
+- Production build: 68 static HTML pages.
+- Project-path link check: 2,023 internal page, fragment, and asset references validated under `/Gata-Science-Roadmap/`.
+- Project-path browser suite: all 16 tests passed, including automated WCAG A/AA checks on representative light/dark pages and open mobile drawers.
 
-The browser suite exercises search and Escape dismissal; topic persistence and reset confirmation; graph expansion, topic dialogs, zoom, filters, and empty results; project completion; interview answers; mathematical rendering and gradient updates; mobile navigation and overflow; theme persistence; corrupt storage; mathematical dependency graphs; cross-tab updates and export; and automated WCAG A/AA checks on representative light/dark pages.
+Browser coverage includes search, filters, keyboard dismissal, topic-specific completion, page reloads, prerequisite navigation, browser history, legacy `?concept=` aliases, cross-tab progress, project milestones, graph zoom, math connections, mobile navigation, horizontal overflow, and optional interactive labs. Video cards use external links and never create autoplaying players.
 
-Desktop and mobile screenshots are in `public/screenshots/`. Mobile overflow checks use a 390 × 844 viewport; the main desktop suite uses 1440 × 1050. Automated accessibility tests do not replace comprehensive assistive-technology testing.
+Screenshots in `public/screenshots/` show the homepage, dependency graph, desktop video drawer, and mobile dark drawer. Thumbnail loading was checked before capturing the video screenshots.
 
-## Delivery scope
+## Content and availability limits
 
-The complete 35-phase structure contains 603 concept entries. There are 35 chapter overviews and 19 detailed authored guides, not 603 complete tutorials. Non-guide concepts explicitly link to their chapter's curated study resources. The initial project library has 19 briefs, the resource catalog 33 entries, the interview bank 30 questions, and the cheat-sheet library 12 sheets.
+The curriculum includes 37 chapters, 636 concise topic lessons, 428 unique video records, and 22 project briefs. Longer original Markdown notes are optional and collapsed by default.
 
-The public repository is Are1V/Gata-Science-Roadmap. The workflow and repository-aware URLs are configured and tested locally under the actual repository subpath. GitHub Pages status will be verified after the push.
+Video selection used publisher indexes, public titles/descriptions, chapter lists, educator context, and available metadata. Individual catalog records distinguish watch-page metadata from oEmbed verification. Public metadata does not prove playback in every region, and not every lesson was watched in full. Unavailable durations and engagement statistics are omitted rather than invented.
+
+`video-links.json` records successful public-metadata checks for all 428 current video records. One access-error record was replaced and rechecked. `resource-links.json` records successful checks for all 48 other resource and dataset URLs. The Python tutorial uses its explicit index URL after the directory URL returned HTTP 503. Neither network report establishes complete teaching quality or guarantees future availability. Maintainers can update one shared video record and use the new broken-video and better-video issue templates for review.
+
+Automated accessibility checks do not replace comprehensive assistive-technology testing.

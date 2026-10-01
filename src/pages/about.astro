@@ -1,11 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { phases, topics, resources } from '../data/roadmap';
-import { getCollection } from 'astro:content';
+import { videos } from '../data/learning';
 import { ArrowUpRight } from 'lucide-react';
 import Github from '../components/Github';
 import { repository, url } from '../utils/urls';
-const guides = await getCollection('guides');
 ---
 
 <Layout title="About" active="About">
@@ -26,12 +25,10 @@ const guides = await getCollection('guides');
     </p>
     <h2>What’s here today</h2>
     <p>
-      The first edition maps {topics.length} concepts across {phases.length} chapters, with{' '}
-      {guides.length} detailed guides and {resources.length} curated resources. Every chapter has an
-      explanation, prerequisites, a practice task, and sources for further study. Book icons
-      identify the deeper authored lessons; other concept entries connect to their chapter
-      resources. The curriculum is complete in scope, while the detailed lesson library can continue
-      to grow.
+      Explore {topics.length} concepts across {phases.length} chapters. Each topic opens a short
+      lesson with a recommended video, prerequisites, practice, and a completion button. The catalog
+      contains {Object.keys(videos).length} distinct videos and {resources.length} additional
+      resources. Longer notes are optional and collapsed by default.
     </p>
     <p>
       Progress is a personal checklist, not a certificate. Choose a path that serves your goals,

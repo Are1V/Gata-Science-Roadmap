@@ -1,123 +1,98 @@
 # Gata Science Roadmap
 
-**A clear path through data science.** An open-source, project-first learning platform that connects programming, mathematics, statistics, machine learning, and production practice.
+A visual, video-first path through data science. Click a topic, watch a lesson, try a project, and mark it complete.
 
-![Gata Science Roadmap home page](public/screenshots/home.png)
+[Live roadmap](https://are1v.github.io/Gata-Science-Roadmap/) · [Repository](https://github.com/Are1V/Gata-Science-Roadmap)
 
-**Local demo:** run `npm run dev`, then open [localhost:4321](http://localhost:4321). **Repository:** [Are1V/Gata-Science-Roadmap](https://github.com/Are1V/Gata-Science-Roadmap). The live site is available at [are1v.github.io/Gata-Science-Roadmap](https://are1v.github.io/Gata-Science-Roadmap/) once the Pages workflow completes.
+![Gata Science Roadmap](public/screenshots/home.png)
 
-## What you can do
+## Features
 
-- Explore a complete 35-phase curriculum with 603 uniquely addressable concepts.
-- Pan and zoom an expandable React Flow roadmap, or use its keyboard-friendly list view.
-- Follow mathematical prerequisite graphs for regression, PCA, K-Means, and neural networks.
-- Read 19 detailed guides with equations, numerical examples, code, pitfalls, interview prompts, and exercises.
-- Try interactive vector, gradient-descent, and sigmoid demonstrations.
-- Choose among 10 specialization paths and filter the map by level.
-- Build from 19 project briefs with open datasets, evaluation criteria, and suggested repository structures.
-- Search topics, projects, 33 resources, 30 interview questions, and 12 cheat sheets.
-- Save topic and project completion locally; inspect chapter progress, export a record, or explicitly reset it.
-- Use light and dark themes on desktop, tablet, and mobile.
+- 37 chapters and 636 individually addressable concepts, from Python through career preparation.
+- 428 distinct YouTube lessons, stored separately from the UI, with public metadata checks and review provenance.
+- A concise topic drawer with prerequisites, a video card, practice, and completion. Mobile uses a bottom sheet.
+- Pan, zoom, chapter expansion, subject and difficulty filters, and ten specialization paths.
+- Actual mathematical dependency graphs for regression, logistic regression, PCA, neural networks, Naive Bayes, KNN, K-means, and trees.
+- 22 project briefs, with project milestones throughout the roadmap.
+- Local search, persistent progress, cross-tab updates, progress export, dark mode, and keyboard navigation.
+- Optional notes and interactive math labs, collapsed by default.
 
-No account, database, analytics, paid API, or backend is required. External resources have their own terms; the M5 dataset requires a free Kaggle account.
+No account, backend, paid API, or analytics is needed. Progress stays in your browser. Videos open on YouTube without autoplay; their thumbnails load from YouTube when a lesson opens. Some external datasets require a free account.
 
-## Content scope
+## Local development
 
-The **curriculum structure** covers every phase from getting started through specialization: Python, CS, Git, algebra, calculus, probability, statistics, data manipulation, SQL, cleaning, EDA, ML foundations, regression, classification, trees, evaluation, validation, feature engineering and selection, optimization, unsupervised learning, forecasting, deep learning, NLP, vision, recommenders, explainability, experimentation, causal inference, engineering, production, MLOps, and responsible practice.
+Use Node.js 22.12 or newer and npm.
 
-The V1 distinguishes **curriculum entries** from **authored detailed guides**. Every chapter has an original overview, intuition, prerequisites, a practice task, a pitfall, and curated sources. A book icon identifies entries with a deep guide. The other entries link to chapter resources; they are not presented as fully authored individual tutorials. The collection and schemas support adding those lessons without changing the UI.
-
-Estimates on lessons describe approximate study time including exercises, not measured video durations. Completing a concept is a personal learning record, not a certification.
-
-## Stack and architecture
-
-Astro statically renders every route. React islands provide the roadmap, search, filters, progress, theme controls, and mathematical labs. TypeScript, Tailwind CSS, Lucide, XYFlow, KaTeX, and Markdown/MDX support the implementation.
-
-```text
-src/
-  content/guides/       Markdown lessons, validated by Astro collections
-  content/projects/    Structured project briefs
-  content/resources/   Curated official and educational resources
-  content/interviews/  Categorized questions and explanations
-  content/cheatsheets/ Concise reference material
-  data/curriculum.json Complete curriculum, topic IDs, chapter dependencies
-  data/roadmap.ts       Shared indexes, guide mappings, specializations
-  components/          React islands and reusable Astro components
-  hooks/useProgress.ts Versioned local-storage store and cross-tab subscription
-  layouts/             Accessible shared shell
-  pages/               Static routes, generated chapter and guide pages
-  styles/              Design tokens, responsive layout, dark theme
-  utils/urls.ts        Base-aware internal URLs and repository URL
-scripts/               Static-link and external-resource checks
-tests/                 Content-integrity and browser tests
-.github/               Deployment workflow and contribution templates
-```
-
-The mathematical connection graph is generated from lesson frontmatter. Chapter graph edges come from chapter prerequisites. Search uses a local index and sends no search queries to a service.
-
-## Run locally
-
-Use Node.js **22.12 or newer** (the workflow uses Node 22) and npm.
-
-```bash
+```sh
 npm ci
 npm run dev
 ```
 
-```bash
+Open `http://localhost:4321`. To verify a production build:
+
+```sh
 npm run lint
 npm run check
 npm test
+npm run check:videos -- --offline
 npm run build
 npm run check:links
 npx playwright install chromium
 npm run test:e2e
-npm run preview
 ```
 
-Playwright starts a preview server for the previously built `dist/` directory. Build before testing. On Linux CI, use `npx playwright install --with-deps chromium` to install system dependencies as well.
+`npm run preview` serves the built site. The browser tests cover drawers, deep links, history, topic-specific completion, search, filters, mobile layout, keyboard dismissal, accessibility, and storage behavior.
 
-`npm run check:resources` verifies resource and dataset URLs and writes `reports/resource-links.json`. Some providers may rate-limit automated clients; inspect failures rather than automatically deleting a resource. This network check is kept separate from deterministic CI checks.
+## Content architecture
 
-Format changes with `npx prettier --write src scripts tests`. Linting covers TypeScript and JavaScript; Astro files are checked by `astro check`. Automated accessibility checks supplement, rather than replace, keyboard and visual review.
+| File | Purpose |
+| --- | --- |
+| `src/data/curriculum.json` | Chapters, stable topic IDs, levels, and chapter prerequisites |
+| `src/data/topic-lessons.json` | Short explanations, concept prerequisites, video references, and practice |
+| `src/data/videos.json` | Deduplicated YouTube metadata and curation evidence |
+| `src/data/map.ts` | Visual stages, featured topics, model connections, and project milestones |
+| `src/data/learning.ts` | Typed indexes, subject categories, and drawer navigation |
+| `src/data/roadmap.ts` | Curriculum indexes, specializations, and legacy guide mappings |
+| `src/content/projects/projects.json` | Project briefs and evaluation criteria |
+| `src/content/guides/` | Optional Markdown explanations and mathematics |
+| `src/hooks/useProgress.ts` | Versioned localStorage progress and cross-tab synchronization |
 
-## Deploy free on GitHub Pages
+Astro renders static routes. React islands provide interaction; XYFlow renders graph nodes and edges. TypeScript, Tailwind CSS, Lucide, Markdown/MDX, and KaTeX support the implementation. There are no server routes or secrets.
 
-1. Create a GitHub repository and push this project to its `main` branch.
-2. In **Settings → Pages → Build and deployment**, choose **GitHub Actions**.
-3. Run or allow the **Verify and deploy to GitHub Pages** workflow.
-4. Open the URL shown by the deployment job.
+The topic drawer uses `?topic=TOPIC_ID` on the current page. Global search links to `/roadmap/?topic=TOPIC_ID`. Existing guide URLs and `?concept=` links still work, and existing progress IDs are preserved. The prerequisite graph reads the same concept IDs as the drawer, rather than maintaining a separate set of decorative connections.
 
-The workflow derives `SITE_URL`, `BASE_PATH`, and `PUBLIC_REPOSITORY_URL` from the repository. A repository named `OWNER.github.io` uses `/`; other repositories use `/<repository>/`. GitHub Pages uses case-sensitive paths. The workflow checks the configured base path and runs browser tests before publishing. Pull requests run the build and tests without deploying.
+## Video curation and verification
 
-All internal links and public assets use the shared base helper. Every page has a generated `index.html`; direct links and refreshes work without SPA rewrites. A custom `404.html` is included. GitHub Pages itself supplies HTTPS.
+Lessons were selected using topic fit, publisher descriptions, teaching format, educator background, and available public metadata. Focused explanations are preferred; relevant chapters of longer practical courses are linked where publisher timestamps were available. Visual mathematics, conceptual statistics, and practical programming use different educators. A second perspective is included only for selected concepts.
 
-For a local subpath test:
+The catalog records source URLs, the review date, selection rationale, difficulty, and duration when available. View counts and publication dates are recorded only when returned by YouTube. Likes and audience-feedback scores are not invented. Popularity is supporting evidence, not a ranking formula. “Recommended” means an editorial choice, not an objectively proven best video.
 
-```bash
-BASE_PATH=/Gata-Science-Roadmap/ SITE_URL=https://are1v.github.io npm run build
+Availability was checked against public YouTube watch metadata or oEmbed. The `verification` field distinguishes the two: oEmbed confirms accessible public metadata, not end-to-end playback in every region. We have not watched every video in full. Course coverage and technical quality still benefit from maintainer review, particularly after library changes. A network timeout must not be treated as proof that a video was deleted.
+
+```sh
+npm run check:videos -- --offline  # structural coverage, no network
+npm run check:videos              # recheck public metadata, write reports/video-links.json
+npm run check:resources           # check other external resource and dataset links
+```
+
+The online checker flags unavailable, changed, and unconfirmed records for review; it never silently substitutes a different lesson. Network checks are separate from deployment so rate limits cannot break an otherwise valid release. See [CONTRIBUTING.md](CONTRIBUTING.md) for adding or replacing a video.
+
+## GitHub Pages
+
+The workflow in `.github/workflows/deploy.yml` verifies and deploys pushes to `main`. Pull requests run verification without publishing. In the repository's **Settings → Pages**, select **GitHub Actions** as the source.
+
+The workflow derives `SITE_URL`, `BASE_PATH`, and `PUBLIC_REPOSITORY_URL` from the repository. All internal links and assets use the base-aware URL helper. A project repository deploys at `https://OWNER.github.io/REPOSITORY/`; a repository named `OWNER.github.io` uses `/`.
+
+To reproduce a project-path build:
+
+```sh
+BASE_PATH=/Gata-Science-Roadmap/ SITE_URL=https://are1v.github.io PUBLIC_REPOSITORY_URL=https://github.com/Are1V/Gata-Science-Roadmap npm run build
 BASE_PATH=/Gata-Science-Roadmap/ npm run check:links
 BASE_PATH=/Gata-Science-Roadmap/ npm run test:e2e
 ```
 
-Stop any preview server built for a different base before running that test. Astro may background development servers in agent environments; `npx astro preview stop` and `npx astro dev stop` stop them. For a foreground server, use `--ignore-lock`.
+## Contributing and license
 
-For a custom domain, set `SITE_URL` to your origin and `BASE_PATH=/` in the workflow and configure GitHub Pages DNS settings. `PUBLIC_REPOSITORY_URL` supplies all GitHub links; without it, links point to the local About page explaining the unpublished edition, not an invented repository.
+See [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), and the issue templates for broken videos, better resources, topics, and corrections.
 
-## Progress and privacy
-
-`gata.progress.v1` stores completed concept and project IDs. `gata.theme` stores the chosen theme. Progress synchronizes between open tabs in the same browser origin. Different browsers and devices do not synchronize. Clearing browser storage removes progress. JSON export is a personal backup record; importing a backup is not included in V1.
-
-Malformed stored JSON is handled safely. Storage write failures show a message rather than reporting success. No third-party fonts, analytics scripts, or tracking pixels are loaded.
-
-## Contribute
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for topic, resource, project, graph, and content-correction instructions. Please follow the [Code of Conduct](CODE_OF_CONDUCT.md).
-
-Content should be accurate, concrete, appropriately scoped, and independently understandable. Prefer official documentation, university material, and open textbooks. Do not copy proprietary course text or provide complete project solutions by default.
-
-## License and acknowledgements
-
-[MIT](LICENSE). Code and original educational material in this repository are covered by this license. Linked resources and datasets retain their own licenses; check them before redistributing data.
-
-Inspired by the interaction model of [roadmap.sh](https://roadmap.sh/), with original implementation, design, and lesson text. Thanks to the Astro, React, React Flow, NumPy, Pandas, scikit-learn, PyTorch, KaTeX, Tailwind CSS, and Lucide communities, and the educators behind the linked free material.
+Code and original content are MIT licensed. Linked videos, images, datasets, and resources remain their creators' property. Roadmap.sh inspired the exploration pattern; this project's code, branding, writing, and styling are original.

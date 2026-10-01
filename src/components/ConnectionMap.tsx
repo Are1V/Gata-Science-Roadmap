@@ -11,25 +11,31 @@ import {
   MarkerType,
 } from '@xyflow/react';
 import { ArrowUpRight, GitBranch } from 'lucide-react';
-import { url } from '../utils/urls';
+import { openTopic, lessons, topicById } from '../data/learning';
+import { connectedAlgorithms } from '../data/map';
+const guides = [...topicById.values()].map((t) => ({
+  id: t.id,
+  title: t.title,
+  prerequisites: lessons[t.id]?.prerequisites || [],
+}));
 export type GuideConnection = { id: string; title: string; prerequisites: string[] };
 function GuideNode({ data }: NodeProps) {
   return (
-    <a
+    <button
       className={`connection-node ${data.target ? 'connection-target' : ''}`}
-      href={url(`topics/${data.guideId}/`)}
+      onClick={() => openTopic(String(data.guideId))}
     >
       <Handle type="target" position={Position.Top} />
       <span>{data.target ? 'PUT IT ALL TOGETHER' : 'FOUNDATION'}</span>
       <strong>{String(data.title)}</strong>
       <ArrowUpRight size={14} />
       <Handle type="source" position={Position.Bottom} />
-    </a>
+    </button>
   );
 }
 const nodeTypes = { guide: GuideNode };
-export default function ConnectionMap({ guides }: { guides: GuideConnection[] }) {
-  const [target, setTarget] = useState('logistic-regression');
+export default function ConnectionMap() {
+  const [target, setTarget] = useState('14-logistic-regression');
   const { nodes, edges, ancestors } = useMemo(() => {
     const graph = new Map(guides.map((g) => [g.id, g]));
     const depths = new Map<string, number>();
@@ -73,10 +79,8 @@ export default function ConnectionMap({ guides }: { guides: GuideConnection[] })
     <section className="connection-section" id="connections">
       <div className="section-heading">
         <div>
-          <h2>The why behind the how.</h2>
-          <p>
-            Trace a model back to its mathematical foundations. Every node opens a detailed guide.
-          </p>
+          <h2>How the math connects</h2>
+          <p>Pick a model. Follow its prerequisites.</p>
         </div>
         <GitBranch size={24} />
       </div>
@@ -89,15 +93,7 @@ export default function ConnectionMap({ guides }: { guides: GuideConnection[] })
           onChange={(e) => setTarget(e.target.value)}
         >
           {guides
-            .filter((g) =>
-              [
-                'linear-regression',
-                'logistic-regression',
-                'pca',
-                'neural-networks',
-                'k-means',
-              ].includes(g.id),
-            )
+            .filter((g) => connectedAlgorithms.includes(g.id))
             .map((g) => (
               <option key={g.id} value={g.id}>
                 {g.title}
@@ -130,11 +126,13 @@ export default function ConnectionMap({ guides }: { guides: GuideConnection[] })
         <summary>Read these connections as a list</summary>
         {ancestors.map((g) => (
           <div key={g.id}>
-            <a href={url(`topics/${g.id}/`)}>{g.title}</a>
+            <button className="text-button" onClick={() => openTopic(g.id)}>
+              {g.title}
+            </button>
             <span>
               {g.prerequisites.length
                 ? `Builds on: ${g.prerequisites.map((id) => guides.find((p) => p.id === id)?.title).join(', ')}`
-                : 'Start here — no earlier detailed guide required.'}
+                : 'No earlier topic required.'}
             </span>
           </div>
         ))}

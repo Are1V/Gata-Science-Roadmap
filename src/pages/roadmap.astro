@@ -2,12 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Roadmap from '../components/Roadmap';
 import ConnectionMap from '../components/ConnectionMap';
-import { getCollection } from 'astro:content';
-const connections = (await getCollection('guides')).map((g) => ({
-  id: g.id,
-  title: g.data.title,
-  prerequisites: g.data.prerequisites,
-}));
 import { specializations, phases } from '../data/roadmap';
 import { ArrowUpRight, GitBranch } from 'lucide-react';
 import { url } from '../utils/urls';
@@ -16,10 +10,10 @@ import { url } from '../utils/urls';
 <Layout title="Roadmap" active="Roadmap">
   <div class="page-heading roadmap-page-heading">
     <h1>Data science roadmap</h1>
-    <p>Pick a box. Follow the connections.</p>
+    <p>Watch a lesson. Build something. Keep going.</p>
   </div>
   <Roadmap client:load />
-  <ConnectionMap guides={connections} client:visible />
+  <ConnectionMap client:visible />
   <section id="paths">
     <div class="section-heading">
       <div>

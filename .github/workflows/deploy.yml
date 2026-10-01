@@ -22,6 +22,7 @@ jobs:
       - run: npm run lint
       - run: npm run check
       - run: npm test
+      - run: npm run check:videos -- --offline
       - name: Configure site URLs
         shell: bash
         run: |

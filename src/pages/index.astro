@@ -1,118 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Route,
-  FolderKanban,
-  Sigma,
-  BrainCircuit,
-  CodeXml,
-  ChartNoAxesCombined,
-  Sprout,
-  ChartPie,
-  Library,
-} from 'lucide-react';
-import { phases, specializations } from '../data/roadmap';
-import projects from '../content/projects/projects.json';
+import Roadmap from '../components/Roadmap';
+import { ArrowRight, GitBranch, Flag } from 'lucide-react';
 import { url } from '../utils/urls';
-const links = [
-  { title: 'Follow the map', detail: `${phases.length} chapters`, href: 'roadmap/', icon: Route },
-  { title: 'Learn the math', detail: 'Clear explanations', href: 'mathematics/', icon: Sigma },
-  {
-    title: 'Build projects',
-    detail: `${projects.length} challenges`,
-    href: 'projects/',
-    icon: FolderKanban,
-  },
-];
-const paths = [
-  { title: 'Machine learning', icon: BrainCircuit, id: 'ml' },
-  { title: 'Product data science', icon: ChartPie, id: 'product' },
-  { title: 'Analytics', icon: Library, id: 'analytics' },
-];
 ---
 
 <Layout title="Home">
-  <section class="home-hero">
-    <div class="hero-copy">
-      <span class="eyebrow">THE OPEN-SOURCE DATA SCIENCE MAP</span>
-      <h1>
-        Data science,
-        <br />
-        <span>mapped.</span>
-      </h1>
-      <p>From Python to production. Click a topic, learn it, and mark it done.</p>
-      <div class="hero-actions">
-        <a class="button" href={url('roadmap/')}>
-          Explore the map <ArrowRight size={16} />
-        </a>
-        <a class="button secondary" href={url('learn/python-foundations/')}>
-          Start with Python <ArrowUpRight size={15} />
-        </a>
-      </div>
-      <div class="hero-facts">
-        <span>{phases.length} chapters</span>
-        <span>{projects.length} projects</span>
-        <span>Free, no sign-up</span>
-      </div>
-    </div>
-    <div
-      class="hero-map"
-      aria-label="A learning path from Python through mathematics and statistics to machine learning"
-    >
-      <svg class="mini-path" viewBox="0 0 430 336" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M212 65 V100 M210 134 V155 Q210 168 195 168 H103 Q87 168 87 185 M210 151 V155 Q210 168 226 168 H339 Q354 168 354 185 M87 211 V230 Q87 245 104 245 H196 Q211 245 211 264 M354 211 V230 Q354 245 337 245 H227 Q211 245 211 264 M211 295 V318" />
-      </svg>
-      <a href={url('learn/getting-started/')} class="mini-node start">
-        <Sprout size={14} />
-        Start here
-      </a>
-      <a href={url('learn/python-foundations/')} class="mini-node python">
-        <CodeXml size={17} />
-        Python
-      </a>
-      <a href={url('mathematics/')} class="mini-node math">
-        <Sigma size={17} />
-        Mathematics
-      </a>
-      <a href={url('statistics/')} class="mini-node stats">
-        <ChartNoAxesCombined size={17} />
-        Statistics
-      </a>
-      <a href={url('machine-learning/')} class="mini-node ml">
-        <BrainCircuit size={17} />
-        Machine learning <ArrowRight size={13} />
-      </a>
-    </div>
-  </section>
-  <nav class="home-shortcuts" aria-label="Start exploring">
-    {links.map(({ title, detail, href, icon: Icon }) => (
-      <a href={url(href)}>
-        <Icon size={22} />
-        <span>
-          <strong>{title}</strong>
-          <small>{detail}</small>
-        </span>
-        <ArrowUpRight size={17} />
-      </a>
-    ))}
-  </nav>
-  <section class="home-paths">
-    <div class="section-heading">
-      <h2>Pick a direction</h2>
-      <a class="text-link" href={url('roadmap/#paths')}>
-        All {specializations.length} paths <ArrowRight size={14} />
-      </a>
-    </div>
-    <div class="path-grid">
-      {paths.map(({ title, icon: Icon, id }) => (
-        <a class="path-card" href={url(`roadmap/?path=${id}`)}>
-          <Icon size={21} />
-          <strong>{title}</strong>
-          <ArrowUpRight size={16} />
-        </a>
-      ))}
-    </div>
-  </section>
+  <div class="page-heading roadmap-page-heading home-map-heading">
+    <span class="eyebrow">GATA SCIENCE ROADMAP</span>
+    <h1>Data science, mapped.</h1>
+    <p>A visual path from your first Python script to production.</p>
+  </div>
+  <div class="home-map-links">
+    <span>Free videos. Real projects. No sign-up.</span>
+    <a href={url('roadmap/#connections')}>
+      <GitBranch size={14} />
+      Math connections
+      <ArrowRight size={13} />
+    </a>
+    <a href={url('projects/')}>
+      <Flag size={14} />
+      Projects
+      <ArrowRight size={13} />
+    </a>
+  </div>
+  <Roadmap client:load />
+  <a class="text-link home-all-paths" href={url('roadmap/#paths')}>
+    Explore specialization paths
+    <ArrowRight size={14} />
+  </a>
 </Layout>

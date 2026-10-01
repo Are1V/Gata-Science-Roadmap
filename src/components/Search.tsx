@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Search as SearchIcon, ArrowUpRight, X } from 'lucide-react';
-import { topics, resources, deepGuides } from '../data/roadmap';
+import { topics, resources } from '../data/roadmap';
+import { topicHref } from '../data/learning';
 import projects from '../content/projects/projects.json';
 import questions from '../content/interviews/questions.json';
 import sheets from '../content/cheatsheets/sheets.json';
@@ -10,9 +11,7 @@ export const searchIndex = [
     title: t.title,
     type: 'Topic',
     detail: `Phase ${String(t.phase).padStart(2, '0')} · ${t.level}`,
-    href: deepGuides[t.id]
-      ? url(`topics/${deepGuides[t.id]}/?concept=${t.id}`)
-      : url(`learn/${t.phaseId}/#${t.id}`),
+    href: url(topicHref(t.id)),
   })),
   ...projects.map((p) => ({
     title: p.title,
@@ -59,6 +58,12 @@ export default function Search() {
     ? searchIndex
         .filter((x) =>
           `${x.title} ${x.detail} ${x.type}`.toLowerCase().includes(query.toLowerCase().trim()),
+        )
+        .sort(
+          (a, b) =>
+            Number(b.title.toLowerCase() === query.trim().toLowerCase()) -
+              Number(a.title.toLowerCase() === query.trim().toLowerCase()) ||
+            a.title.length - b.title.length,
         )
         .slice(0, 30)
     : searchIndex

@@ -3,7 +3,13 @@
     "id": "titanic",
     "title": "Titanic survival analysis",
     "level": "beginner",
-    "prerequisites": [1, 7, 8, 10, 11],
+    "prerequisites": [
+      1,
+      7,
+      8,
+      10,
+      11
+    ],
     "problem": "Separate patterns in passenger survival from claims about causation.",
     "dataset": "Titanic passengers",
     "datasetUrl": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv",
@@ -20,7 +26,13 @@
     "id": "house-prices",
     "title": "House price prediction",
     "level": "beginner",
-    "prerequisites": [4, 8, 10, 13, 17],
+    "prerequisites": [
+      4,
+      8,
+      10,
+      13,
+      17
+    ],
     "problem": "Predict house values from available property and neighborhood attributes.",
     "dataset": "California housing",
     "datasetUrl": "https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html",
@@ -37,46 +49,75 @@
     "id": "exploratory-analysis",
     "title": "A field guide to penguins",
     "level": "beginner",
-    "prerequisites": [7, 8, 11],
+    "prerequisites": [
+      7,
+      8,
+      11
+    ],
     "problem": "Explore how body measurements vary across penguin species and islands.",
     "dataset": "Palmer penguins",
     "datasetUrl": "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/penguins.csv",
     "output": "A question-led EDA report with five annotated figures.",
     "evaluation": "Check sample sizes, missingness, and units; distinguish association from explanation.",
-    "objectives": ["Ask analysis questions", "Visualize distributions", "Compare segments"],
+    "objectives": [
+      "Ask analysis questions",
+      "Visualize distributions",
+      "Compare segments"
+    ],
     "structure": "data/README.md\nnotebooks/01-exploration.ipynb\nsrc/data.py\nsrc/train.py\nsrc/evaluate.py\ntests/\nreports/\nrequirements.txt\nREADME.md"
   },
   {
     "id": "sql-sales",
     "title": "SQL sales analysis",
     "level": "beginner",
-    "prerequisites": [8, 9],
+    "prerequisites": [
+      8,
+      9
+    ],
     "problem": "Explain revenue patterns and repeat purchasing for an online retailer.",
     "dataset": "Online Retail",
     "datasetUrl": "https://archive.ics.uci.edu/dataset/352/online+retail",
     "output": "A SQL schema, validated queries, and a revenue dashboard.",
     "evaluation": "Handle returns and null customer IDs; independently reconcile monthly totals.",
-    "objectives": ["Join tables safely", "Write window functions", "Define business metrics"],
+    "objectives": [
+      "Join tables safely",
+      "Write window functions",
+      "Define business metrics"
+    ],
     "structure": "data/README.md\nnotebooks/01-exploration.ipynb\nsrc/data.py\nsrc/train.py\nsrc/evaluate.py\ntests/\nreports/\nrequirements.txt\nREADME.md"
   },
   {
     "id": "segmentation",
     "title": "Customer segmentation",
     "level": "beginner",
-    "prerequisites": [8, 10, 21],
+    "prerequisites": [
+      8,
+      10,
+      21
+    ],
     "problem": "Group customers by purchasing behavior to support distinct service strategies.",
     "dataset": "Online Retail",
     "datasetUrl": "https://archive.ics.uci.edu/dataset/352/online+retail",
     "output": "A segmentation notebook and a short action brief for each group.",
     "evaluation": "Assess stability, scaling sensitivity, and cluster usefulness beyond a silhouette score.",
-    "objectives": ["Construct RFM features", "Compare clustering methods", "Interpret segments"],
+    "objectives": [
+      "Construct RFM features",
+      "Compare clustering methods",
+      "Interpret segments"
+    ],
     "structure": "data/README.md\nnotebooks/01-exploration.ipynb\nsrc/data.py\nsrc/train.py\nsrc/evaluate.py\ntests/\nreports/\nrequirements.txt\nREADME.md"
   },
   {
     "id": "churn",
     "title": "Customer churn prediction",
     "level": "intermediate",
-    "prerequisites": [8, 14, 15, 16, 17],
+    "prerequisites": [
+      8,
+      14,
+      15,
+      16,
+      17
+    ],
     "problem": "Identify customers likely to leave before an intervention deadline.",
     "dataset": "Iranian Churn",
     "datasetUrl": "https://archive.ics.uci.edu/dataset/563/iranian+churn+dataset",
@@ -93,46 +134,80 @@
     "id": "credit-risk",
     "title": "Credit risk modeling",
     "level": "intermediate",
-    "prerequisites": [14, 16, 17, 27, 33],
+    "prerequisites": [
+      14,
+      16,
+      17,
+      27,
+      33
+    ],
     "problem": "Estimate default risk and examine the consequences of classification errors.",
     "dataset": "Default of Credit Card Clients",
     "datasetUrl": "https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients",
     "output": "A benchmark model, calibration plots, and a model card.",
     "evaluation": "Compare an interpretable baseline; discuss historical and subgroup limitations.",
-    "objectives": ["Calibrate probabilities", "Audit subgroup performance", "Explain decisions"],
+    "objectives": [
+      "Calibrate probabilities",
+      "Audit subgroup performance",
+      "Explain decisions"
+    ],
     "structure": "data/README.md\nnotebooks/01-exploration.ipynb\nsrc/data.py\nsrc/train.py\nsrc/evaluate.py\ntests/\nreports/\nrequirements.txt\nREADME.md"
   },
   {
     "id": "fraud-detection",
     "title": "Fraud detection",
     "level": "intermediate",
-    "prerequisites": [14, 15, 16, 17],
+    "prerequisites": [
+      14,
+      15,
+      16,
+      17
+    ],
     "problem": "Find rare suspicious transactions under a limited review capacity.",
     "dataset": "Credit Card Fraud",
     "datasetUrl": "https://www.openml.org/search?type=data&sort=runs&id=1597",
     "output": "A ranked review queue and a reproducible model evaluation.",
     "evaluation": "Use precision at review capacity and PR-AUC; document anonymization constraints.",
-    "objectives": ["Evaluate rare events", "Tune review capacity", "Analyze false positives"],
+    "objectives": [
+      "Evaluate rare events",
+      "Tune review capacity",
+      "Analyze false positives"
+    ],
     "structure": "data/README.md\nnotebooks/01-exploration.ipynb\nsrc/data.py\nsrc/train.py\nsrc/evaluate.py\ntests/\nreports/\nrequirements.txt\nREADME.md"
   },
   {
     "id": "medical-classification",
     "title": "Medical classification",
     "level": "intermediate",
-    "prerequisites": [7, 14, 16, 17, 33],
+    "prerequisites": [
+      7,
+      14,
+      16,
+      17,
+      33
+    ],
     "problem": "Classify diagnostic measurements while quantifying uncertainty and limitations.",
     "dataset": "Breast Cancer Wisconsin",
     "datasetUrl": "https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html",
     "output": "An educational classifier and a limitations-focused report.",
     "evaluation": "Report sensitivity, specificity, calibration, and uncertainty; avoid clinical-use claims.",
-    "objectives": ["Compare classifiers", "Reason about error costs", "Document data limits"],
+    "objectives": [
+      "Compare classifiers",
+      "Reason about error costs",
+      "Document data limits"
+    ],
     "structure": "data/README.md\nnotebooks/01-exploration.ipynb\nsrc/data.py\nsrc/train.py\nsrc/evaluate.py\ntests/\nreports/\nrequirements.txt\nREADME.md"
   },
   {
     "id": "sales-forecasting",
     "title": "Sales forecasting",
     "level": "intermediate",
-    "prerequisites": [8, 13, 17, 22],
+    "prerequisites": [
+      8,
+      13,
+      17,
+      22
+    ],
     "problem": "Forecast retail demand at an explicit horizon using only historical information.",
     "dataset": "M5 forecasting data",
     "datasetUrl": "https://www.kaggle.com/competitions/m5-forecasting-accuracy/data",
@@ -149,98 +224,172 @@
     "id": "recommendation-system",
     "title": "Recommendation system",
     "level": "intermediate",
-    "prerequisites": [4, 8, 17, 26],
+    "prerequisites": [
+      4,
+      8,
+      17,
+      26
+    ],
     "problem": "Rank movies for a user while handling new users with little history.",
     "dataset": "MovieLens small",
     "datasetUrl": "https://grouplens.org/datasets/movielens/latest/",
     "output": "A recommender with a popularity fallback and evaluation notebook.",
     "evaluation": "Measure Recall@K, coverage, and cold-start quality with a temporal split.",
-    "objectives": ["Build user-item matrices", "Factorize embeddings", "Evaluate rankings"],
+    "objectives": [
+      "Build user-item matrices",
+      "Factorize embeddings",
+      "Evaluate rankings"
+    ],
     "structure": "data/README.md\nnotebooks/01-exploration.ipynb\nsrc/data.py\nsrc/train.py\nsrc/evaluate.py\ntests/\nreports/\nrequirements.txt\nREADME.md"
   },
   {
     "id": "sentiment",
     "title": "NLP sentiment classifier",
     "level": "intermediate",
-    "prerequisites": [14, 16, 17, 24],
+    "prerequisites": [
+      14,
+      16,
+      17,
+      24
+    ],
     "problem": "Classify review sentiment and explain where the model fails.",
     "dataset": "Stanford IMDB reviews",
     "datasetUrl": "https://ai.stanford.edu/~amaas/data/sentiment/",
     "output": "A text pipeline, evaluation report, and examples of systematic errors.",
     "evaluation": "Compare TF-IDF with embeddings; inspect negation and out-of-domain failures.",
-    "objectives": ["Vectorize text", "Avoid text leakage", "Analyze linguistic errors"],
+    "objectives": [
+      "Vectorize text",
+      "Avoid text leakage",
+      "Analyze linguistic errors"
+    ],
     "structure": "data/README.md\nnotebooks/01-exploration.ipynb\nsrc/data.py\nsrc/train.py\nsrc/evaluate.py\ntests/\nreports/\nrequirements.txt\nREADME.md"
   },
   {
     "id": "ml-platform",
     "title": "End-to-end ML platform",
     "level": "advanced",
-    "prerequisites": [3, 17, 20, 30, 31, 32],
+    "prerequisites": [
+      3,
+      17,
+      20,
+      30,
+      31,
+      32
+    ],
     "problem": "Make training, evaluation, registration, and serving repeatable from one repository.",
     "dataset": "California housing",
     "datasetUrl": "https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html",
     "output": "A versioned training pipeline, API, and release checklist.",
     "evaluation": "Reproduce a model from a clean environment; verify rollback and bad-input handling.",
-    "objectives": ["Track experiments", "Package models", "Automate quality gates"],
+    "objectives": [
+      "Track experiments",
+      "Package models",
+      "Automate quality gates"
+    ],
     "structure": "data/README.md\nnotebooks/01-exploration.ipynb\nsrc/data.py\nsrc/train.py\nsrc/evaluate.py\ntests/\nreports/\nrequirements.txt\nREADME.md"
   },
   {
     "id": "healthcare-ml",
     "title": "Explainable healthcare ML",
     "level": "advanced",
-    "prerequisites": [14, 17, 27, 29, 33],
+    "prerequisites": [
+      14,
+      17,
+      27,
+      29,
+      33
+    ],
     "problem": "Audit explanations of a diagnostic classifier without confusing them with causal evidence.",
     "dataset": "Breast Cancer Wisconsin",
     "datasetUrl": "https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html",
     "output": "A model card, subgroup evaluation, and explanation stability study.",
     "evaluation": "Compare SHAP and permutation importance; identify data limitations and unsupported claims.",
-    "objectives": ["Audit explanations", "Quantify uncertainty", "Communicate intended use"],
+    "objectives": [
+      "Audit explanations",
+      "Quantify uncertainty",
+      "Communicate intended use"
+    ],
     "structure": "data/README.md\nnotebooks/01-exploration.ipynb\nsrc/data.py\nsrc/train.py\nsrc/evaluate.py\ntests/\nreports/\nrequirements.txt\nREADME.md"
   },
   {
     "id": "demand-system",
     "title": "Demand forecasting system",
     "level": "advanced",
-    "prerequisites": [17, 22, 30, 31, 32],
+    "prerequisites": [
+      17,
+      22,
+      30,
+      31,
+      32
+    ],
     "problem": "Build a retrainable forecasting pipeline with horizon-aware evaluation.",
     "dataset": "M5 forecasting data",
     "datasetUrl": "https://www.kaggle.com/competitions/m5-forecasting-accuracy/data",
     "output": "A batch forecast pipeline and monitoring report. Free Kaggle account required for data.",
     "evaluation": "Beat seasonal naive; test missing periods, delayed inputs, and changing demand.",
-    "objectives": ["Create backfills", "Evaluate multiple horizons", "Monitor forecasts"],
+    "objectives": [
+      "Create backfills",
+      "Evaluate multiple horizons",
+      "Monitor forecasts"
+    ],
     "structure": "data/README.md\nnotebooks/01-exploration.ipynb\nsrc/data.py\nsrc/train.py\nsrc/evaluate.py\ntests/\nreports/\nrequirements.txt\nREADME.md"
   },
   {
     "id": "prediction-api",
     "title": "Real-time prediction API",
     "level": "advanced",
-    "prerequisites": [14, 17, 31, 32],
+    "prerequisites": [
+      14,
+      17,
+      31,
+      32
+    ],
     "problem": "Serve a validated model with a stable request and response contract.",
     "dataset": "Breast Cancer Wisconsin",
     "datasetUrl": "https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html",
     "output": "A containerized FastAPI service with an educational-use statement.",
     "evaluation": "Test malformed requests, concurrent load, latency percentiles, and version rollback.",
-    "objectives": ["Validate requests", "Measure latency", "Test serving parity"],
+    "objectives": [
+      "Validate requests",
+      "Measure latency",
+      "Test serving parity"
+    ],
     "structure": "data/README.md\nnotebooks/01-exploration.ipynb\nsrc/data.py\nsrc/train.py\nsrc/evaluate.py\ntests/\nreports/\nrequirements.txt\nREADME.md"
   },
   {
     "id": "production-recs",
     "title": "Production recommendation system",
     "level": "advanced",
-    "prerequisites": [17, 26, 30, 31, 32],
+    "prerequisites": [
+      17,
+      26,
+      30,
+      31,
+      32
+    ],
     "problem": "Separate candidate retrieval from ranking and support users without history.",
     "dataset": "MovieLens small",
     "datasetUrl": "https://grouplens.org/datasets/movielens/latest/",
     "output": "A two-stage recommendation service with a batch refresh pipeline.",
     "evaluation": "Measure Recall@K, coverage, serving latency, and fallback behavior.",
-    "objectives": ["Design retrieval", "Cache safely", "Monitor recommendation quality"],
+    "objectives": [
+      "Design retrieval",
+      "Cache safely",
+      "Monitor recommendation quality"
+    ],
     "structure": "data/README.md\nnotebooks/01-exploration.ipynb\nsrc/data.py\nsrc/train.py\nsrc/evaluate.py\ntests/\nreports/\nrequirements.txt\nREADME.md"
   },
   {
     "id": "monitoring-dashboard",
     "title": "ML monitoring dashboard",
     "level": "advanced",
-    "prerequisites": [16, 17, 31, 32, 33],
+    "prerequisites": [
+      16,
+      17,
+      31,
+      32,
+      33
+    ],
     "problem": "Detect input shifts and evaluate performance when delayed labels arrive.",
     "dataset": "California housing",
     "datasetUrl": "https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html",
@@ -257,13 +406,82 @@
     "id": "deep-learning-app",
     "title": "Deep learning application",
     "level": "advanced",
-    "prerequisites": [17, 23, 25, 31, 33],
+    "prerequisites": [
+      17,
+      23,
+      25,
+      31,
+      33
+    ],
     "problem": "Train an image classifier and investigate robustness beyond a single score.",
     "dataset": "CIFAR-10",
     "datasetUrl": "https://www.cs.toronto.edu/~kriz/cifar.html",
     "output": "A reproducible PyTorch training run, model card, and small demo.",
     "evaluation": "Compare a baseline, use a separate validation set, and test corruptions.",
-    "objectives": ["Use transfer learning", "Track training", "Test distribution shifts"],
+    "objectives": [
+      "Use transfer learning",
+      "Track training",
+      "Test distribution shifts"
+    ],
     "structure": "data/README.md\nnotebooks/01-exploration.ipynb\nsrc/data.py\nsrc/train.py\nsrc/evaluate.py\ntests/\nreports/\nrequirements.txt\nREADME.md"
+  },
+  {
+    "id": "python-mini",
+    "title": "Python mini project",
+    "level": "beginner",
+    "prerequisites": [
+      1
+    ],
+    "problem": "Read a small CSV and summarize missing values, unique categories, and numeric ranges.",
+    "dataset": "Palmer Penguins",
+    "datasetUrl": "https://allisonhorst.github.io/palmerpenguins/",
+    "output": "A command-line CSV summary tool with tests.",
+    "evaluation": "Another learner can reproduce the result and explain its assumptions.",
+    "objectives": [
+      "Read a file safely",
+      "Use functions and dictionaries",
+      "Test missing and invalid input"
+    ],
+    "structure": "README.md\nrequirements.txt\nsrc/\ntests/\nnotebooks/"
+  },
+  {
+    "id": "ab-experiment",
+    "title": "A/B experiment analysis",
+    "level": "intermediate",
+    "prerequisites": [
+      7,
+      28
+    ],
+    "problem": "Simulate randomized control and treatment groups, estimate an effect, and report uncertainty.",
+    "dataset": "Synthetic experiment data",
+    "datasetUrl": "https://numpy.org/doc/stable/reference/random/generator.html",
+    "output": "A notebook with a predefined metric, confidence interval, and decision.",
+    "evaluation": "Another learner can reproduce the result and explain its assumptions.",
+    "objectives": [
+      "Set a random seed",
+      "Compare effect size and uncertainty",
+      "Explain practical significance"
+    ],
+    "structure": "README.md\nrequirements.txt\nsrc/\ntests/\nnotebooks/"
+  },
+  {
+    "id": "portfolio",
+    "title": "Publish your portfolio",
+    "level": "intermediate",
+    "prerequisites": [
+      3,
+      36
+    ],
+    "problem": "Make one completed project reproducible and explain the decisions behind it.",
+    "dataset": "Your completed roadmap project",
+    "datasetUrl": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes",
+    "output": "A public repository with a concise README and reproducible setup.",
+    "evaluation": "Another learner can reproduce the result and explain its assumptions.",
+    "objectives": [
+      "Document the question and dataset",
+      "Report validation and limitations",
+      "Rehearse a two-minute walkthrough"
+    ],
+    "structure": "README.md\nrequirements.txt\nsrc/\ntests/\nnotebooks/"
   }
 ]

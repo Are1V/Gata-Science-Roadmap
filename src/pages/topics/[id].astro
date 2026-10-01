@@ -1,11 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import { phases, resources } from '../../data/roadmap';
-import projects from '../../content/projects/projects.json';
-import { GuideCompleteButton } from '../../components/Progress';
+import GuideLesson from '../../components/GuideLesson';
 import LearningLab from '../../components/LearningLab';
-import { ArrowLeft, ArrowUpRight, Clock, BookOpen, GitBranch } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { url } from '../../utils/urls';
 export async function getStaticPaths() {
   return (await getCollection('guides')).map((guide) => ({
@@ -14,112 +12,28 @@ export async function getStaticPaths() {
   }));
 }
 const { guide } = Astro.props;
-const { Content, headings } = await render(guide);
-const all = await getCollection('guides');
-const phase = phases[guide.data.phase];
-const project = projects.find((p) => p.id === guide.data.project)!;
+const { Content } = await render(guide);
 ---
 
-<Layout
-  title={guide.data.title}
-  active={
-    guide.data.phase === 7 || guide.data.phase === 28
-      ? 'Statistics'
-      : guide.data.phase < 7
-        ? 'Mathematics'
-        : 'Roadmap'
-  }
-  description={guide.data.description}
->
-  <a class="back-link" href={url(`learn/${phase.id}/`)}>
+<Layout title={guide.data.title} active="Roadmap">
+  <a href={url('roadmap/')} class="back-link">
     <ArrowLeft size={14} />
-    Phase {String(phase.number).padStart(2, '0')} · {phase.title}
+    Back to the map
   </a>
-  <div class="lesson-layout">
-    <article class="lesson">
-      <div class="page-heading">
-        <span class="eyebrow">
-          <BookOpen size={12} />
-          DETAILED FIELD GUIDE
-        </span>
-        <h1>{guide.data.title}</h1>
-        <p>{guide.data.description}</p>
-        <div class="lesson-meta">
-          <span>
-            <Clock size={13} />
-            About {guide.data.estimatedHours} hours with exercises
-          </span>
-          <span class="tag">{phase.level}</span>
-          <GuideCompleteButton client:load guideId={guide.id} topicId={guide.data.topicId} />
-        </div>
-      </div>
-      <section class="prerequisite-box">
-        <h2>
-          <GitBranch size={16} />
-          Build on what you know
-        </h2>
-        <div class="dependency-links">
-          {guide.data.prerequisites.length ? (
-            guide.data.prerequisites.map((id) => (
-              <a href={url(`topics/${id}/`)}>
-                {all.find((g) => g.id === id)?.data.title}
-                <ArrowUpRight size={12} />
-              </a>
-            ))
-          ) : (
-            <span>No other detailed guides required. Start here.</span>
-          )}
-        </div>
-      </section>
+  <article class="video-lesson-page">
+    <h1 class="sr-only">{guide.data.title}</h1>
+    <GuideLesson guideId={guide.id} topicId={guide.data.topicId} client:load />
+    {guide.data.lab && (
+      <details class="supplementary">
+        <summary>Explore with an interactive lab</summary>
+        <LearningLab type={guide.data.lab} client:visible />
+      </details>
+    )}
+    <details class="supplementary">
+      <summary>Optional notes, mathematics, and code</summary>
       <div class="prose">
         <Content />
       </div>
-      {guide.data.lab && <LearningLab type={guide.data.lab} client:load />}
-      <section class="lesson-project" id="project">
-        <span class="eyebrow">MAKE IT REAL</span>
-        <h2>{project.title}</h2>
-        <p>{project.problem}</p>
-        <a class="text-link" href={url(`projects/#${project.id}`)}>
-          Open the project brief <ArrowUpRight size={14} />
-        </a>
-      </section>
-      <section class="free-resources" id="resources">
-        <h2>Keep exploring, for free.</h2>
-        {guide.data.resources.map((id) => {
-          const r = resources.find((r) => r.id === id)!;
-          return (
-            <a href={r.url} target="_blank" rel="noreferrer">
-              <BookOpen size={18} />
-              <div>
-                <strong>{r.title}</strong>
-                <span>
-                  {r.provider} · {r.type}
-                </span>
-              </div>
-              <ArrowUpRight size={17} />
-            </a>
-          );
-        })}
-      </section>
-      <div class="lesson-end">
-        <p>Ready to take the next step?</p>
-        <GuideCompleteButton client:load guideId={guide.id} topicId={guide.data.topicId} />
-      </div>
-    </article>
-    <aside class="lesson-toc">
-      <span class="nav-label">IN THIS GUIDE</span>
-      {headings
-        .filter((h) => h.depth === 2)
-        .map((h) => (
-          <a href={`#${h.slug}`}>{h.text}</a>
-        ))}
-      <a href="#project">Project</a>
-      <a href="#resources">Free resources</a>
-      <div class="toc-note">
-        Understanding takes time.
-        <br />
-        Let the ideas settle.
-      </div>
-    </aside>
-  </div>
+    </details>
+  </article>
 </Layout>

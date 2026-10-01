@@ -19,6 +19,7 @@ import Github from '../components/Github';
 import { ThemeToggle, MobileMenu, StorageNotice } from '../components/ShellControls';
 import { ProgressMini } from '../components/Progress';
 import Search from '../components/Search';
+import TopicDrawer from '../components/TopicDrawer';
 import { url, githubUrl } from '../utils/urls';
 interface Props {
   title: string;
@@ -153,5 +154,6 @@ const practice = [
       </footer>
     </div>
     <StorageNotice client:load />
+    <TopicDrawer client:load />
   </body>
 </html>

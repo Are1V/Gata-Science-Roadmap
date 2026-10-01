@@ -3,7 +3,7 @@
     "id": "python",
     "title": "The Python Tutorial",
     "provider": "Python Software Foundation",
-    "url": "https://docs.python.org/3/tutorial/",
+    "url": "https://docs.python.org/3/tutorial/index.html",
     "type": "Documentation"
   },
   {
@@ -191,7 +191,7 @@
   {
     "id": "causal",
     "title": "Causal Inference: What If",
-    "provider": "Hern\u00e1n & Robins",
+    "provider": "Hernán & Robins",
     "url": "https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/",
     "type": "Book"
   },

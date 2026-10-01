@@ -14,7 +14,8 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "check:links": "node scripts/check-links.mjs",
-    "check:resources": "node scripts/check-resources.mjs"
+    "check:resources": "node scripts/check-resources.mjs",
+    "check:videos": "node scripts/check-videos.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.3.1",

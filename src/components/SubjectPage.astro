@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { phases } from '../data/roadmap';
-import { ArrowUpRight, BookOpen, GitBranch } from 'lucide-react';
+import { ArrowUpRight, Play, GitBranch } from 'lucide-react';
 import { url } from '../utils/urls';
 interface Props {
   phaseNumbers: number[];
@@ -42,7 +42,7 @@ const all = await getCollection('guides');
   <div class="section-heading">
     <div>
       <h2>Build your understanding.</h2>
-      <p>Authored lessons with worked examples, equations, and exercises.</p>
+      <p>Short video lessons with prerequisites and practice.</p>
     </div>
   </div>
   <div class="resource-grid">
@@ -50,14 +50,14 @@ const all = await getCollection('guides');
       <a class="resource-card" href={url(`topics/${g.id}/`)}>
         <div class="card-top">
           <span class="card-icon">
-            <BookOpen size={20} />
+            <Play size={20} />
           </span>
-          <span class="tag">{g.data.estimatedHours}h with exercises</span>
+          <span class="tag">Video + practice</span>
         </div>
         <h2>{g.data.title}</h2>
         <p>{g.data.description}</p>
         <span class="text-link">
-          Open field guide <ArrowUpRight size={14} />
+          Open lesson <ArrowUpRight size={14} />
         </span>
       </a>
     ))}
@@ -67,7 +67,7 @@ const all = await getCollection('guides');
   <div class="section-heading">
     <div>
       <h2>See the full curriculum.</h2>
-      <p>Explore every concept, with chapter exercises and curated free resources.</p>
+      <p>Pick a chapter to see its topics.</p>
     </div>
   </div>
   <div class="progress-sections">

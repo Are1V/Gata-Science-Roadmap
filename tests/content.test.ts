@@ -6,8 +6,8 @@ import projects from '../src/content/projects/projects.json';
 const guideFiles = readdirSync('src/content/guides').filter((f) => f.endsWith('.md'));
 const guideIds = guideFiles.map((f) => f.replace('.md', ''));
 describe('The learning graph is coherent', () => {
-  it('covers all 35 requested phases with uniquely addressable concepts', () => {
-    expect(phases.map((p) => p.number)).toEqual(Array.from({ length: 35 }, (_, i) => i));
+  it('covers all requested phases with uniquely addressable concepts', () => {
+    expect(phases.map((p) => p.number)).toEqual(Array.from({ length: 37 }, (_, i) => i));
     expect(new Set(topics.map((t) => t.id)).size).toBe(topics.length);
     expect(topics.length).toBeGreaterThan(600);
   });
