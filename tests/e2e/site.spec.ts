@@ -252,6 +252,7 @@ test('subject filters and search lead directly to relevant lessons', async ({ pa
 test('mobile bottom sheet and both drawer themes remain accessible', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('./roadmap/?topic=13-linear-regression');
+  await expect(page.locator('.topic-drawer')).toBeVisible();
   const box = await page.locator('.topic-drawer').boundingBox();
   expect(box!.width).toBeLessThanOrEqual(390);
   expect(box!.y).toBeGreaterThan(0);
