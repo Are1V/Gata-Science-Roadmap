@@ -48,7 +48,6 @@ function PhaseNode({ data }: { data: PhaseData }) {
         <i style={{ width: `${(data.completed / data.phase.topics.length) * 100}%` }} />
       </div>
       <div className="flow-phase-footer">
-        {data.phase.level}
         <button
           className="nodrag"
           aria-label={`${data.expanded ? 'Collapse' : 'Expand'} ${data.phase.title}`}
@@ -79,8 +78,7 @@ const nodeTypes = { phase: PhaseNode, preview: TopicNode };
 export default function Roadmap() {
   const { completed } = useProgress();
   const [ready, setReady] = useState(false);
-  const [level, setLevel] = useState('all'),
-    [category, setCategory] = useState('all'),
+  const [category, setCategory] = useState('all'),
     [path, setPath] = useState('all'),
     [query, setQuery] = useState(''),
     [view, setView] = useState('map'),
@@ -97,7 +95,6 @@ export default function Roadmap() {
   }, []);
   const filtered = phases.filter(
     (p) =>
-      (level === 'all' || p.level === level) &&
       (category === 'all' || categoryForPhase(p.number) === category) &&
       (path === 'all' ||
         p.number < 4 ||
@@ -227,7 +224,6 @@ export default function Roadmap() {
             {nextTopic.title}
           </button>
         )}
-        <span>Click a topic. Watch a lesson. Try it.</span>
       </div>
       <nav className="stage-nav" aria-label="Roadmap sections">
         {stages
@@ -269,20 +265,6 @@ export default function Roadmap() {
           <option value="all">All subjects</option>
           {categories.map((c) => (
             <option key={c}>{c}</option>
-          ))}
-        </select>
-        <select
-          className="filter-select"
-          disabled={!ready}
-          aria-label="Filter by level"
-          value={level}
-          onChange={(e) => setLevel(e.target.value)}
-        >
-          <option value="all">All levels</option>
-          {['beginner', 'intermediate', 'advanced'].map((l) => (
-            <option key={l} value={l}>
-              {l[0].toUpperCase() + l.slice(1)}
-            </option>
           ))}
         </select>
         <select
@@ -361,7 +343,6 @@ export default function Roadmap() {
             className="text-button"
             onClick={() => {
               setQuery('');
-              setLevel('all');
               setCategory('all');
               setPath('all');
             }}
@@ -386,7 +367,7 @@ export default function Roadmap() {
           aria-label="Interactive data science roadmap"
         >
           <ReactFlow
-            key={`${activeStage}-${level}-${path}-${category}`}
+            key={`${activeStage}-${path}-${category}`}
             nodes={nodes}
             edges={edges}
             nodeTypes={nodeTypes}
@@ -424,7 +405,7 @@ export default function Roadmap() {
                   <h3>{p.title}</h3>
                   <span>
                     {p.topics.filter((t) => completed.includes(t.id)).length} / {p.topics.length}{' '}
-                    complete · {p.level}
+                    complete
                   </span>
                 </div>
                 <ChevronDown size={18} />

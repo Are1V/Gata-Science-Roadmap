@@ -3,8 +3,9 @@ export const stages = [
   { name: 'Math & statistics', phases: [4, 5, 6, 7] },
   { name: 'Work with data', phases: [8, 9, 10, 11, 35] },
   { name: 'Machine learning', phases: [12, 13, 14, 15, 16, 17] },
-  { name: 'Go deeper', phases: [18, 19, 20, 21, 22, 23] },
-  { name: 'Applied fields', phases: [24, 25, 26, 27, 28, 29] },
+  { name: 'Go deeper', phases: [18, 19, 20, 21, 22] },
+  { name: 'Deep learning & AI', phases: [23, 24, 37, 25] },
+  { name: 'Applied fields', phases: [26, 27, 28, 29] },
   { name: 'Ship & grow', phases: [30, 31, 32, 33, 34, 36] },
 ];
 export const projectMilestones: Record<number, string> = {
@@ -17,6 +18,8 @@ export const projectMilestones: Record<number, string> = {
   22: 'sales-forecasting',
   23: 'deep-learning-app',
   24: 'sentiment',
+  25: 'deep-learning-app',
+  37: 'rag-assistant',
   26: 'recommendation-system',
   28: 'ab-experiment',
   31: 'prediction-api',
@@ -33,6 +36,9 @@ export const featuredTopics: Record<number, string[]> = {
   15: ['15-decision-trees', '15-random-forest', '15-gradient-boosting'],
   21: ['21-k-means', '21-pca', '21-dbscan'],
   23: ['23-neural-networks', '23-backpropagation', '23-pytorch'],
+  24: ['24-tokenization', '24-attention', '24-transformers'],
+  25: ['25-cnns', '25-object-detection', '25-image-segmentation'],
+  37: ['37-self-attention', '37-rag', '37-llm-evaluation'],
 };
 export const connectedAlgorithms = [
   '13-linear-regression',

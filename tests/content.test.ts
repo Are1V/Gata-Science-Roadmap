@@ -7,7 +7,7 @@ const guideFiles = readdirSync('src/content/guides').filter((f) => f.endsWith('.
 const guideIds = guideFiles.map((f) => f.replace('.md', ''));
 describe('The learning graph is coherent', () => {
   it('covers all requested phases with uniquely addressable concepts', () => {
-    expect(phases.map((p) => p.number)).toEqual(Array.from({ length: 37 }, (_, i) => i));
+    expect(phases.map((p) => p.number)).toEqual(Array.from({ length: 38 }, (_, i) => i));
     expect(new Set(topics.map((t) => t.id)).size).toBe(topics.length);
     expect(topics.length).toBeGreaterThan(600);
   });

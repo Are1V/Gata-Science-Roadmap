@@ -4,7 +4,7 @@ test('home, global search, and keyboard dismissal', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('./');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Data science,');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Learn data science.');
   await page.getByRole('button', { name: 'Search anything' }).click();
   await page
     .getByRole('textbox', { name: 'Search topics, projects, and resources' })
@@ -75,9 +75,9 @@ test('graph nodes expand, open details, zoom, and filter', async ({ page }) => {
     before!,
   );
   await page.getByRole('button', { name: 'List', exact: true }).click();
-  await page.getByRole('combobox', { name: 'Filter by level' }).selectOption('advanced');
+  await page.getByRole('combobox', { name: 'Filter by category' }).selectOption('Deep Learning');
   await expect(page.locator('.roadmap-list-phase').first()).toBeVisible();
-  expect(await page.locator('.roadmap-list-phase').count()).toBeLessThanOrEqual(6);
+  expect(await page.locator('.roadmap-list-phase').count()).toBe(1);
   await page.getByRole('textbox', { name: 'Filter roadmap' }).fill('nonsense-no-results');
   await expect(page.getByText('No topics match these filters.', { exact: false })).toBeVisible();
   expect(errors).toEqual([]);

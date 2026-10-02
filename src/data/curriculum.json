@@ -2987,6 +2987,51 @@
         "id": "23-pytorch",
         "title": "PyTorch",
         "kind": "core"
+      },
+      {
+        "id": "23-tensors-autograd",
+        "title": "Tensors and autograd",
+        "kind": "core"
+      },
+      {
+        "id": "23-datasets-dataloaders",
+        "title": "Datasets and data loaders",
+        "kind": "core"
+      },
+      {
+        "id": "23-training-loop",
+        "title": "The training loop",
+        "kind": "core"
+      },
+      {
+        "id": "23-validation-loop",
+        "title": "Validation and checkpoints",
+        "kind": "core"
+      },
+      {
+        "id": "23-learning-rate-schedules",
+        "title": "Learning-rate schedules",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-residual-connections",
+        "title": "Residual connections",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-recurrent-networks",
+        "title": "Recurrent networks",
+        "kind": "advanced"
+      },
+      {
+        "id": "23-model-debugging",
+        "title": "Debugging neural networks",
+        "kind": "core"
+      },
+      {
+        "id": "23-experiment-tracking",
+        "title": "Experiment tracking",
+        "kind": "core"
       }
     ]
   },
@@ -3149,6 +3194,61 @@
         "id": "25-transfer-learning",
         "title": "Transfer learning",
         "kind": "advanced"
+      },
+      {
+        "id": "25-image-classification",
+        "title": "Image classification",
+        "kind": "core"
+      },
+      {
+        "id": "25-feature-maps",
+        "title": "Feature maps and receptive fields",
+        "kind": "advanced"
+      },
+      {
+        "id": "25-resnets",
+        "title": "Residual networks",
+        "kind": "advanced"
+      },
+      {
+        "id": "25-object-detection",
+        "title": "Object detection",
+        "kind": "core"
+      },
+      {
+        "id": "25-iou-map",
+        "title": "IoU and mean average precision",
+        "kind": "advanced"
+      },
+      {
+        "id": "25-yolo",
+        "title": "YOLO detectors",
+        "kind": "advanced"
+      },
+      {
+        "id": "25-image-segmentation",
+        "title": "Image segmentation",
+        "kind": "core"
+      },
+      {
+        "id": "25-unet",
+        "title": "U-Net",
+        "kind": "advanced"
+      },
+      {
+        "id": "25-vision-transformers",
+        "title": "Vision transformers",
+        "kind": "advanced"
+      },
+      {
+        "id": "25-opencv",
+        "title": "OpenCV workflows",
+        "kind": "core"
+      },
+      {
+        "id": "25-vision-error-analysis",
+        "title": "Vision error analysis",
+        "kind": "core"
       }
     ]
   },
@@ -3931,6 +4031,46 @@
         "title": "Behavioral interviews",
         "kind": "core"
       }
+    ]
+  },
+  {
+    "number": 37,
+    "id": "large-language-models",
+    "title": "Large language models",
+    "subtitle": "Build reliable language systems",
+    "description": "Understand how modern language models represent tokens, learn next-token prediction, adapt to instructions, retrieve evidence, and serve responses responsibly.",
+    "intuition": "An LLM predicts a distribution over the next token. Useful systems add context, tools, evaluation, and careful product boundaries around that model.",
+    "mistake": "A fluent answer is not proof. Evaluate the full system against realistic tasks, sources, latency, cost, and failure cases.",
+    "exercise": "Build a small retrieval-augmented assistant over a trusted document set and evaluate answer quality, citations, latency, and abstention.",
+    "resourceIds": [
+      "huggingface"
+    ],
+    "level": "advanced",
+    "prerequisites": [
+      23,
+      24
+    ],
+    "topics": [
+      { "id": "37-language-modeling", "title": "Language modeling", "kind": "core" },
+      { "id": "37-next-token-prediction", "title": "Next-token prediction", "kind": "core" },
+      { "id": "37-llm-tokenization", "title": "Subword tokenization", "kind": "core" },
+      { "id": "37-positional-encoding", "title": "Positional encoding", "kind": "advanced" },
+      { "id": "37-self-attention", "title": "Self-attention", "kind": "core" },
+      { "id": "37-multi-head-attention", "title": "Multi-head attention", "kind": "advanced" },
+      { "id": "37-transformer-blocks", "title": "Transformer blocks", "kind": "core" },
+      { "id": "37-pretraining", "title": "Pretraining", "kind": "core" },
+      { "id": "37-context-windows", "title": "Context windows", "kind": "core" },
+      { "id": "37-instruction-tuning", "title": "Instruction tuning", "kind": "core" },
+      { "id": "37-lora", "title": "PEFT and LoRA", "kind": "advanced" },
+      { "id": "37-prompt-design", "title": "Prompt design", "kind": "core" },
+      { "id": "37-structured-output", "title": "Structured output", "kind": "core" },
+      { "id": "37-embeddings-search", "title": "Embeddings and semantic search", "kind": "core" },
+      { "id": "37-vector-databases", "title": "Vector databases", "kind": "advanced" },
+      { "id": "37-rag", "title": "Retrieval-augmented generation", "kind": "core" },
+      { "id": "37-llm-evaluation", "title": "LLM evaluation", "kind": "core" },
+      { "id": "37-hallucinations", "title": "Hallucinations and grounding", "kind": "core" },
+      { "id": "37-quantization", "title": "Quantization", "kind": "advanced" },
+      { "id": "37-inference-serving", "title": "Inference and serving", "kind": "core" }
     ]
   }
 ]

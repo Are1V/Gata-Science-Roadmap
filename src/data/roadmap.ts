@@ -30,7 +30,7 @@ export const specializations = [
     id: 'nlp',
     title: 'NLP Data Scientist',
     description: 'Build systems that learn from language.',
-    phases: [1, 4, 5, 6, 8, 12, 14, 16, 17, 23, 24, 31, 32, 33],
+    phases: [1, 4, 5, 6, 8, 12, 14, 16, 17, 23, 24, 37, 31, 32, 33],
   },
   {
     id: 'vision',

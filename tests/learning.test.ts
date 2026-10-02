@@ -46,7 +46,7 @@ describe('Video-first curriculum', () => {
       expect(lessons[id], id).toBeDefined();
     for (const id of Object.values(projectMilestones))
       expect(projects.some((p) => p.id === id)).toBe(true);
-    expect(new Set(learningOrder).size).toBe(37);
+    expect(new Set(learningOrder).size).toBe(38);
     for (const t of topics) expect(categories).toContain(categoryForPhase(t.phase));
   });
   it('records review evidence without duplicate catalog entries', () => {

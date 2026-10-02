@@ -1,32 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Roadmap from '../components/Roadmap';
-import { ArrowRight, GitBranch, Flag } from 'lucide-react';
-import { url } from '../utils/urls';
 ---
 
 <Layout title="Home">
   <div class="page-heading roadmap-page-heading home-map-heading">
-    <span class="eyebrow">GATA SCIENCE ROADMAP</span>
-    <h1>Data science, mapped.</h1>
-    <p>A visual path from your first Python script to production.</p>
-  </div>
-  <div class="home-map-links">
-    <span>Free videos. Real projects. No sign-up.</span>
-    <a href={url('roadmap/#connections')}>
-      <GitBranch size={14} />
-      Math connections
-      <ArrowRight size={13} />
-    </a>
-    <a href={url('projects/')}>
-      <Flag size={14} />
-      Projects
-      <ArrowRight size={13} />
-    </a>
+    <span class="eyebrow">THE GATA CURRICULUM · 2026</span>
+    <h1>Learn data science.<br /><em>See the whole path.</em></h1>
   </div>
   <Roadmap client:load />
-  <a class="text-link home-all-paths" href={url('roadmap/#paths')}>
-    Explore specialization paths
-    <ArrowRight size={14} />
-  </a>
 </Layout>

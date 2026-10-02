@@ -10,13 +10,13 @@ export const searchIndex = [
   ...topics.map((t) => ({
     title: t.title,
     type: 'Topic',
-    detail: `Phase ${String(t.phase).padStart(2, '0')} · ${t.level}`,
+    detail: `Chapter ${String(t.phase).padStart(2, '0')}`,
     href: url(topicHref(t.id)),
   })),
   ...projects.map((p) => ({
     title: p.title,
     type: 'Project',
-    detail: p.level,
+    detail: 'Project brief',
     href: url(`projects/#${p.id}`),
   })),
   ...resources.map((r) => ({ title: r.title, type: 'Resource', detail: r.provider, href: r.url })),

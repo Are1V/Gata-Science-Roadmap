@@ -19,14 +19,10 @@ export function TopicLesson({
   return (
     <div className="topic-lesson">
       <div className="topic-meta">
-        {topic.level} <span>·</span> {categoryForPhase(topic.phase)} <span>·</span>{' '}
-        {topic.kind === 'core' ? 'Recommended' : 'Optional'}
+        {categoryForPhase(topic.phase)}
       </div>
       <h2 id={headingId}>{topic.title}</h2>
       <p className="topic-summary">{lesson.summary}</p>
-      <p className="topic-why">
-        <strong>Why it matters</strong> {lesson.why}
-      </p>
       {lesson.prerequisites.length > 0 && (
         <section className="topic-prerequisites">
           <h3>Learn first</h3>
@@ -62,7 +58,6 @@ export function TopicLesson({
       </section>
       <div className="topic-completion">
         <CompleteButton id={id} />
-        <small>Saved on this device. No account needed.</small>
       </div>
     </div>
   );
@@ -112,7 +107,7 @@ export default function TopicDrawer() {
     >
       <div className="topic-drawer-inner">
         <div className="drawer-toolbar">
-          <span>WATCH · PRACTICE · COMPLETE</span>
+          <span>GATA / FIELD NOTE</span>
           <button className="icon-button" aria-label="Close topic" onClick={close} autoFocus>
             <X size={21} />
           </button>

@@ -8,12 +8,12 @@ A visual, video-first path through data science. Click a topic, watch a lesson, 
 
 ## Features
 
-- 37 chapters and 636 individually addressable concepts, from Python through career preparation.
+- 38 chapters and 676 individually addressable concepts, from Python through large language models and career preparation.
 - 428 distinct YouTube lessons, stored separately from the UI, with public metadata checks and review provenance.
 - A concise topic drawer with prerequisites, a video card, practice, and completion. Mobile uses a bottom sheet.
 - Pan, zoom, chapter expansion, subject and difficulty filters, and ten specialization paths.
 - Actual mathematical dependency graphs for regression, logistic regression, PCA, neural networks, Naive Bayes, KNN, K-means, and trees.
-- 22 project briefs, with project milestones throughout the roadmap.
+- 23 project briefs, with project milestones throughout the roadmap.
 - Local search, persistent progress, cross-tab updates, progress export, dark mode, and keyboard navigation.
 - Optional notes and interactive math labs, collapsed by default.
 

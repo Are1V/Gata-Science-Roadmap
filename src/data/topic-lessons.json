@@ -6238,5 +6238,325 @@
     "videoId": "rLKC--8UYSw",
     "practice": "Publish one reproducible project and rehearse a two-minute explanation of its tradeoffs.",
     "projectId": "portfolio"
+  },
+  "23-tensors-autograd": {
+    "summary": "Represent data as tensors and let automatic differentiation compute gradients through a model.",
+    "why": "Tensors and computation graphs are the working language of modern deep-learning frameworks.",
+    "prerequisites": ["23-pytorch", "23-backpropagation"],
+    "videoId": "exaWOE8jvy8",
+    "practice": "Inspect tensor shapes, devices, and gradients in a small PyTorch model.",
+    "projectId": "deep-learning-app"
+  },
+  "23-datasets-dataloaders": {
+    "summary": "Create repeatable input pipelines that batch, shuffle, and transform examples.",
+    "why": "Reliable pipelines keep model training fast and prevent data leakage.",
+    "prerequisites": ["23-pytorch", "23-batches"],
+    "videoId": "FHdlXe1bSe4",
+    "practice": "Write a dataset and data loader for a labeled image folder.",
+    "projectId": "deep-learning-app"
+  },
+  "23-training-loop": {
+    "summary": "Connect forward passes, losses, gradients, optimizer steps, and metric logging.",
+    "why": "The training loop reveals where learning succeeds or fails.",
+    "prerequisites": ["23-pytorch", "23-loss-functions", "23-backpropagation"],
+    "videoId": "FHdlXe1bSe4",
+    "practice": "Write a training loop without a high-level trainer and plot the loss.",
+    "projectId": "deep-learning-app"
+  },
+  "23-validation-loop": {
+    "summary": "Measure generalization on held-out data and save the strongest checkpoint.",
+    "why": "Training loss alone cannot tell you whether a model will work on new data.",
+    "prerequisites": ["23-training-loop", "17-train-validation-test"],
+    "videoId": "FHdlXe1bSe4",
+    "practice": "Add validation, early stopping, and checkpoint restoration to a training run.",
+    "projectId": "deep-learning-app"
+  },
+  "23-learning-rate-schedules": {
+    "summary": "Change the learning rate during training to balance fast progress and stable convergence.",
+    "why": "A schedule can make the same optimizer converge more reliably.",
+    "prerequisites": ["23-learning-rate", "23-adamw"],
+    "videoId": "IHZwWFHWa-w",
+    "practice": "Compare constant, cosine, and step schedules on one model.",
+    "projectId": "deep-learning-app"
+  },
+  "23-residual-connections": {
+    "summary": "Add shortcut paths that help information and gradients pass through deep networks.",
+    "why": "Residual connections made much deeper models practical to optimize.",
+    "prerequisites": ["23-neural-networks", "23-backpropagation"],
+    "videoId": "aircAruvnKk",
+    "practice": "Implement a residual block and compare it with a plain stack of layers.",
+    "projectId": "deep-learning-app"
+  },
+  "23-recurrent-networks": {
+    "summary": "Process sequences with a hidden state shared across time steps.",
+    "why": "Recurrent networks explain many sequence-modeling ideas that preceded transformers.",
+    "prerequisites": ["23-neural-networks", "23-tanh"],
+    "videoId": "CqOfi41LfDw",
+    "practice": "Train a compact recurrent model on a short sequence task.",
+    "projectId": "deep-learning-app"
+  },
+  "23-model-debugging": {
+    "summary": "Use tiny batches, baselines, gradient checks, and learning curves to locate failures.",
+    "why": "Most model problems come from data and training mechanics before architecture.",
+    "prerequisites": ["23-training-loop", "23-validation-loop"],
+    "videoId": "IN2XmBhILt4",
+    "practice": "Force a model to overfit one batch, then diagnose a deliberately broken pipeline.",
+    "projectId": "deep-learning-app"
+  },
+  "23-experiment-tracking": {
+    "summary": "Record code, data, hyperparameters, metrics, and artifacts for every run.",
+    "why": "Comparable records turn trial and error into evidence.",
+    "prerequisites": ["23-training-loop", "23-validation-loop"],
+    "videoId": "FHdlXe1bSe4",
+    "practice": "Track three controlled runs and write a short decision log.",
+    "projectId": "deep-learning-app"
+  },
+  "25-image-classification": {
+    "summary": "Assign one or more labels to an image and inspect performance by class.",
+    "why": "Classification is the clearest complete workflow for learning visual representations.",
+    "prerequisites": ["25-cnns", "25-augmentation"],
+    "videoId": "pDdP0TFzsoQ",
+    "practice": "Fine-tune a classifier and review its confusion matrix and hardest examples.",
+    "projectId": "deep-learning-app"
+  },
+  "25-feature-maps": {
+    "summary": "Trace how spatial features and receptive fields change across a convolutional network.",
+    "why": "Shape and receptive-field reasoning helps diagnose weak vision architectures.",
+    "prerequisites": ["25-convolutions", "25-cnns"],
+    "videoId": "py5byOOHZM8",
+    "practice": "Visualize feature maps from early and late layers of a trained CNN.",
+    "projectId": "deep-learning-app"
+  },
+  "25-resnets": {
+    "summary": "Use residual blocks to train deep image encoders.",
+    "why": "ResNets remain a strong baseline and a foundation for transfer learning.",
+    "prerequisites": ["23-residual-connections", "25-cnns"],
+    "videoId": "6nQlxJvcTr0",
+    "practice": "Fine-tune a small ResNet and compare frozen versus unfrozen layers.",
+    "projectId": "deep-learning-app"
+  },
+  "25-object-detection": {
+    "summary": "Locate and classify multiple objects with bounding boxes.",
+    "why": "Detection combines localization, classification, and confidence calibration.",
+    "prerequisites": ["25-image-classification", "25-cnns"],
+    "videoId": "QzY57FaENXg",
+    "practice": "Run a pretrained detector and inspect false positives, misses, and duplicate boxes.",
+    "projectId": "deep-learning-app"
+  },
+  "25-iou-map": {
+    "summary": "Measure box overlap with IoU and summarize detector quality with mean average precision.",
+    "why": "Detection needs metrics that reward both correct classes and useful localization.",
+    "prerequisites": ["25-object-detection", "16-precision", "16-recall"],
+    "videoId": "QzY57FaENXg",
+    "practice": "Compute IoU for sample boxes and compare precision-recall at two thresholds.",
+    "projectId": "deep-learning-app"
+  },
+  "25-yolo": {
+    "summary": "Predict object locations and classes in a fast, single-stage detector.",
+    "why": "YOLO is a practical entry point for real-time detection systems.",
+    "prerequisites": ["25-object-detection", "25-iou-map"],
+    "videoId": "QzY57FaENXg",
+    "practice": "Fine-tune a small detector and measure accuracy and latency together.",
+    "projectId": "deep-learning-app"
+  },
+  "25-image-segmentation": {
+    "summary": "Predict a class for each pixel to separate objects and regions.",
+    "why": "Segmentation is essential when the shape and area of an object matter.",
+    "prerequisites": ["25-cnns", "25-object-detection"],
+    "videoId": "pDdP0TFzsoQ",
+    "practice": "Train a small binary segmenter and inspect masks at object boundaries.",
+    "projectId": "deep-learning-app"
+  },
+  "25-unet": {
+    "summary": "Combine an encoder with skip-connected decoding for precise pixel masks.",
+    "why": "U-Net is a practical, widely used segmentation architecture.",
+    "prerequisites": ["25-image-segmentation", "23-residual-connections"],
+    "videoId": "pDdP0TFzsoQ",
+    "practice": "Implement one encoder-decoder skip connection and compare mask quality.",
+    "projectId": "deep-learning-app"
+  },
+  "25-vision-transformers": {
+    "summary": "Treat image patches as tokens and learn global visual relationships with attention.",
+    "why": "Vision transformers connect modern image systems with transformer foundations.",
+    "prerequisites": ["25-image-classification", "24-attention", "24-transformers"],
+    "videoId": "wjZofJX0v4M",
+    "practice": "Compare predictions from a pretrained CNN and vision transformer on shifted images.",
+    "projectId": "deep-learning-app"
+  },
+  "25-opencv": {
+    "summary": "Load, transform, annotate, and export images and video frames with OpenCV.",
+    "why": "Production vision work needs dependable image and video processing around the model.",
+    "prerequisites": ["25-image-preprocessing"],
+    "videoId": "MmBBVTniWFg",
+    "practice": "Build a preprocessing pipeline that resizes, converts color, and draws predictions.",
+    "projectId": "deep-learning-app"
+  },
+  "25-vision-error-analysis": {
+    "summary": "Group failures by class, source, lighting, resolution, and other meaningful slices.",
+    "why": "Aggregate accuracy can hide systematic failures in a vision system.",
+    "prerequisites": ["25-image-classification", "16-confusion-matrix"],
+    "videoId": "6nQlxJvcTr0",
+    "practice": "Create an error gallery and choose one data or modeling change from the evidence.",
+    "projectId": "deep-learning-app"
+  },
+  "37-language-modeling": {
+    "summary": "Model the probability of token sequences and use it to generate language.",
+    "why": "Language modeling is the central objective behind general-purpose LLMs.",
+    "prerequisites": ["24-tokenization", "23-neural-networks"],
+    "videoId": "wjZofJX0v4M",
+    "practice": "Score and compare a few short token sequences with a small open model.",
+    "projectId": "sentiment"
+  },
+  "37-next-token-prediction": {
+    "summary": "Predict the next token from preceding context and repeat the process autoregressively.",
+    "why": "This simple objective creates surprisingly broad language capabilities at scale.",
+    "prerequisites": ["37-language-modeling"],
+    "videoId": "wjZofJX0v4M",
+    "practice": "Inspect next-token probabilities as you change one word in a prompt.",
+    "projectId": "sentiment"
+  },
+  "37-llm-tokenization": {
+    "summary": "Split text into reusable subword units and understand token counts and boundaries.",
+    "why": "Tokenization affects cost, context length, multilingual behavior, and model inputs.",
+    "prerequisites": ["24-tokenization"],
+    "videoId": "fNxaJsNG3-s",
+    "practice": "Compare token counts for code, prose, numbers, and two languages.",
+    "projectId": "sentiment"
+  },
+  "37-positional-encoding": {
+    "summary": "Add information about token order to an attention-based model.",
+    "why": "Attention alone does not know which token came first.",
+    "prerequisites": ["37-llm-tokenization", "4-vectors"],
+    "videoId": "zxQyTK8quyY",
+    "practice": "Plot sinusoidal encodings and compare nearby and distant positions.",
+    "projectId": "sentiment"
+  },
+  "37-self-attention": {
+    "summary": "Let each token combine information from other tokens in the same sequence.",
+    "why": "Self-attention is the main routing mechanism inside transformers.",
+    "prerequisites": ["24-attention", "4-dot-product"],
+    "videoId": "PSs6nxngL6k",
+    "practice": "Calculate a tiny query-key attention example by hand.",
+    "projectId": "sentiment"
+  },
+  "37-multi-head-attention": {
+    "summary": "Run several learned attention projections in parallel and combine their outputs.",
+    "why": "Multiple heads let a layer represent different relationships at once.",
+    "prerequisites": ["37-self-attention"],
+    "videoId": "zxQyTK8quyY",
+    "practice": "Trace tensor shapes through a multi-head attention layer.",
+    "projectId": "sentiment"
+  },
+  "37-transformer-blocks": {
+    "summary": "Combine attention, feed-forward layers, normalization, and residual connections.",
+    "why": "Repeated transformer blocks form the backbone of modern LLMs.",
+    "prerequisites": ["37-multi-head-attention", "23-residual-connections", "23-batch-normalization"],
+    "videoId": "zxQyTK8quyY",
+    "practice": "Diagram one decoder block and label every residual path and tensor shape.",
+    "projectId": "sentiment"
+  },
+  "37-pretraining": {
+    "summary": "Learn broad language patterns from large text collections before task-specific adaptation.",
+    "why": "Pretraining creates reusable representations and generation behavior.",
+    "prerequisites": ["37-next-token-prediction", "37-transformer-blocks"],
+    "videoId": "wjZofJX0v4M",
+    "practice": "Compare base-model and instruction-model responses to the same prompt.",
+    "projectId": "sentiment"
+  },
+  "37-context-windows": {
+    "summary": "Manage the finite token budget available for instructions, evidence, and output.",
+    "why": "Context design affects cost, latency, recall, and answer quality.",
+    "prerequisites": ["37-llm-tokenization", "37-transformer-blocks"],
+    "videoId": "wjZofJX0v4M",
+    "practice": "Budget tokens for a prompt, retrieved passages, and a structured response.",
+    "projectId": "sentiment"
+  },
+  "37-instruction-tuning": {
+    "summary": "Adapt a pretrained model to follow human-written tasks and response formats.",
+    "why": "Instruction tuning turns a base language model into a more useful assistant.",
+    "prerequisites": ["37-pretraining"],
+    "videoId": "GDN649X_acE",
+    "practice": "Write five diverse instruction-response examples for one narrow task.",
+    "projectId": "sentiment"
+  },
+  "37-lora": {
+    "summary": "Adapt a model by training small low-rank matrices instead of every parameter.",
+    "why": "LoRA makes focused adaptation possible with much less memory and compute.",
+    "prerequisites": ["37-instruction-tuning", "4-matrix-multiplication"],
+    "videoId": "GDN649X_acE",
+    "practice": "Estimate trainable parameters for full fine-tuning versus a LoRA setup.",
+    "projectId": "sentiment"
+  },
+  "37-prompt-design": {
+    "summary": "State the task, context, constraints, examples, and output contract clearly.",
+    "why": "A precise prompt makes behavior easier to test and maintain.",
+    "prerequisites": ["37-instruction-tuning"],
+    "videoId": "wjZofJX0v4M",
+    "practice": "Create a prompt suite with normal, ambiguous, and adversarial cases.",
+    "projectId": "sentiment"
+  },
+  "37-structured-output": {
+    "summary": "Constrain model responses to a schema that software can validate and use.",
+    "why": "Reliable applications need parseable results, not loosely formatted prose.",
+    "prerequisites": ["37-prompt-design"],
+    "videoId": "GDN649X_acE",
+    "practice": "Define a JSON schema and test repair behavior on invalid output.",
+    "projectId": "sentiment"
+  },
+  "37-embeddings-search": {
+    "summary": "Encode text as vectors and retrieve passages by semantic similarity.",
+    "why": "Semantic retrieval brings relevant private or current knowledge into an application.",
+    "prerequisites": ["24-embeddings", "4-cosine-similarity"],
+    "videoId": "viZrOnJclY0",
+    "practice": "Embed a small document set and inspect the top results for five queries.",
+    "projectId": "sentiment"
+  },
+  "37-vector-databases": {
+    "summary": "Index embedding vectors with metadata for fast filtered similarity search.",
+    "why": "A retrieval layer must scale while preserving source and access information.",
+    "prerequisites": ["37-embeddings-search", "9-select"],
+    "videoId": "viZrOnJclY0",
+    "practice": "Index chunk embeddings with document IDs and metadata filters.",
+    "projectId": "sentiment"
+  },
+  "37-rag": {
+    "summary": "Retrieve relevant evidence and place it in context before generation.",
+    "why": "RAG can ground answers in selected sources without retraining the model.",
+    "prerequisites": ["37-vector-databases", "37-context-windows", "37-prompt-design"],
+    "videoId": "GDN649X_acE",
+    "practice": "Build a document question-answering pipeline that returns source citations.",
+    "projectId": "sentiment"
+  },
+  "37-llm-evaluation": {
+    "summary": "Measure task success with fixed datasets, rubrics, traces, and human review.",
+    "why": "LLM behavior varies, so changes need repeatable evaluation before release.",
+    "prerequisites": ["37-prompt-design", "16-accuracy"],
+    "videoId": "GDN649X_acE",
+    "practice": "Create a 20-case evaluation set and compare two prompts blindly.",
+    "projectId": "sentiment"
+  },
+  "37-hallucinations": {
+    "summary": "Detect unsupported claims and design grounding, citation, and abstention behavior.",
+    "why": "Confident fabrication is a central product risk for generative systems.",
+    "prerequisites": ["37-rag", "37-llm-evaluation"],
+    "videoId": "GDN649X_acE",
+    "practice": "Label unsupported claims in model answers and test an abstention rule.",
+    "projectId": "sentiment"
+  },
+  "37-quantization": {
+    "summary": "Store and compute model weights at lower precision to reduce memory and latency.",
+    "why": "Quantization can make capable models practical on smaller hardware.",
+    "prerequisites": ["37-transformer-blocks", "23-pytorch"],
+    "videoId": "exaWOE8jvy8",
+    "practice": "Compare model size, speed, and output quality at two numerical precisions.",
+    "projectId": "sentiment"
+  },
+  "37-inference-serving": {
+    "summary": "Serve model requests with batching, caching, observability, and resource limits.",
+    "why": "A useful LLM product must control latency, throughput, reliability, and cost.",
+    "prerequisites": ["37-quantization", "31-fastapi", "32-monitoring"],
+    "videoId": "wjZofJX0v4M",
+    "practice": "Design an inference API and measure time-to-first-token and total latency.",
+    "projectId": "sentiment"
   }
 }

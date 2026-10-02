@@ -483,5 +483,26 @@
       "Rehearse a two-minute walkthrough"
     ],
     "structure": "README.md\nrequirements.txt\nsrc/\ntests/\nnotebooks/"
+  },
+  {
+    "id": "rag-assistant",
+    "title": "Grounded research assistant",
+    "level": "advanced",
+    "prerequisites": [
+      23,
+      24,
+      37
+    ],
+    "problem": "Answer questions from a small trusted document collection while showing the evidence behind every answer.",
+    "dataset": "Your own public documentation collection",
+    "datasetUrl": "https://huggingface.co/docs/transformers/index",
+    "output": "A retrieval-augmented assistant with citations, structured traces, and an evaluation report.",
+    "evaluation": "Test retrieval recall, answer support, abstention, latency, and cost on a fixed set of realistic questions.",
+    "objectives": [
+      "Build a retrieval pipeline",
+      "Ground answers in sources",
+      "Evaluate failures systematically"
+    ],
+    "structure": "README.md\ndata/README.md\nsrc/ingest.py\nsrc/retrieve.py\nsrc/generate.py\nsrc/evaluate.py\ntests/\nreports/evaluation.md"
   }
 ]

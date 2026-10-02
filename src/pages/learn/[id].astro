@@ -22,11 +22,8 @@ const next = phases[learningOrder[index + 1]];
     Back to the map
   </a>
   <div class="page-heading compact-chapter-heading">
-    <span class="eyebrow">
-      {phase.level} · {phase.topics.length} topics
-    </span>
+    <span class="eyebrow">Chapter {String(phase.number).padStart(2, '0')} · {phase.topics.length} topics</span>
     <h1>{phase.title}</h1>
-    <p>{phase.description}</p>
   </div>
   <div class="compact-chapter">
     <TopicList phase={phase.number} client:load />

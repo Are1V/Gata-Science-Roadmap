@@ -23,7 +23,7 @@ export default function Library({
   }, []);
   const filters =
     type === 'projects'
-      ? ['All', 'beginner', 'intermediate', 'advanced']
+      ? []
       : type === 'resources'
         ? ['All', 'Documentation', 'Course', 'Book', 'Paper']
         : type === 'interviews'
@@ -33,9 +33,7 @@ export default function Library({
   const items =
     type === 'projects'
       ? projects.filter(
-          (p) =>
-            match(`${p.title} ${p.problem} ${p.objectives.join(' ')}`) &&
-            (filter === 'All' || p.level === filter),
+          (p) => match(`${p.title} ${p.problem} ${p.objectives.join(' ')}`),
         )
       : type === 'resources'
         ? resources.filter(
@@ -70,12 +68,7 @@ export default function Library({
             {filters.map((f) => (
               <option key={f} value={f}>
                 {f === 'All'
-                  ? 'All ' +
-                    (type === 'projects'
-                      ? 'levels'
-                      : type === 'interviews'
-                        ? 'categories'
-                        : 'formats')
+                  ? 'All ' + (type === 'interviews' ? 'categories' : 'formats')
                   : f[0].toUpperCase() + f.slice(1)}
               </option>
             ))}
@@ -104,7 +97,6 @@ export default function Library({
                   FIELDWORK /{' '}
                   {String(projects.findIndex((x) => x.id === p.id) + 1).padStart(2, '0')}
                 </span>
-                <span className={`tag level-${p.level}`}>{p.level}</span>
               </div>
               <div className="project-content">
                 <h2>{p.title}</h2>
