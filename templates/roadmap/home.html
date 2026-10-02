@@ -1,0 +1,63 @@
+{% extends 'roadmap/base.html' %}
+{% block title %}Datlas{% endblock %}
+{% block content %}
+<section class="hero shell">
+  <div class="hero-copy">
+    <div class="signal"><span></span> Open source · No sign-up</div>
+    <h1>The open roadmap<br>to <span>Data Science.</span></h1>
+    <p>One clear route from your first line of Python to machine learning, deep learning, computer vision, and LLM systems.</p>
+    <div class="hero-actions">
+      <a class="button primary" href="{% url 'roadmap:roadmap' %}">Explore the roadmap <span>→</span></a>
+      <a class="button ghost" href="{% url 'roadmap:projects' %}">Build a project</a>
+    </div>
+  </div>
+  <div class="hero-map" aria-label="Learning path preview">
+    <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+    <div class="map-point origin"><span>01</span><strong>Python</strong></div>
+    <div class="map-point data"><span>02</span><strong>Data</strong></div>
+    <div class="map-point ml"><span>03</span><strong>ML</strong></div>
+    <div class="map-point ai"><span>04</span><strong>AI systems</strong></div>
+    <svg viewBox="0 0 500 420" aria-hidden="true"><path d="M72 315C135 285 115 178 205 194s83 106 165 65 27-131 82-167"/><path d="M83 327c96 40 188 19 240-36"/></svg>
+  </div>
+  <div class="hero-stats">
+    <div><strong>{{ chapter_count }}</strong><span>focused chapters</span></div>
+    <div><strong>{{ topic_count }}</strong><span>guided topics</span></div>
+    <div><strong>{{ project_count }}</strong><span>real projects</span></div>
+  </div>
+</section>
+
+<section class="shell section-block">
+  <div class="section-head">
+    <div><span class="kicker">YOUR ROUTE</span><h2>Follow the signal, not the noise.</h2></div>
+    <a href="{% url 'roadmap:roadmap' %}">View every chapter <span>→</span></a>
+  </div>
+  <div class="feature-grid">
+    {% for phase in featured %}
+    <a class="feature-card feature-{{ forloop.counter }}" href="{% url 'roadmap:chapter' phase.id %}">
+      <div class="feature-top"><span>{{ phase.chapter }}</span><span>{{ phase.topics|length }} topics</span></div>
+      <h3>{{ phase.title }}</h3>
+      <p>{{ phase.subtitle }}</p>
+      <div class="card-arrow">↗</div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="project-band">
+  <div class="shell">
+    <div class="section-head light">
+      <div><span class="kicker">FIELDWORK</span><h2>Learn by shipping.</h2></div>
+      <a href="{% url 'roadmap:projects' %}">All projects <span>→</span></a>
+    </div>
+    <div class="home-projects">
+      {% for project in projects %}
+      <a href="{{ project.external_url }}" target="_blank" rel="noreferrer" class="home-project">
+        <span>0{{ forloop.counter }}</span>
+        <div><small>{{ project.platform }}</small><h3>{{ project.title }}</h3><p>{{ project.problem }}</p></div>
+        <b>↗</b>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

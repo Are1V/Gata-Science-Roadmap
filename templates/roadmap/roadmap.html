@@ -1,0 +1,30 @@
+{% extends 'roadmap/base.html' %}
+{% block title %}Roadmap{% endblock %}
+{% block content %}
+<section class="page-hero shell compact">
+  <div class="signal"><span></span> Start anywhere · Follow the connections</div>
+  <h1>Your map through<br><span>data science.</span></h1>
+  <p>Open a chapter, choose a topic, watch the focused lesson, and practice the idea.</p>
+</section>
+<div class="stage-jump shell" aria-label="Roadmap sections">
+  {% for stage in stages %}<a href="#stage-{{ stage.number }}"><span>{{ stage.number }}</span>{{ stage.name }}</a>{% endfor %}
+</div>
+<div class="roadmap-shell shell">
+  {% for stage in stages %}
+  <section class="stage" id="stage-{{ stage.number }}">
+    <header><span>{{ stage.number }}</span><div><small>STAGE</small><h2>{{ stage.name }}</h2></div></header>
+    <div class="stage-line"></div>
+    <div class="phase-grid">
+      {% for phase in stage.phases %}
+      <a class="phase-card" href="{% url 'roadmap:chapter' phase.id %}">
+        <div><span>{{ phase.chapter }}</span><span>{{ phase.topics|length }} topics</span></div>
+        <h3>{{ phase.title }}</h3>
+        <p>{{ phase.subtitle }}</p>
+        <b>Open chapter <span>→</span></b>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+</div>
+{% endblock %}

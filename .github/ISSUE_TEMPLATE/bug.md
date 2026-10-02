@@ -6,4 +6,4 @@ labels: ''
 assignees: ''
 ---
 
-Describe the steps to reproduce, expected and actual behavior, browser, device, and whether the issue occurs under a GitHub Pages subpath. Do not include private data.
+Describe the steps to reproduce, expected and actual behavior, browser, device, and the page URL. Do not include private data.

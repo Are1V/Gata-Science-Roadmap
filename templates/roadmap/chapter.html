@@ -1,0 +1,26 @@
+{% extends 'roadmap/base.html' %}
+{% block title %}{{ phase.title }}{% endblock %}
+{% block content %}
+<section class="chapter-hero shell">
+  <a class="back" href="{% url 'roadmap:roadmap' %}">← All chapters</a>
+  <div class="chapter-label"><span>{{ phase.chapter }}</span><small>CHAPTER · {{ phase.topics|length }} TOPICS</small></div>
+  <h1>{{ phase.title }}</h1>
+  <p>{{ phase.description }}</p>
+</section>
+<section class="topic-list shell">
+  {% for topic in phase.topics %}
+  <article class="topic-row" id="{{ topic.id }}">
+    <span class="topic-index">{{ forloop.counter|stringformat:'02d' }}</span>
+    <div class="topic-copy"><h2>{{ topic.title }}</h2><p>{{ topic.summary }}</p></div>
+    {% if topic.video_url %}
+    <a class="watch" href="{{ topic.video_url }}" target="_blank" rel="noreferrer" aria-label="Watch {{ topic.title }} on YouTube">
+      <span class="play">▶</span><span><small>WATCH</small>{{ topic.video.channel }}</span><b>↗</b>
+    </a>
+    {% endif %}
+  </article>
+  {% endfor %}
+</section>
+{% if next_phase %}
+<a class="next-chapter shell" href="{% url 'roadmap:chapter' next_phase.id %}"><small>NEXT CHAPTER</small><strong>{{ next_phase.title }}</strong><span>→</span></a>
+{% endif %}
+{% endblock %}

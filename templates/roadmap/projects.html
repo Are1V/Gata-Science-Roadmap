@@ -1,0 +1,21 @@
+{% extends 'roadmap/base.html' %}
+{% block title %}Projects{% endblock %}
+{% block content %}
+<section class="page-hero shell compact">
+  <div class="signal"><span></span> Real data · Verifiable results</div>
+  <h1>Build work worth<br><span>showing.</span></h1>
+  <p>Every card opens the real dataset or project source on GitHub, Kaggle, UCI, Hugging Face, or its official home.</p>
+</section>
+<section class="project-grid shell">
+  {% for project in projects %}
+  <a class="project-card" href="{{ project.external_url }}" target="_blank" rel="noreferrer">
+    <div class="project-number">{{ forloop.counter|stringformat:'02d' }}</div>
+    <div class="project-source"><span></span>{{ project.platform }}</div>
+    <h2>{{ project.title }}</h2>
+    <p>{{ project.problem }}</p>
+    <div class="project-tags">{% for objective in project.objectives %}<span>{{ objective }}</span>{% endfor %}</div>
+    <div class="project-open">Open project source <b>↗</b></div>
+  </a>
+  {% endfor %}
+</section>
+{% endblock %}

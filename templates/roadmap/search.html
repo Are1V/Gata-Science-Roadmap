@@ -1,0 +1,15 @@
+{% extends 'roadmap/base.html' %}
+{% block title %}Search{% endblock %}
+{% block content %}
+<section class="search-page shell">
+  <span class="kicker">SEARCH DATLAS</span>
+  <h1>Find your next topic.</h1>
+  <form action="{% url 'roadmap:search' %}" role="search"><input autofocus name="q" value="{{ query }}" aria-label="Search Datlas" placeholder="Try “transformers” or “regression”"><button>Search</button></form>
+  {% if query %}<p class="result-count">{{ results|length }} results for “{{ query }}”</p>{% endif %}
+  <div class="search-results">
+    {% for result in results %}
+    <a href="{{ result.url }}" {% if result.external %}target="_blank" rel="noreferrer"{% endif %}><span>{{ result.kind }}</span><strong>{{ result.title }}</strong><b>{% if result.external %}↗{% else %}→{% endif %}</b></a>
+    {% empty %}{% if query %}<div class="empty">No match yet. Try a shorter or broader term.</div>{% endif %}{% endfor %}
+  </div>
+</section>
+{% endblock %}

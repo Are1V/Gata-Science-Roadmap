@@ -1,6 +1,6 @@
 # Code of Conduct
 
-Gata Science Roadmap welcomes students, career switchers, educators, and experienced practitioners. Treat one another with respect regardless of experience, identity, background, or viewpoint.
+Datlas welcomes students, career switchers, educators, and experienced practitioners. Treat one another with respect regardless of experience, identity, background, or viewpoint.
 
 Be constructive and specific in feedback. Critique the work rather than the person. Give credit, respect privacy, and make room for people who are learning. Harassment, discriminatory language, threats, sexualized attention, doxxing, and deliberate disruption are not acceptable.
 
